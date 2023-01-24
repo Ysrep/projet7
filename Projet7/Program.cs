@@ -1,5 +1,4 @@
 ﻿using System.Drawing;
-using System.Security.Cryptography.X509Certificates;
 
 namespace Projet7
 {
@@ -13,39 +12,77 @@ namespace Projet7
 
         static void Main(string[] args)
         {
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.BackgroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine("#####################################################");
 
+            char[,] _map;
 
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.BackgroundColor = ConsoleColor.Blue;
-            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            void Init()
+            {
+                _map = new char[240, 240];
+                for (int i = 0; i < _map.GetLength(0); i++)
+                {
+                    for (int j = 0; j < _map.GetLength(1); j++)
+                    {
+                        if (i <= 1 || i == _map.GetLength(0) - 1 || j == 0 || j == _map.GetLength(1) - 1)
+                        {
+                            _map[i, j] = '#';
+                        }
+                        else
+                        {
+                            _map[i, j] = ' ';
+                        }
+                    }
+                }
+            }
+            void ShowMap()
+            {
 
-            Console.ForegroundColor = ConsoleColor.Black;
-            Console.BackgroundColor = ConsoleColor.Green;
-            Console.WriteLine("wwwwwwwwwwwwwwwwwwwwwwwwwwwww");
+                for (int i = 0; i < 30; i++)
+                {
+                    for (int j = 0; j < 120; j++)
+                    {
+                        switch (_map[i, j])
+                        {
+                            case '#':
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.BackgroundColor = ConsoleColor.DarkGreen;
+                                break;
+                            case 'x':
+                                Console.ForegroundColor = ConsoleColor.Black;
+                                Console.BackgroundColor = ConsoleColor.White;
+                                break;
+                            case '!':
+                                Console.ForegroundColor = ConsoleColor.Black;
+                                Console.BackgroundColor = ConsoleColor.White;
+                                break;
+                            case '~':
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.BackgroundColor = ConsoleColor.Blue;
+                                break;
+                            case 'w':
+                                Console.ForegroundColor = ConsoleColor.Black;
+                                Console.BackgroundColor = ConsoleColor.Green;
+                                break;
+                            case '-':
+                                Console.ForegroundColor = ConsoleColor.Black;
+                                Console.BackgroundColor = ConsoleColor.Gray;
+                                break;
+                            default:
+                                Console.ForegroundColor = ConsoleColor.Black;
+                                Console.BackgroundColor = ConsoleColor.Gray;
+                                break;
+                        }
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.BackgroundColor = ConsoleColor.DarkGreen;
 
-            Console.ForegroundColor = ConsoleColor.Black;
-            Console.BackgroundColor = ConsoleColor.White;
-            Console.Write("x");
-
-            Console.ForegroundColor = ConsoleColor.Black;
-            Console.BackgroundColor = ConsoleColor.White;
-            Console.Write("!");
-
-            Console.ForegroundColor = ConsoleColor.Black;
-            Console.BackgroundColor = ConsoleColor.Gray;
-            Console.WriteLine("--------------------------------------");
-
-            Console.ForegroundColor = ConsoleColor.Black;
-            Console.BackgroundColor = ConsoleColor.Gray;
-            Console.WriteLine("                                         ");
-
-
-            Console.ForegroundColor = ConsoleColor.Black;
-            Console.BackgroundColor = ConsoleColor.Green;
-            Console.WriteLine("wwwwwwwwwwwwwwwwwwwwwwwwwwwww");
+                        Console.Write(_map[i, j]);
+                    }
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine();
+                }
+            }
+            Init();
+            ShowMap();
 
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
