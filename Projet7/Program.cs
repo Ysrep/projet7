@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Projet7
 {
@@ -49,6 +50,8 @@ namespace Projet7
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
 
+            var pbl = new PokeballList();
+            pbl.PokeballListDisp();
 
         }
     }
