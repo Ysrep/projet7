@@ -5,7 +5,8 @@ using System.Text;
 
 namespace Projet7
 {
-    public class Inventaire
+    public class Inventory
     {
+
     }
 }
