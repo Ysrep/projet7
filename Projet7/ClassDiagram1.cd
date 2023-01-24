@@ -49,24 +49,24 @@
       <FileName>NPC.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Projet7.Pokemon">
+  <Class Name="Projet7.Pokemon" Collapsed="true">
     <Position X="1" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAgAAACAAAAAAAAAAAgAAAAAAAEAACAAABAAAAAAAA=</HashCode>
       <FileName>Pokemon.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Projet7.Attacks">
+  <Class Name="Projet7.Attacks" Collapsed="true">
     <Position X="1" Y="6" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAgAgAAAAAAAAAAAAFAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Attacks.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Projet7.Stats">
+  <Class Name="Projet7.Stats" Collapsed="true">
     <Position X="3.5" Y="6" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAIAAI=</HashCode>
       <FileName>Stats.cs</FileName>
     </TypeIdentifier>
   </Class>
