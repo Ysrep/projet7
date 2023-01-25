@@ -21,7 +21,7 @@ namespace Projet7
             {
                 pokemonsInTeam.Add(pokemon); 
             }
-            else { System. }
+            else { }
             
         }
 

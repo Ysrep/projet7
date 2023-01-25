@@ -104,9 +104,5 @@ namespace Projet7
             P2.Base["HP"] = Math.Max(0, P2.Base["HP"] - damage);
             return P2;
         }
-        public static Pokemon FromJson(string json)
-        {
-
-        }
     }
 }
