@@ -1,0 +1,37 @@
+[
+  {
+    "teamid": 1,
+    "pokemon1": "Bulbasaur",
+    "pokemonlvl1": 25
+  },
+  {
+    "teamid": 2,
+    "pokemon1": "Bulbasaur",
+    "pokemonlvl1": 25,
+    "pokemon2": "Bulbasaur",
+    "pokemonlvl2": 25,
+    "pokemon3": "Bulbasaur",
+    "pokemonlvl3": 25,
+    "pokemon4": "Bulbasaur",
+    "pokemonlvl4": 25,
+    "pokemon5": "Bulbasaur",
+    "pokemonlvl5": 25,
+    "pokemon6": "Bulbasaur",
+    "pokemonlvl6": 25
+  },
+  {
+    "teamid": 3,
+    "pokemon1": "Bulbasaur",
+    "pokemonlvl1": 25,
+    "pokemon2": "Bulbasaur",
+    "pokemonlvl2": 25,
+    "pokemon3": "Bulbasaur",
+    "pokemonlvl3": 25,
+    "pokemon4": "Bulbasaur",
+    "pokemonlvl4": 25,
+    "pokemon5": "Bulbasaur",
+    "pokemonlvl5": 25,
+    "pokemon6": "Bulbasaur",
+    "pokemonlvl6": 25
+  }
+]

@@ -8,21 +8,31 @@ namespace Projet7
 {
     public class PokemonTeam
     {
+        public List<Pokemon> pokemonsInTeam;
 
-        public int _teamId;
-        public bool _isTrainerTeam = false;
-        public int _nbrOfPokemon;
-        public int _lvlOfEachPokemon;
-
-        public void TrainerTeam (int teamId)
+        public PokemonTeam()
         {
-            _teamId = teamId;
+            pokemonsInTeam = new List<Pokemon>();
         }
 
-        public void isTrainerDetection()
+        public void AddPokemon(Pokemon pokemon)
         {
-
+            if (pokemonsInTeam.Count <= 5) 
+            {
+                pokemonsInTeam.Add(pokemon); 
+            }
+            else { }
+            
         }
 
+        public void RemovePokemon(Pokemon pokemon)
+        {
+            pokemonsInTeam.Remove(pokemon);
+        }
+
+        public Pokemon GetPokemon(int id)
+        {
+            return pokemonsInTeam[id];
+        }
     }
 }

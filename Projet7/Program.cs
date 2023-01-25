@@ -90,6 +90,7 @@ namespace Projet7
             //Init();
             //ShowMap();
 
+
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
 
