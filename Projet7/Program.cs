@@ -23,12 +23,16 @@ namespace Projet7
                 player.Move(map.GetMap());
                 //player.checkPlayerPos();
             } while (true);
-           
 
 
+            var rvl = new ReviveList();
+            var ptl = new PotionList();
+            var pbl = new PokeballList();
 
-            //var pbl = new PokeballList();
-            //pbl.PokeballListDisp();
+            Bag bag = new Bag();
+            bag.OpenBag();
+
+            
 
         }
     }

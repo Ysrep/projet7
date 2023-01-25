@@ -5,8 +5,4 @@ using System.Text;
 
 namespace Projet7
 {
-    public class Stats
-    {
-        public int Stat { get; set; }
-    }
 }
