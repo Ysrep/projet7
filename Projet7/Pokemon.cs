@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace Projet7
 {
@@ -82,6 +83,10 @@ namespace Projet7
             int damage = damageStep(P1.Attack[attackSelect], P1, P2);
             P2.Hp = Math.Max(0, P2.Hp - damage);
             return P2;
+        }
+        public static Pokemon FromJson(string json)
+        {
+
         }
     }
 }

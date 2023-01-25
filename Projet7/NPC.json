@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "nname": "Ranger Godric",
+    "money": 40,
+    "teamid": 1
+  },
+  {
+    "id": 2,
+    "nname": "Scoot Billy",
+    "money": 40,
+    "teamid": 2
+  }
+]
