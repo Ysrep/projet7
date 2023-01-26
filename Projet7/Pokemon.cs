@@ -43,7 +43,7 @@ namespace Projet7
         public string[] type;
         public Dictionary<string, int> Base { get; set; }
 
-        public int level { get; set; }
+        public int level;
 
         public static Pokemon GetPokemon(int id, int lvl)
         {
@@ -60,7 +60,7 @@ namespace Projet7
             return newp;
         }
 
-        public int damageStep(Attacks A, Pokemon P1, Pokemon P2)
+        /*public int damageStep(Attack A, Pokemon P1, Pokemon P2)
         {
             int Att;
             int Def;
@@ -82,7 +82,7 @@ namespace Projet7
             int rand = (a * 100) / 255;
             int damage = ((((P1.level * 2 / 5) + 2) * A.Damage * Att / 50 / Def) + 2) * rand / 100 * STAB; //Manque Type1, Type2, CC, mod1, mod2, mod3
             return damage;
-        }
+        }*/
 
         /*public Pokemon useAttack(Pokemon P1, Pokemon P2)
         {
