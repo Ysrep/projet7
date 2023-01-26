@@ -31,9 +31,9 @@ namespace Projet7
                     break;
 
                 case ConsoleKey.UpArrow:
-                    if (_map[PlayerPos[1]+1, PlayerPos[0]] != '#' && _map[PlayerPos[1]+1, PlayerPos[0]] != '/' && _map[PlayerPos[1]+1, PlayerPos[0]] != '-' && _map[PlayerPos[1] + 1, PlayerPos[0]] != '~')
+                    if (_map[PlayerPos[1]-1, PlayerPos[0]] != '#' && _map[PlayerPos[1]-1, PlayerPos[0]] != '/' && _map[PlayerPos[1]-1, PlayerPos[0]] != '-' && _map[PlayerPos[1] - 1, PlayerPos[0]] != '~')
                     {
-                        PlayerPos[1] = PlayerPos[1] + 1;
+                        PlayerPos[1] = PlayerPos[1] - 1;
                     }
                     break;
 
@@ -45,9 +45,9 @@ namespace Projet7
                     break;
 
                 case ConsoleKey.DownArrow:
-                    if (_map[PlayerPos[1] - 1, PlayerPos[0]] != '#' && _map[PlayerPos[1] - 1, PlayerPos[0]] != '/' && _map[PlayerPos[1] - 1, PlayerPos[0]] != '-' && _map[PlayerPos[1] - 1, PlayerPos[0]] != '~')
+                    if (_map[PlayerPos[1] + 1, PlayerPos[0]] != '#' && _map[PlayerPos[1] + 1, PlayerPos[0]] != '/' && _map[PlayerPos[1] + 1, PlayerPos[0]] != '-' && _map[PlayerPos[1] + 1, PlayerPos[0]] != '~')
                     {
-                        PlayerPos[1] = PlayerPos[1] - 1;
+                        PlayerPos[1] = PlayerPos[1] + 1;
                     }
                     break;
 
@@ -60,6 +60,7 @@ namespace Projet7
                 int wildEncounter = rand.Next(5);
                 if (wildEncounter == 1)
                 {
+                    Console.WriteLine();
                     Console.WriteLine("A wild pokemon appeared");
                 }
             }
