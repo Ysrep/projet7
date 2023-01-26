@@ -22,5 +22,14 @@ namespace TestUnitaire
             Console.WriteLine(P.name["english"]);
             Console.WriteLine("lvl " + P.level);
         }
+
+        [Test]
+        public void CreateAttack()
+        {
+            Attack A = Attack.GetAttack(25);
+            Console.WriteLine(A.ename);
+            Console.WriteLine("power : " + A.power);
+            Console.WriteLine("accuracy : " + A.accuracy);
+        }
     }
 }
