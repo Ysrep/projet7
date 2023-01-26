@@ -30,7 +30,7 @@ namespace Projet7
             pokemonsInTeam.Remove(pokemon);
         }
 
-        public Pokemon GetPokemon(int id)
+        public Pokemon GetPokemonTeam(int id)
         {
             return pokemonsInTeam[id];
         }
