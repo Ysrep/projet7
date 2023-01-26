@@ -29,7 +29,7 @@ namespace Projet7
                 PropertyNameCaseInsensitive = true
             };
 
-            var json = File.ReadAllText("Pokemon.json");
+            var json = File.ReadAllText("../../../Pokemon.json");
             var pokedex = JsonSerializer.Deserialize<Pokedex>(json, options);
             _pokedex = new Dictionary<int, Pokemon>(pokedex.pokemons.Select(i => new KeyValuePair<int, Pokemon>(i.id, i)));
         }
@@ -84,7 +84,7 @@ namespace Projet7
             return damage;
         }
 
-        public Pokemon useAttack(Pokemon P1, Pokemon P2)
+        /*public Pokemon useAttack(Pokemon P1, Pokemon P2)
         {
             for (int i = 0; i < 4; i++)
             {
@@ -103,6 +103,6 @@ namespace Projet7
             int damage = damageStep(P1.Attack[attackSelect], P1, P2);
             P2.Base["HP"] = Math.Max(0, P2.Base["HP"] - damage);
             return P2;
-        }
+        }*/
     }
 }
