@@ -1,0 +1,31 @@
+[
+  {
+    "teamid": 1,
+    "team": [
+      {
+        "name": "Bulbizarre",
+        "lvl": 25,
+        "skills": [
+          "Mega Punch",
+          "Swords Dance",
+          "Double Kick",
+          "Double-Edge"
+        ]
+      },
+      {
+        "name": "Leviator",
+        "lvl": 25,
+        "skills": [
+          "Bite",
+          "Swords Dance",
+          "Double Kick",
+          "Double-Edge"
+        ]
+      },
+      {
+        "name": "Bulbizarre",
+        "lvl": 25
+      }
+    ]
+  }
+]
