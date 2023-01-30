@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Projet7.Inventory">
-    <Position X="7.25" Y="2.5" Width="1.5" />
+    <Position X="6.5" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Inventory.cs</FileName>
@@ -10,14 +10,14 @@
   <Class Name="Projet7.Potion">
     <Position X="4.75" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAgBAAAAAAAAAAEgAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
       <FileName>Potion.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Projet7.Revive">
     <Position X="7.25" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AIAAAAAAAAAAAAAEgAAAAAAAAAAAAAAAAAEAAAAAEAA=</HashCode>
       <FileName>Revive.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -30,16 +30,16 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Projet7.Player">
-    <Position X="7.25" Y="1" Width="1.5" />
+    <Position X="9.75" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAIAACAAAAAgAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
       <FileName>Player.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Projet7.PokemonTeam">
     <Position X="3.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <HashCode>AAAAAABAAAAAAAAAAAAAAAAABAIAAAAAAAAAAAAAACA=</HashCode>
       <FileName>PokemonTeam.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -57,17 +57,10 @@
       <FileName>Attacks.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Projet7.Stats" Collapsed="true">
-    <Position X="3.5" Y="6" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
-      <FileName>Stats.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Projet7.Map">
-    <Position X="11.25" Y="3" Width="1.5" />
+    <Position X="12.5" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMACAAAAAAA=</HashCode>
       <FileName>Map.cs</FileName>
     </TypeIdentifier>
   </Class>

@@ -11,6 +11,7 @@ namespace Projet7
 
         public int[] PlayerPos { get; set; }
         int _money;
+        public PokemonTeam _pokemonTeam;
 
         public void Init()
         {
@@ -45,8 +46,12 @@ namespace Projet7
                     break;
 
                 case ConsoleKey.DownArrow:
-                    if (_map[PlayerPos[1] - 1, PlayerPos[0]] != '#' && _map[PlayerPos[1] - 1, PlayerPos[0]] != '/' && _map[PlayerPos[1] - 1, PlayerPos[0]] != '-' && _map[PlayerPos[1] - 1, PlayerPos[0]] != '~')
+                    if (_map[PlayerPos[1] - 1, PlayerPos[0]] != '#' && _map[PlayerPos[1] - 1, PlayerPos[0]] != '/' && _map[PlayerPos[1] - 1, PlayerPos[0]] != '~')
                     {
+                        if (_map[PlayerPos[1] - 1, PlayerPos[0]] != '-')
+                        {
+                            PlayerPos[1] = PlayerPos[1] - 2;
+                        }
                         PlayerPos[1] = PlayerPos[1] - 1;
                     }
                     break;
