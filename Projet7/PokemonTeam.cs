@@ -8,14 +8,14 @@ namespace Projet7
 {
     public class PokemonTeam
     {
-        public List<Pokemon> pokemonsInTeam;
+        public List<Attack> pokemonsInTeam;
 
         public PokemonTeam()
         {
-            pokemonsInTeam = new List<Pokemon>();
+            pokemonsInTeam = new List<Attack>();
         }
 
-        public void AddPokemon(Pokemon pokemon)
+        public void AddPokemon(Attack pokemon)
         {
             if (pokemonsInTeam.Count <= 5) 
             {
@@ -25,12 +25,12 @@ namespace Projet7
             
         }
 
-        public void RemovePokemon(Pokemon pokemon)
+        public void RemovePokemon(Attack pokemon)
         {
             pokemonsInTeam.Remove(pokemon);
         }
 
-        public Pokemon GetPokemon(int id)
+        public Attack GetPokemon(int id)
         {
             return pokemonsInTeam[id];
         }

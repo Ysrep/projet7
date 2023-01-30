@@ -41,9 +41,9 @@ namespace Projet7
 
 
             Console.SetCursorPosition(0, 0);
-            for (int i = maxPosY; i > minPosY; i--)
+            for (int i = minPosY ; i < maxPosY; i++)
             {
-                if(i != maxPosY)
+                if(i != minPosY)
                 {
                     Console.WriteLine();
                 }
