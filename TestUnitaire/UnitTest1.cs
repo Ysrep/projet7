@@ -36,5 +36,11 @@ namespace TestUnitaire
             Console.WriteLine("power : " + A.power);
             Console.WriteLine("accuracy : " + A.accuracy);
         }
+
+        [Test]
+        public void CheckGetTeam()
+        {
+            PokemonTeam.GetTeam(1);
+        }
     }
 }
