@@ -35,20 +35,20 @@ namespace Projet7
         }
 
 
-        [JsonInclude]
-        public int id;
-        [JsonInclude]
-        public Dictionary<string, string> name;
-        [JsonInclude]
-        public string[] type;
+        [JsonInclude] public int id;
+        [JsonInclude] public Dictionary<string, string> name;
+        [JsonInclude] public string[] type;
+
+
+        public Attack[] attack;
+        public int level;
+
         public Dictionary<string, int> Base { get; set; }
 
-        public int level;
 
         public static Pokemon GetPokemon(int id, int lvl)
         {
             var neuf = _pokedex.GetValueOrDefault(id);
-
             var newp = new Pokemon()
             {
                 id = neuf.id,
@@ -56,7 +56,16 @@ namespace Projet7
                 type = neuf.type.ToArray(),
                 Base = new Dictionary<string, int>(neuf.Base)
             };
+
             newp.level = lvl;
+            newp.attack = new Attack[4]; 
+
+            for(int i = 0; i < 4; i++)
+            {
+                Random r = new Random();
+                int a = r.Next(1, 613);
+                newp.attack[i] = Attack.GetAttack(a);
+            }
             return newp;
         }
 
@@ -64,7 +73,7 @@ namespace Projet7
         {
             int Att;
             int Def;
-            if (A.Category == "physical")
+            if (A.category == "Physique")
             {
                 Att = P1.Base["Attack"];
                 Def = P2.Base["Defense"];
@@ -75,14 +84,14 @@ namespace Projet7
                 Def = P2.Base["Sp. Defense"];
             }
             int STAB;
-            if ((P1.type[0] == A.Type) || (P1.type[1] == A.Type)) { STAB = 2; }
+            if ((P1.type[0] == A.type) || (P1.type[1] == A.type)) { STAB = 2; }
             else { STAB = 1; }
             Random r = new Random();
             int a = r.Next(217, 256);
             int rand = (a * 100) / 255;
-            int damage = ((((P1.level * 2 / 5) + 2) * A.Damage * Att / 50 / Def) + 2) * rand / 100 * STAB; //Manque Type1, Type2, CC, mod1, mod2, mod3
+            int damage = ((((P1.level * 2 / 5) + 2) * A.power * Att / 50 / Def) + 2) * rand / 100 * STAB; //Manque Type1, Type2, CC, mod1, mod2, mod3
             return damage;
-        }*/
+        }/*
 
         /*public Pokemon useAttack(Pokemon P1, Pokemon P2)
         {

@@ -1,38 +1,62 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
-using System.Xml.Serialization;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Projet7
 {
+    [Serializable]
+    public class Teams
+    {
+        [JsonInclude]
+        public PokemonTeam[] pokemonTeam;
+
+    }
+
+    [Serializable]
     public class PokemonTeam
     {
-        public List<Attack> pokemonsInTeam;
+        static Dictionary<int, PokemonTeam> _pokemonTeam;
 
-        public PokemonTeam()
+        static PokemonTeam()
         {
-            pokemonsInTeam = new List<Attack>();
-        }
-
-        public void AddPokemon(Attack pokemon)
-        {
-            if (pokemonsInTeam.Count <= 5) 
+            var options = new JsonSerializerOptions
             {
-                pokemonsInTeam.Add(pokemon); 
-            }
-            else { }
-            
+                PropertyNameCaseInsensitive = true
+            };
+
+            var json = File.ReadAllText("../../../trainerTeam.json");
+            var teams = JsonSerializer.Deserialize<Teams>(json, options);
+            _pokemonTeam = new Dictionary<int, PokemonTeam>(teams.pokemonTeam.Select(i => new KeyValuePair<int, PokemonTeam>(i.teamid, i)));
         }
 
-        public void RemovePokemon(Attack pokemon)
-        {
-            pokemonsInTeam.Remove(pokemon);
-        }
+        [JsonInclude]
+        public int teamid;
+        [JsonInclude]
+        public Team[] team;
+        //[JsonInclude]
+        //public string name;
+        //[JsonInclude]
+        //public int lvl;
+        //[JsonInclude]
+        //public Dictionary<string, string> skills;
 
-        public Attack GetPokemon(int id)
+        public static PokemonTeam GetTeam(int teamid)
         {
-            return pokemonsInTeam[id];
+            var tId = _pokemonTeam.GetValueOrDefault(teamid);
+
+            var newTeam = new PokemonTeam()
+            {
+                teamid = tId.teamid,
+                name = tId.name,
+                lvl = tId.lvl,
+                skills = new Dictionary<string, string>(tId.skills)
+            };
+            return newTeam;
         }
     }
 }
