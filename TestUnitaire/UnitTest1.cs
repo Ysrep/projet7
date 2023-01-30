@@ -19,8 +19,13 @@ namespace TestUnitaire
         public void CreatePokemon()
         {
             Pokemon P = Pokemon.GetPokemon(25,5);
+
             Console.WriteLine(P.name["english"]);
             Console.WriteLine("lvl " + P.level);
+            for(int i = 0; i < 4; i++)
+            {
+                Console.WriteLine(P.attack[i].ename +" " + P.attack[i].category);
+            }
         }
 
         [Test]
