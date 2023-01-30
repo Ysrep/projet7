@@ -10,6 +10,8 @@ namespace Projet7
     {
         char[,] _map;
 
+        public bool Paused { get; set; }
+
         public char[,] GetMap() { return _map; }
 
         public void Init()
@@ -81,6 +83,18 @@ namespace Projet7
                         Console.ForegroundColor = ConsoleColor.Black;
                         Console.BackgroundColor = ConsoleColor.White;
                         Console.Write('x');
+                    }
+                    else if (_map[i, j] == 'c')
+                    {
+                        Console.ForegroundColor = ConsoleColor.Black;
+                        Console.BackgroundColor = ConsoleColor.Gray;
+                        Console.Write('_');
+                    } 
+                    else if (_map[i, j] == 'C')
+                    {
+                        Console.ForegroundColor = ConsoleColor.Black;
+                        Console.BackgroundColor = ConsoleColor.Red;
+                        Console.Write(' ');
                     }
                     else
                     {

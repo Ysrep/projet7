@@ -17,12 +17,12 @@ namespace Projet7
             Player player = new Player();
             map.Init();
             player.Init();
-            do
+            map.ShowMap(player.PlayerPos);
+            
+            while (true)
             {
-                map.ShowMap(player.PlayerPos);
-                player.Move(map.GetMap());
-                //player.checkPlayerPos();
-            } while (true);
+                player.Inputs(map);
+            }
 
 
             var rvl = new ReviveList();
@@ -32,7 +32,7 @@ namespace Projet7
             Bag bag = new Bag();
             bag.OpenBag();
 
-            
+
 
         }
     }

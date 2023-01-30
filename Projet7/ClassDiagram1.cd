@@ -32,7 +32,7 @@
   <Class Name="Projet7.Player">
     <Position X="9.75" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAIAACAAAAAgAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAIAACAAAAAgAAAAAAAAAAAAAAAQCAAAAAAA=</HashCode>
       <FileName>Player.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -48,13 +48,6 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>NPC.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Projet7.Attacks" Collapsed="true">
-    <Position X="1" Y="6" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAACAAAAAAAAAAAAIAAQAAAAAAAAAAQAAAAAACEA=</HashCode>
-      <FileName>Attacks.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Projet7.Map">
