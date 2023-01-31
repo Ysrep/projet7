@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
@@ -57,6 +57,50 @@ namespace Projet7
                 skills = new Dictionary<string, string>(tId.skills)
             };
             return newTeam;
+        }
+    }
+}*/
+
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text.Json;
+
+namespace Projet7
+{
+    public class PokemonInTeam
+    {
+        public string _name { get; set; }
+        public int _lvl { get; set; }
+        public List<string> _skills { get; set; }
+    }
+
+    public class PokemonTeam
+    {
+        public int _teamId { get; set; }
+        public List<PokemonInTeam> _team { get; set; }
+    }
+
+    public class RootObject
+    {
+        public List<PokemonTeam> PokemonTeam { get; set; }
+    }
+
+    public class TrainerTeam
+    {
+        public RootObject PokemonTeams { get; private set; }
+
+        public TrainerTeam()
+        {
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            };
+
+            using (var file = File.OpenRead("../../../trainerTeam.json"))
+            {
+                PokemonTeams = JsonSerializer.Deserialize<RootObject>(file, options);
+            }
         }
     }
 }
