@@ -14,9 +14,8 @@ namespace Projet7
         {
             Map map = new Map();
 
-            Player player = new Player();
+            Player player = new Player(63,218);
             map.Init();
-            player.Init();
             map.ShowMap(player.PlayerPos);
             
             while (true)

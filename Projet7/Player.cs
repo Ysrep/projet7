@@ -11,34 +11,39 @@ namespace Projet7
 
         public int[] PlayerPos { get; set; }
         int _money;
-        public PokemonTeam _pokemonTeam;
-        public void Init()
+        //public PokemonTeam _pokemonTeam;
+        public Player(int x, int y)
         {
             PlayerPos = new int[2];
-            PlayerPos[0] = 63;
-            PlayerPos[1] = 218;
+            PlayerPos[0] = x;
+            PlayerPos[1] = y;
         }
 
         public void Inputs(Map _map)
         {
-            ConsoleKeyInfo input = Console.ReadKey();
+            ConsoleKeyInfo input = Console.ReadKey(true);
             switch (input.Key)
             {
-                case ConsoleKey.LeftArrow:
+                case ConsoleKey.Q:
                     if (input.Modifiers == ConsoleModifiers.Shift)
                     {
                         int i;
-                        for (i = 0; i <= 5; i++)
+                        for (i = 0; i <= 3; i++)
                         {
-                            if (_map.GetMap()[PlayerPos[1], PlayerPos[0] - i] != '#' && _map.GetMap()[PlayerPos[1], PlayerPos[0] - i] != '/' && _map.GetMap()[PlayerPos[1], PlayerPos[0] - i] != '-' && _map.GetMap()[PlayerPos[1], PlayerPos[0] - i] != '~')
+
+                            if (_map.GetMap()[PlayerPos[1], PlayerPos[0] - i] != '#' && _map.GetMap()[PlayerPos[1], PlayerPos[0] - i] != '/' && _map.GetMap()[PlayerPos[1], PlayerPos[0] - i] != '-' && _map.GetMap()[PlayerPos[1], PlayerPos[0] - i] != 'C' && _map.GetMap()[PlayerPos[1], PlayerPos[0] - i] != '~')
                             {
-                                continue;
-                            }
-                            else if (_map.GetMap()[PlayerPos[1], PlayerPos[0] - i] == 'c')
-                            {
-                                Console.WriteLine();
-                                Console.WriteLine("Vos pokemons ont été soigné");
-                                break;
+                                if (i != 0 && _map.GetMap()[PlayerPos[1], PlayerPos[0] - i] == 'w')
+                                {
+                                    Random rand = new Random();
+                                    int wildEncounter = rand.Next(5);
+                                    if (wildEncounter == 1)
+                                    {
+                                        Console.WriteLine();
+                                        Console.WriteLine("A wild pokemon appeared");
+                                        break;
+                                    }
+                                }
                             }
                             else
                             {
@@ -50,38 +55,41 @@ namespace Projet7
                     }
                     else
                     {
-                        if (_map.GetMap()[PlayerPos[1], PlayerPos[0] - 1] != '#' && _map.GetMap()[PlayerPos[1], PlayerPos[0] - 1] != '/' && _map.GetMap()[PlayerPos[1], PlayerPos[0] - 1] != '-' && _map.GetMap()[PlayerPos[1], PlayerPos[0] - 1] != '~')
+                        if (_map.GetMap()[PlayerPos[1], PlayerPos[0] - 1] != '#' && _map.GetMap()[PlayerPos[1], PlayerPos[0] - 1] != '/' && _map.GetMap()[PlayerPos[1], PlayerPos[0] - 1] != '-' && _map.GetMap()[PlayerPos[1], PlayerPos[0] - 1] != 'C' && _map.GetMap()[PlayerPos[1], PlayerPos[0] - 1] != '~')
                         {
-                            if (_map.GetMap()[PlayerPos[1], PlayerPos[0] - 1] == 'c')
-                            {
-                                Console.WriteLine();
-                                Console.WriteLine("Vos pokemons ont été soigné");
-                            }
-                            else
-                            {
-                                PlayerPos[0] = PlayerPos[0] - 1;
-                            }
+                            PlayerPos[0] = PlayerPos[0] - 1;
 
                         }
                     }
                     break;
 
 
-                case ConsoleKey.UpArrow:
+                case ConsoleKey.Z:
                     if (input.Modifiers == ConsoleModifiers.Shift)
                     {
                         int i;
-                        for (i = 0; i <= 5; i++)
+                        for (i = 0; i <= 3; i++)
                         {
-                            if (_map.GetMap()[PlayerPos[1] - i, PlayerPos[0]] != '#' && _map.GetMap()[PlayerPos[1] - i, PlayerPos[0]] != '/' && _map.GetMap()[PlayerPos[1] - i, PlayerPos[0]] != '-' && _map.GetMap()[PlayerPos[1] - i, PlayerPos[0]] != '~')
+
+                            if (_map.GetMap()[PlayerPos[1] - i, PlayerPos[0]] != '#' && _map.GetMap()[PlayerPos[1] - i, PlayerPos[0]] != '/' && _map.GetMap()[PlayerPos[1] - i, PlayerPos[0]] != 'C' && _map.GetMap()[PlayerPos[1] - i, PlayerPos[0]] != '-' && _map.GetMap()[PlayerPos[1] - i, PlayerPos[0]] != '~')
                             {
-                                continue;
-                            }
-                            else if (_map.GetMap()[PlayerPos[1] - i, PlayerPos[0]] == 'c')
-                            {
-                                Console.WriteLine();
-                                Console.WriteLine("Vos pokemons ont été soigné");
-                                break;
+                                if (_map.GetMap()[PlayerPos[1] - i, PlayerPos[0]] == 'c')
+                                {
+                                    Console.WriteLine();
+                                    Console.WriteLine("Vos pokemons ont été soigné");
+                                    break;
+                                }
+                                else if (i != 0 && _map.GetMap()[PlayerPos[1] - i, PlayerPos[0]] == 'w')
+                                {
+                                    Random rand = new Random();
+                                    int wildEncounter = rand.Next(5);
+                                    if (wildEncounter == 1)
+                                    {
+                                        Console.WriteLine();
+                                        Console.WriteLine("A wild pokemon appeared");
+                                        break;
+                                    }
+                                }
                             }
                             else
                             {
@@ -93,7 +101,7 @@ namespace Projet7
                     }
                     else
                     {
-                        if (_map.GetMap()[PlayerPos[1] - 1, PlayerPos[0]] != '#' && _map.GetMap()[PlayerPos[1] - 1, PlayerPos[0]] != '/' && _map.GetMap()[PlayerPos[1] - 1, PlayerPos[0]] != '-' && _map.GetMap()[PlayerPos[1] - 1, PlayerPos[0]] != '~')
+                        if (_map.GetMap()[PlayerPos[1] - 1, PlayerPos[0]] != '#' && _map.GetMap()[PlayerPos[1] - 1, PlayerPos[0]] != '/' && _map.GetMap()[PlayerPos[1] - 1, PlayerPos[0]] != 'C' && _map.GetMap()[PlayerPos[1] - 1, PlayerPos[0]] != '-' && _map.GetMap()[PlayerPos[1] - 1, PlayerPos[0]] != '~')
                         {
                             if (_map.GetMap()[PlayerPos[1] - 1, PlayerPos[0]] == 'c')
                             {
@@ -110,22 +118,27 @@ namespace Projet7
 
                     break;
 
-                case ConsoleKey.RightArrow:
+                case ConsoleKey.D:
                     if (input.Modifiers == ConsoleModifiers.Shift)
                     {
                         int i;
-                        for (i = 0; i <= 5; i++)
+                        for (i = 0; i <= 3; i++)
                         {
-                            if (_map.GetMap()[PlayerPos[1], PlayerPos[0] + i] != '#' && _map.GetMap()[PlayerPos[1], PlayerPos[0] + i] != '/' && _map.GetMap()[PlayerPos[1], PlayerPos[0] + i] != '-' && _map.GetMap()[PlayerPos[1], PlayerPos[0] + i] != '~')
+                            if (_map.GetMap()[PlayerPos[1], PlayerPos[0] + i] != '#' && _map.GetMap()[PlayerPos[1], PlayerPos[0] + i] != '/' && _map.GetMap()[PlayerPos[1], PlayerPos[0] + i] != 'C' && _map.GetMap()[PlayerPos[1], PlayerPos[0] + i] != '-' && _map.GetMap()[PlayerPos[1], PlayerPos[0] + i] != '~')
                             {
-                                continue;
+                                if (i != 0 && _map.GetMap()[PlayerPos[1], PlayerPos[0] + i] == 'w')
+                                {
+                                    Random rand = new Random();
+                                    int wildEncounter = rand.Next(5);
+                                    if (wildEncounter == 1)
+                                    {
+                                        Console.WriteLine();
+                                        Console.WriteLine("A wild pokemon appeared");
+                                        break;
+                                    }
+                                }
                             }
-                            else if (_map.GetMap()[PlayerPos[1], PlayerPos[0] + i] == 'c')
-                            {
-                                Console.WriteLine();
-                                Console.WriteLine("Vos pokemons ont été soigné");
-                                break;
-                            }
+
                             else
                             {
                                 break;
@@ -136,37 +149,45 @@ namespace Projet7
                     }
                     else
                     {
-                        if (_map.GetMap()[PlayerPos[1], PlayerPos[0] + 1] != '#' && _map.GetMap()[PlayerPos[1], PlayerPos[0] + 1] != '/' && _map.GetMap()[PlayerPos[1], PlayerPos[0] + 1] != '-' && _map.GetMap()[PlayerPos[1], PlayerPos[0] + 1] != '~')
+                        if (_map.GetMap()[PlayerPos[1], PlayerPos[0] + 1] != '#' && _map.GetMap()[PlayerPos[1], PlayerPos[0] + 1] != '/' && _map.GetMap()[PlayerPos[1], PlayerPos[0] + 1] != 'C' && _map.GetMap()[PlayerPos[1], PlayerPos[0] + 1] != '-' && _map.GetMap()[PlayerPos[1], PlayerPos[0] + 1] != '~')
                         {
-                            if (_map.GetMap()[PlayerPos[1], PlayerPos[0] + 1] == 'c')
-                            {
-                                Console.WriteLine();
-                                Console.WriteLine("Vos pokemons ont été soigné");
-                            }
-                            else
-                            {
-                                PlayerPos[0] = PlayerPos[0] + 1;
-                            }
+
+                            PlayerPos[0] = PlayerPos[0] + 1;
 
                         }
                     }
                     break;
 
-                case ConsoleKey.DownArrow:
+                case ConsoleKey.S:
                     if (input.Modifiers == ConsoleModifiers.Shift)
                     {
                         int i;
-                        for (i = 0; i <= 5; i++)
+                        bool jump = false;
+                        for (i = 0; i <= 3; i++)
                         {
-                            if (_map.GetMap()[PlayerPos[1] + i, PlayerPos[0]] != '#' && _map.GetMap()[PlayerPos[1] + i, PlayerPos[0]] != '/' && _map.GetMap()[PlayerPos[1] + i, PlayerPos[0]] != '-' && _map.GetMap()[PlayerPos[1] + i, PlayerPos[0]] != '~')
+                            if (_map.GetMap()[PlayerPos[1] + i, PlayerPos[0]] != '#' && _map.GetMap()[PlayerPos[1] + i, PlayerPos[0]] != '/' && _map.GetMap()[PlayerPos[1] + i, PlayerPos[0]] != 'C' && _map.GetMap()[PlayerPos[1] + i, PlayerPos[0]] != '~')
                             {
-                                continue;
-                            }
-                            else if (_map.GetMap()[PlayerPos[1] + i, PlayerPos[0]] == 'c')
-                            {
-                                Console.WriteLine();
-                                Console.WriteLine("Vos pokemons ont été soigné");
-                                break;
+                                if (_map.GetMap()[PlayerPos[1] + i, PlayerPos[0]] == '-')
+                                {
+                                    jump = true;
+                                }
+                                else if (_map.GetMap()[PlayerPos[1] + i, PlayerPos[0]] == 'c')
+                                {
+                                    Console.WriteLine();
+                                    Console.WriteLine("Vos pokemons ont été soigné");
+                                    break;
+                                }
+                                else if (i != 0 && _map.GetMap()[PlayerPos[1] + i, PlayerPos[0]] == 'w')
+                                {
+                                    Random rand = new Random();
+                                    int wildEncounter = rand.Next(5);
+                                    if (wildEncounter == 1)
+                                    {
+                                        Console.WriteLine();
+                                        Console.WriteLine("A wild pokemon appeared");
+                                        break;
+                                    }
+                                }
                             }
                             else
                             {
@@ -174,11 +195,16 @@ namespace Projet7
                             }
 
                         }
-                        PlayerPos[1] = PlayerPos[1] + (i - 1);
+                        if (jump)
+                        {
+                            PlayerPos[1] = PlayerPos[1] + (i);
+                        }
+                        else
+                            PlayerPos[1] = PlayerPos[1] + (i - 1);
                     }
                     else
                     {
-                        if (_map.GetMap()[PlayerPos[1] + 1, PlayerPos[0]] != '#' && _map.GetMap()[PlayerPos[1] + 1, PlayerPos[0]] != '/' && _map.GetMap()[PlayerPos[1] + 1, PlayerPos[0]] != '~')
+                        if (_map.GetMap()[PlayerPos[1] + 1, PlayerPos[0]] != '#' && _map.GetMap()[PlayerPos[1] + 1, PlayerPos[0]] != '/' && _map.GetMap()[PlayerPos[1] + 1, PlayerPos[0]] != 'C' && _map.GetMap()[PlayerPos[1] + 1, PlayerPos[0]] != '~')
                         {
                             if (_map.GetMap()[PlayerPos[1] + 1, PlayerPos[0]] == '-')
                             {
