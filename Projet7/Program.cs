@@ -13,8 +13,10 @@ namespace Projet7
         static void Main(string[] args)
         {
             Map map = new Map();
-
+            AllBag allinventory = new AllBag();
             Player player = new Player();
+            ListConstruct inventory = new ListConstruct();
+            inventory.List();
             map.Init();
             player.Init();
             do
@@ -22,18 +24,10 @@ namespace Projet7
                 map.ShowMap(player.PlayerPos);
                 player.Move(map.GetMap());
                 //player.checkPlayerPos();
+
+               allinventory.ItemListDisp(inventory);
+
             } while (true);
-
-
-            var rvl = new ReviveList();
-            var ptl = new PotionList();
-            var pbl = new PokeballList();
-
-            Bag bag = new Bag();
-            bag.OpenBag();
-
-            
-
         }
     }
 }
