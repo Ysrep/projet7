@@ -19,7 +19,9 @@ namespace Projet7
             inventory.List();
             map.Init();
             player.Init();
-            do
+            map.ShowMap(player.PlayerPos);
+            
+            while (true)
             {
                 map.ShowMap(player.PlayerPos);
                 player.Move(map.GetMap());

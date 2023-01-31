@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data.Common;
 using System.Linq;
 using System.Net.Http.Headers;
@@ -37,11 +38,14 @@ namespace Projet7
         [JsonInclude]
         public string type;
         [JsonInclude]
-        public int? accuracy { get; set; }
+        public int? accuracy;
         [JsonInclude]
-        public int? power { get; set; }
+        public int power;
         [JsonInclude]
-        public int? pp { get; set; }
+        public int pp;
+        [JsonInclude]
+        public string category;
+        public int currentPp;
 
         public static Attack GetAttack(int id)
         {
@@ -54,8 +58,10 @@ namespace Projet7
                 type = neuf.type,
                 accuracy = neuf.accuracy,
                 power = neuf.power,
-                pp = neuf.pp
+                pp = neuf.pp,
+                category = neuf.category
             };
+            int currentPp = newa.pp;
             return newa;
         }
     }
