@@ -15,24 +15,21 @@ namespace Projet7
             Map map = new Map();
 
             Player player = new Player(63,218);
+            AllBag allinventory = new AllBag();
+            ListConstruct inventory = new ListConstruct();
+            inventory.List();
             map.Init();
             map.ShowMap(player.PlayerPos);
             
             while (true)
             {
-                player.Inputs(map);
-            }
+                map.ShowMap(player.PlayerPos);
+                player.Move(map.GetMap());
+                //player.checkPlayerPos();
 
+               allinventory.ItemListDisp(inventory);
 
-            var rvl = new ReviveList();
-            var ptl = new PotionList();
-            var pbl = new PokeballList();
-
-            Bag bag = new Bag();
-            bag.OpenBag();
-
-
-
+            } while (true);
         }
     }
 }

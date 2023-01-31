@@ -40,11 +40,12 @@ namespace Projet7
         [JsonInclude]
         public int? accuracy;
         [JsonInclude]
-        public int? power;
+        public int power;
         [JsonInclude]
-        public int? pp;
+        public int pp;
         [JsonInclude]
         public string category;
+        public int currentPp;
 
         public static Attack GetAttack(int id)
         {
@@ -60,6 +61,7 @@ namespace Projet7
                 pp = neuf.pp,
                 category = neuf.category
             };
+            int currentPp = newa.pp;
             return newa;
         }
     }
