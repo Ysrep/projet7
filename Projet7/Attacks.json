@@ -1836,7 +1836,7 @@
       "id": 165,
       "jname": "\u308f\u308b\u3042\u304c\u304d",
       "power": 50,
-      "pp": null,
+      "pp": 10,
       "type": "Normal"
     },
     {
@@ -1936,7 +1936,7 @@
       "id": 174,
       "jname": "\u306e\u308d\u3044",
       "power": 0,
-      "pp": null,
+      "pp": 10,
       "type": "Ghost"
     },
     {
