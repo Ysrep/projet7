@@ -22,7 +22,8 @@ namespace TestUnitaire
 
             Console.WriteLine(P.name["english"]);
             Console.WriteLine("lvl " + P.level);
-            for(int i = 0; i < 4; i++)
+            Console.WriteLine("speed " + P.Base["Speed"]);
+            for (int i = 0; i < 4; i++)
             {
                 Console.WriteLine(P.attack[i].ename +" " + P.attack[i].category);
             }
@@ -40,7 +41,8 @@ namespace TestUnitaire
         [Test]
         public void CheckGetTeam()
         {
-            PokemonTeam.GetTeam(1);
+            NPC.CreateNPC();
+            PokemonTeam.CreateTeam();
         }
     }
 }

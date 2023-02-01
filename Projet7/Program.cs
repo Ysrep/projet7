@@ -12,6 +12,10 @@ namespace Projet7
 
         static void Main(string[] args)
         {
+
+            NPC.CreateNPC();
+            PokemonTeam.CreateTeam();
+
             Map map = new Map();
             Player player = new Player(63,218);
             AllBag allinventory = new AllBag();

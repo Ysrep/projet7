@@ -64,12 +64,12 @@ namespace Projet7
 
             newp.level = lvl;
             newp.attack = new Attack[4];
-            newp.Base["HP"] = (newp.Base["HP"] * (newp.level / 100) + newp.level + 10);
-            newp.Base["Attack"] = (newp.Base["Attack"] * (newp.level / 100) + 5);
-            newp.Base["Defense"] = (newp.Base["Defense"] * (newp.level / 100) + 5);
-            newp.Base["Sp. Attack"] = (newp.Base["Sp. Attack"] * (newp.level / 100) + 5);
-            newp.Base["Sp. Defense"] = (newp.Base["Sp. Defense"] * (newp.level / 100) + 5);
-            newp.Base["Speed"] = (newp.Base["Speed"] * (newp.level / 100) + 5);
+            newp.Base["HP"] = ((int)(newp.Base["HP"] * (((float)newp.level) / 100))) + newp.level + 10;
+            newp.Base["Attack"] = ((int)(newp.Base["Attack"] * (((float)newp.level) / 100))) + 5;
+            newp.Base["Defense"] = ((int)(newp.Base["Defense"] * (((float)newp.level) / 100))) + 5;
+            newp.Base["Sp. Attack"] = ((int)(newp.Base["Sp. Attack"] * (((float)newp.level) / 100))) + 5;
+            newp.Base["Sp. Defense"] = ((int)(newp.Base["Sp. Defense"] * (((float)newp.level) / 100))) + 5;
+            newp.Base["Speed"] = ((int)(newp.Base["Speed"] * (((float)newp.level) / 100))) + 5;
             newp.currentHp = newp.Base["HP"];
 
             for (int i = 0; i < 4; i++)

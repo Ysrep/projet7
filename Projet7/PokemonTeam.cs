@@ -19,6 +19,13 @@ namespace Projet7
 
             Console.WriteLine(opponentP.name["french"]);
             Console.WriteLine("lvl " + opponentP.level);
+            Console.WriteLine("Hp " + opponentP.currentHp + "/" + opponentP.Base["HP"]);
+            Console.WriteLine("Stat :");
+            Console.WriteLine(opponentP.Base["Attack"]);
+            Console.WriteLine(opponentP.Base["Defense"]);
+            Console.WriteLine(opponentP.Base["Sp. Attack"]);
+            Console.WriteLine(opponentP.Base["Sp. Defense"]);
+            Console.WriteLine(opponentP.Base["Speed"]);
             for (int i = 0; i < 4; i++)
             {
                 Console.WriteLine(opponentP.attack[i].ename + " " + opponentP.attack[i].category);
