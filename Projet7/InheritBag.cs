@@ -228,7 +228,7 @@ namespace Projet7
         public void ItemListDisp(ListConstruct inventory)
         {
             ConsoleKey PlayerOpenInventory;
-            PlayerOpenInventory = Console.ReadKey().Key;
+            PlayerOpenInventory = Console.ReadKey(intercept: true).Key;
 
             switch (PlayerOpenInventory)
             {
@@ -246,7 +246,7 @@ namespace Projet7
                     Console.WriteLine("Open bag for Potion : P | Revive : R | Pokeball : O. Or exit with X");
 
                     ConsoleKey PlayerMoveInInventory;
-                    PlayerMoveInInventory = Console.ReadKey().Key;
+                    PlayerMoveInInventory = Console.ReadKey(intercept: true).Key;
 
                     switch (PlayerMoveInInventory)
                     {
@@ -256,52 +256,89 @@ namespace Projet7
                             Console.WriteLine("Potion : P | Super Potion : S | Hyper Potion : H | Exit the inventory : X");
 
                             ConsoleKey PlayerMoveInPotion;
-                            PlayerMoveInPotion = Console.ReadKey().Key;
+                            PlayerMoveInPotion = Console.ReadKey(intercept: true).Key;
                             switch (PlayerMoveInPotion)
                             {
-                                case ConsoleKey.P:
 
-                                    Console.WriteLine();
-                                    Console.WriteLine("You used a Potion to heal your pokemon by 200HP !");
+                                case ConsoleKey.P:
                                     foreach (Item item in inventory.inventory)
                                     {
-                                        if (item.itemName == "Potion")
+                                        if (item.itemName == "Potion" && item.AmountInStorage == 0)
                                         {
+                                            Console.Clear();
+                                            Console.WriteLine("You have 0 " + item.itemName + " left.");
+                                            Console.WriteLine("You can't use : " + item.itemName + " if there is 0 in your inventory.");
+                                            Console.WriteLine();
+                                            goto retryPot;
+                                        }
+
+                                        if (item.itemName == "Potion" && item.AmountInStorage >= 1)
+                                        {
+                                            Console.Clear();
                                             item.AmountInStorage--;
-                                            Console.WriteLine(item.AmountInStorage);
-                                            break;
+                                            Console.WriteLine("You used a " + item.itemName);
+                                            Console.WriteLine();
+                                            Console.WriteLine("You have : " + item.AmountInStorage +" "+ item.itemName + " left.");
+                                            Console.WriteLine();
+                                            goto retryPot;
                                         }
                                     }
-                                    goto retryPot;
+                                    break;
 
                                 case ConsoleKey.S:
-                                    Console.WriteLine();
-                                    Console.WriteLine("You used a Potion to heal your pokemon by 600HP !");
                                     foreach (Item item in inventory.inventory)
                                     {
-                                        if(item.itemName == "Super Potion")
+                                        if (item.itemName == "Super Potion" && item.AmountInStorage == 0)
                                         {
+                                            Console.Clear();
+                                            Console.WriteLine("You have 0 " + item.itemName + " left.");
+                                            Console.WriteLine("You can't use : " + item.itemName + " if there is 0 in your inventory.");
+                                            Console.WriteLine();
+                                            goto retryPot;
+                                        }
+
+                                        if (item.itemName == "Super Potion" && item.AmountInStorage >= 1)
+                                        {
+                                            Console.Clear();
                                             item.AmountInStorage--;
-                                            Console.WriteLine(item.AmountInStorage);
-                                            break;
+                                            Console.WriteLine("You used a " + item.itemName);
+                                            Console.WriteLine();
+                                            Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                            Console.WriteLine();
+                                            goto retryPot;
                                         }
                                     }
-                                    goto retryPot;
+                                    break;
 
                                 case ConsoleKey.H:
-                                    Console.WriteLine();
-                                    Console.WriteLine("You used a Potion to heal your pokemon by 1000HP !");
-                                    foreach (HyperPotion item in inventory.inventory)
+                                    foreach (Item item in inventory.inventory)
                                     {
-                                        item.AmountInStorage--;
-                                        Console.WriteLine(item.AmountInStorage);
-                                        break;
+                                        if (item.itemName == "Hyper Potion" && item.AmountInStorage == 0)
+                                        {
+                                            Console.Clear();
+                                            Console.WriteLine("You have 0 " + item.itemName + " left.");
+                                            Console.WriteLine("You can't use : " + item.itemName + " if there is 0 in your inventory.");
+                                            Console.WriteLine();
+                                            goto retryPot;
+                                        }
+
+                                        if (item.itemName == "Hyper Potion" && item.AmountInStorage >= 1)
+                                        {
+                                            Console.Clear();
+                                            item.AmountInStorage--;
+                                            Console.WriteLine("You used a " + item.itemName);
+                                            Console.WriteLine();
+                                            Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                            Console.WriteLine();
+                                            goto retryPot;
+                                        }
                                     }
-                                    goto retryPot;
+                                    break;
 
 
                                 case ConsoleKey.X:
-                                    break;
+                                    Console.Clear();
+                                    goto retryInventory;
 
                                 default:
                                     Console.WriteLine("Choose a viable option.");
@@ -315,35 +352,66 @@ namespace Projet7
                             Console.WriteLine("Revive : R | Max Revive : M | Exit the inventory : X");
 
                             ConsoleKey PlayerMoveInRevive;
-                            PlayerMoveInRevive = Console.ReadKey().Key;
+                            PlayerMoveInRevive = Console.ReadKey(intercept: true).Key;
                             switch (PlayerMoveInRevive)
                             {
                                 case ConsoleKey.R:
-                                    Console.WriteLine();
-                                    Console.WriteLine("You used Revive to revive your pokemon at 50% of it's max HP !");
-                                    foreach (Revive item in inventory.inventory)
+                                    foreach (Item item in inventory.inventory)
                                     {
-                                        item.AmountInStorage--;
-                                        Console.WriteLine(item.AmountInStorage);
-                                        break;
+                                        if (item.itemName == "Revive" && item.AmountInStorage == 0)
+                                        {
+                                            Console.Clear();
+                                            Console.WriteLine("You have 0 " + item.itemName + " left.");
+                                            Console.WriteLine("You can't use : " + item.itemName + " if there is 0 in your inventory.");
+                                            Console.WriteLine();
+                                            goto retryRevive;
+                                        }
+
+                                        if (item.itemName == "Revive" && item.AmountInStorage >= 1)
+                                        {
+                                            Console.Clear();
+                                            item.AmountInStorage--;
+                                            Console.WriteLine("You used a " + item.itemName);
+                                            Console.WriteLine();
+                                            Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName +" left.");
+                                            Console.WriteLine();
+                                            goto retryRevive;
+                                        }
+                                       
                                     }
-                                    goto retryRevive;
+                                    break;
+
 
                                 case ConsoleKey.M:
 
-                                    Console.WriteLine();
-                                    Console.WriteLine("You used Revive to revive your pokemon at 50% of it's max HP !");
-                                    foreach (MaxRevive item in inventory.inventory)
+                                    foreach (Item item in inventory.inventory)
                                     {
-                                        item.AmountInStorage--;
-                                        Console.WriteLine(item.AmountInStorage);
-                                        break;
+                                        if (item.itemName == "Max Revive" && item.AmountInStorage == 0)
+                                        {
+                                            Console.Clear();
+                                            Console.WriteLine("You have 0 " + item.itemName + " left.");
+                                            Console.WriteLine("You can't use : " + item.itemName + " if there is 0 in your inventory.");
+                                            Console.WriteLine();
+                                            goto retryRevive;
+                                        }
+
+                                        if (item.itemName == "Max Revive" && item.AmountInStorage >= 1)
+                                        {
+                                            Console.Clear();
+                                            item.AmountInStorage--;
+                                            Console.WriteLine("You used a " + item.itemName);
+                                            Console.WriteLine();
+                                            Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                            Console.WriteLine();
+                                            goto retryRevive;
+                                        }
                                     }
-                                    goto retryRevive;
+                                    break;
 
 
                                 case ConsoleKey.X:
-                                    break;
+                                    Console.Clear();
+                                    goto retryInventory;
 
                                 default:
                                     Console.WriteLine("Choose a viable option.");
@@ -353,71 +421,193 @@ namespace Projet7
 
                         case ConsoleKey.O:
                         retryPokeball:
+
+                            Random catchProb = new Random();
+                            int didICatchIt = catchProb.Next(0, 101);
+
                             Console.WriteLine("Select the wanted pokeball");
                             Console.WriteLine("Pokeball : P | Superball : S | Hyperball : H | Masterball : M | Exit the inventory : X");
 
                             ConsoleKey PlayerMoveInPokeball;
-                            PlayerMoveInPokeball = Console.ReadKey().Key;
+                            PlayerMoveInPokeball = Console.ReadKey(intercept: true).Key;
                             switch (PlayerMoveInPokeball)
                             {
                                 case ConsoleKey.P:
-                                    Console.WriteLine();
-                                    Console.WriteLine("You used a pokeball");
-                                    foreach (PokeBall item in inventory.inventory)
+
+                                    foreach (Item item in inventory.inventory)
                                     {
-                                        item.AmountInStorage--;
-                                        Console.WriteLine(item.AmountInStorage);
-                                        break;
+                                        if (item.itemName == "Pokeball" && item.AmountInStorage == 0)
+                                        {
+                                            Console.Clear();
+                                            Console.WriteLine("You have 0 " + item.itemName + " left.");
+                                            Console.WriteLine("You can't use : " + item.itemName + " if there is 0 in your inventory.");
+                                            Console.WriteLine();
+                                            goto retryPokeball;
+                                        }
+
+                                        if (item.itemName == "Pokeball" && item.AmountInStorage >= 1)
+                                        {
+                                            Console.Clear();
+                                            item.AmountInStorage--;
+                                            Console.WriteLine("You used a " + item.itemName);
+                                            Console.WriteLine();
+                                            Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                            Console.WriteLine();
+
+                                            if (didICatchIt <= 40)
+                                            {
+                                                Console.Clear() ;
+                                                Console.WriteLine("You catched the pokemon !");
+                                                goto retryInventory;
+                                            }
+                                            else
+                                            {
+                                                Console.Clear();
+                                                Console.WriteLine("You did not catch the pokemon D:");
+                                                goto retryPokeball;
+                                            }
+                                        }
                                     }
-                                    goto retryRevive;
+                                 break;
 
                                 case ConsoleKey.S:
 
-                                    Console.WriteLine();
-                                    Console.WriteLine("You used a superball");
-                                    foreach (SuperBall item in inventory.inventory)
+                                    foreach (Item item in inventory.inventory)
                                     {
-                                        item.AmountInStorage--;
-                                        Console.WriteLine(item.AmountInStorage);
-                                        break;
+                                        if (item.itemName == "Superball" && item.AmountInStorage == 0)
+                                        {
+                                            Console.Clear();
+                                            Console.WriteLine("You have 0 " + item.itemName + " left.");
+                                            Console.WriteLine("You can't use : " + item.itemName + " if there is 0 in your inventory.");
+                                            Console.WriteLine();
+                                            goto retryPokeball;
+                                        }
+
+                                        if (item.itemName == "Superball" && item.AmountInStorage >= 1)
+                                        {
+                                            Console.Clear();
+                                            item.AmountInStorage--;
+                                            Console.WriteLine("You used a " + item.itemName);
+                                            Console.WriteLine();
+                                            Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                            Console.WriteLine();
+
+                                            if (didICatchIt <= 60)
+                                            {
+                                                Console.Clear();
+                                                Console.WriteLine("You catched the pokemon !");
+                                                Console.WriteLine();
+                                                goto retryInventory;
+                                            }
+                                            else
+                                            {
+                                                Console.Clear();
+                                                Console.WriteLine("You did not catch the pokemon D:");
+                                                Console.WriteLine();
+                                                goto retryPokeball;
+                                            }
+                                        }
                                     }
-                                    goto retryRevive;
+                                    break;
 
                                 case ConsoleKey.H:
 
-                                    Console.WriteLine();
-                                    Console.WriteLine("You used a Hyperball");
-                                    foreach (HyperBall item in inventory.inventory)
+                                    foreach (Item item in inventory.inventory)
                                     {
-                                        item.AmountInStorage--;
-                                        Console.WriteLine(item.AmountInStorage);
-                                        break;
+                                        if (item.itemName == "Hyperball" && item.AmountInStorage == 0)
+                                        {
+                                            Console.Clear();
+                                            Console.WriteLine("You have 0 " + item.itemName + " left.");
+                                            Console.WriteLine("You can't use : " + item.itemName + " if there is 0 in your inventory.");
+                                            Console.WriteLine();
+                                            goto retryPokeball;
+                                        }
+
+                                        if (item.itemName == "Hyperball" && item.AmountInStorage >= 1)
+                                        {
+                                            Console.Clear();
+                                            item.AmountInStorage--;
+                                            Console.WriteLine("You used a " + item.itemName);
+                                            Console.WriteLine();
+                                            Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                            Console.WriteLine();
+
+                                            if (didICatchIt <= 80)
+                                            {
+                                                Console.Clear() ;
+                                                Console.WriteLine("You catched the pokemon !");
+                                                Console.WriteLine();
+                                                goto retryInventory;
+                                            }
+                                            else
+                                            {
+                                                Console.Clear();
+                                                Console.WriteLine("You did not catch the pokemon D:");
+                                                Console.WriteLine();
+                                                goto retryPokeball;
+                                            }
+                                        }
                                     }
-                                    goto retryPokeball;
+                                    break;
 
                                 case ConsoleKey.M:
 
-                                    Console.WriteLine();
-                                    Console.WriteLine("You used a Hyperball");
-                                    foreach (MasterBall item in inventory.inventory)
+                                    foreach (Item item in inventory.inventory)
                                     {
-                                        item.AmountInStorage--;
-                                        Console.WriteLine(item.AmountInStorage);
-                                        break;
+                                        if (item.itemName == "Masterball" && item.AmountInStorage == 0)
+                                        {
+                                            Console.Clear();
+                                            Console.WriteLine("You have 0 " + item.itemName + " left.");
+                                            Console.WriteLine("You can't use : " + item.itemName + " if there is 0 in your inventory.");
+                                            Console.WriteLine();
+                                            goto retryPokeball;
+                                        }
+
+                                        if (item.itemName == "Masterball" && item.AmountInStorage >= 1)
+                                        {
+                                            Console.Clear();
+                                            item.AmountInStorage--;
+                                            Console.WriteLine("You used a " + item.itemName);
+                                            Console.WriteLine();
+                                            Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                            Console.WriteLine();
+
+                                            if (didICatchIt <= 100)
+                                            {
+                                                Console.Clear();
+                                                Console.WriteLine("You catched the pokemon !");
+                                                Console.WriteLine();
+                                                goto retryInventory;
+                                            }
+                                            else
+                                            {
+                                                Console.Clear() ;
+                                                Console.WriteLine("You did not catch the pokemon D:");
+                                                Console.WriteLine();
+                                                goto retryPokeball;
+                                            }
+                                        }
                                     }
-                                    goto retryPokeball;
-                                
-                                case ConsoleKey.X:
                                     break;
 
+                                case ConsoleKey.X:
+                                    Console.Clear();
+                                    goto retryInventory;
+
+
                                 default:
+                                    Console.Clear();
                                     Console.WriteLine("Choose a viable option.");
                                     goto retryPokeball;
 
                             }
                             break;
 
+                        case ConsoleKey.X:
+                            break;
+
                         default:
+                            Console.Clear();
                             Console.WriteLine("Choose a viable option.");
                             goto retryInventory;
                     }
