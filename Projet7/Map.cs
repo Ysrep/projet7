@@ -8,6 +8,9 @@ namespace Projet7
 {
     public class Map
     {
+
+        public bool Menu {get; set;}
+        public bool Inventory { get; set;}
         char[,] _map = new char[240, 240];
 
         public bool Paused { get; set; }
@@ -16,6 +19,8 @@ namespace Projet7
 
         public void Init()
         {
+            Menu = true;
+            Inventory = false;
             int l = 0;
             int col = 0;
 
@@ -45,10 +50,10 @@ namespace Projet7
             int addToMaxX = 0;
 
             Console.SetCursorPosition(0, 0);
-            //if (_playerPos[1] <= 15)
-            //{
-            //    addToMaxY = 15 - _playerPos[1];
-            //}
+            if (_playerPos[1] <= 15)
+            {
+                addToMaxY = 15 - _playerPos[1];
+            }
             if (_playerPos[0] <= 60)
             {
                 addToMaxX = 60 - _playerPos[0];

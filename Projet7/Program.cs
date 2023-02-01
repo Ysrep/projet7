@@ -13,23 +13,26 @@ namespace Projet7
         static void Main(string[] args)
         {
             Map map = new Map();
-
             Player player = new Player(63,218);
             AllBag allinventory = new AllBag();
             ListConstruct inventory = new ListConstruct();
+            Menu menu = new Menu();
             inventory.List();
             map.Init();
-            map.ShowMap(player.PlayerPos);
-            
-            while (true)
+            menu.ShowMenu();
+            while (map.Menu)
             {
-                map.ShowMap(player.PlayerPos);
-                player.Move(map.GetMap());
-                //player.checkPlayerPos();
-
+                map.Menu = menu.Selection();
+            }
+            map.ShowMap(player.PlayerPos);
+            while (!map.Menu && !map.Inventory)
+            {
+               player.Inputs(map);
+            }
+            while (!map.Menu && map.Inventory)
+            {
                allinventory.ItemListDisp(inventory);
-
-            } while (true);
+            }
         }
     }
 }

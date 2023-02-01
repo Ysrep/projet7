@@ -223,17 +223,8 @@ namespace Projet7
                         }
                     }
                     break;
-                case ConsoleKey.P:
-                    if (!_map.Paused)
-                    {
-                        _map.Paused = true;
-                        Console.Clear();
-                    }
-                    else
-                    {
-                        _map.Paused = false;
-                        _map.ShowMap(PlayerPos);
-                    }
+                case ConsoleKey.I:
+                    _map.Inventory = true;
                     break;
 
                 default:
@@ -253,7 +244,6 @@ namespace Projet7
             {
                 _map.ShowMap(PlayerPos);
             }
-
         }
     }
 }

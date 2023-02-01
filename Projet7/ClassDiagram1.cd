@@ -10,15 +10,15 @@
   <Class Name="Projet7.Potion">
     <Position X="4.75" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAgBAAAAAAAAAAEgAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
-      <FileName>Potion.cs</FileName>
+      <HashCode>AAAAAAAAAAAAgAAEAAAAAAAgBAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InheritBag.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Projet7.Revive">
     <Position X="7.25" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAEgAAAAAAAAAAAAAAAAAEAAAAAEAA=</HashCode>
-      <FileName>Revive.cs</FileName>
+      <HashCode>AAAAAACAAAAAgAAEAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InheritBag.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Projet7.Pokeball">
@@ -32,14 +32,14 @@
   <Class Name="Projet7.Player">
     <Position X="9.75" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAIAACAAAAAgAAAAAAAAAAAAAAAQCAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAACAAAAAgAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Player.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Projet7.PokemonTeam">
     <Position X="3.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAABAAAAAAAAAAAAAAAAABAIAAAAAAAAAAAAAACA=</HashCode>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>PokemonTeam.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -53,8 +53,15 @@
   <Class Name="Projet7.Map">
     <Position X="12.5" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMACAAAAAAA=</HashCode>
+      <HashCode>ABAgAAAAAAAAAAAAAAAAAAAAAAAIAAAAAMACAgAAAAA=</HashCode>
       <FileName>Map.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projet7.Menu">
+    <Position X="2" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAA=</HashCode>
+      <FileName>Menu.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
