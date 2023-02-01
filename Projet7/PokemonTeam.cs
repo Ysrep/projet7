@@ -1,62 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Common;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Text.Json;
-using System.Text.Json.Serialization;
+using System.IO;
+using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 
 namespace Projet7
 {
-    [Serializable]
-    public class Teams
-    {
-        [JsonInclude]
-        public PokemonTeam[] pokemonTeam;
-
-    }
-
-    [Serializable]
     public class PokemonTeam
     {
-        static Dictionary<int, PokemonTeam> _pokemonTeam;
-
-        static PokemonTeam()
+        public static PokemonTeam CreateTeam()
         {
-            var options = new JsonSerializerOptions
+            Random rId = new Random();
+            Random rLvl = new Random();
+            int opponentPokemonId = rId.Next(1, 613);
+            int opponentPokemonLvl = rLvl.Next(5, 10);
+
+            Pokemon opponentP = Pokemon.GetPokemon(opponentPokemonId, opponentPokemonLvl);
+
+            Console.WriteLine(opponentP.name["french"]);
+            Console.WriteLine("lvl " + opponentP.level);
+            for (int i = 0; i < 4; i++)
             {
-                PropertyNameCaseInsensitive = true
-            };
-
-            var json = File.ReadAllText("../../../trainerTeam.json");
-            var teams = JsonSerializer.Deserialize<Teams>(json, options);
-            _pokemonTeam = new Dictionary<int, PokemonTeam>(teams.pokemonTeam.Select(i => new KeyValuePair<int, PokemonTeam>(i.teamid, i)));
-        }
-
-        [JsonInclude]
-        public int teamid;
-        [JsonInclude]
-        public Team[] team;
-        //[JsonInclude]
-        //public string name;
-        //[JsonInclude]
-        //public int lvl;
-        //[JsonInclude]
-        //public Dictionary<string, string> skills;
-
-        public static PokemonTeam GetTeam(int teamid)
-        {
-            var tId = _pokemonTeam.GetValueOrDefault(teamid);
-
-            var newTeam = new PokemonTeam()
-            {
-                teamid = tId.teamid,
-                name = tId.name,
-                lvl = tId.lvl,
-                skills = new Dictionary<string, string>(tId.skills)
-            };
-            return newTeam;
+                Console.WriteLine(opponentP.attack[i].ename + " " + opponentP.attack[i].category);
+            }
+            return null;
         }
     }
 }

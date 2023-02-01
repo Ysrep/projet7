@@ -13,27 +13,26 @@ namespace Projet7
         static void Main(string[] args)
         {
             Map map = new Map();
-
-            Player player = new Player();
+            Player player = new Player(63,218);
+            AllBag allinventory = new AllBag();
+            ListConstruct inventory = new ListConstruct();
+            Menu menu = new Menu();
+            inventory.List();
             map.Init();
-            player.Init();
-            map.ShowMap(player.PlayerPos);
-            
-            while (true)
+            menu.ShowMenu();
+            while (map.Menu)
             {
-                player.Inputs(map);
+                map.Menu = menu.Selection();
             }
-
-
-            var rvl = new ReviveList();
-            var ptl = new PotionList();
-            var pbl = new PokeballList();
-
-            Bag bag = new Bag();
-            bag.OpenBag();
-
-
-
+            map.ShowMap(player.PlayerPos);
+            while (!map.Menu && !map.Inventory)
+            {
+               player.Inputs(map);
+            }
+            while (!map.Menu && map.Inventory)
+            {
+               allinventory.ItemListDisp(inventory);
+            }
         }
     }
 }
