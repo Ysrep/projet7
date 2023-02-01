@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Xml.Linq;
@@ -79,7 +80,7 @@ namespace Projet7
             Console.SetCursorPosition(56, 10);
             foreach (Option option in options)
             {
-                if(i == 5)
+                if (i == 5)
                 {
                     Console.SetCursorPosition(55, 10 + i);
                 }
@@ -87,7 +88,7 @@ namespace Projet7
                 {
                     Console.SetCursorPosition(56, 10 + i);
                 }
-               
+
                 if (option == selectedOption)
                 {
                     Console.Write(">  ");
@@ -98,7 +99,7 @@ namespace Projet7
                 }
 
                 Console.WriteLine(option.Name);
-                i= i+5;
+                i = i + 5;
             }
         }
 
@@ -108,7 +109,21 @@ namespace Projet7
             _map.Inventory = true;
         }
 
-        public void ShowMenu(Map _map)
+        public void Save(Map _map)
+        {
+            _map.Menu = false;
+            _map.Save = true;
+        }
+
+        public void ExitMenu(Map _map, int[] playerPos)
+        {
+            _map.Menu = false;
+            Console.Clear();
+            Console.SetCursorPosition(0, 0);
+            _map.ShowMap(playerPos);
+        }
+
+        public void ShowMenu(Map _map, int[] playerPos)
         {
 
             int index = 0;
@@ -117,7 +132,8 @@ namespace Projet7
             {
                new Option("Pokemon", () => Console.Write("")),
                 new Option("Inventory", () =>  ShowInventory(_map)),
-                new Option("Save", () =>  Console.Write("")),
+                new Option("Save", () =>  Save(_map)),
+                new Option("ExitMenu", () =>  ExitMenu(_map,playerPos)),
             };
             WriteMenu(options, options[index], _map);
             ConsoleKeyInfo menuNavigate;
@@ -148,7 +164,6 @@ namespace Projet7
                     options[index].Selected.Invoke();
                     index = 0;
                 }
-
             }
             while (_map.Menu);
         }

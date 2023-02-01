@@ -58,27 +58,37 @@ namespace Projet7
             map.ShowMap(player.PlayerPos);
             while (!map.StartMenu)
             {
+            Menu:
                 while (map.Menu)
                 {
-                    menu.ShowMenu(map);
-                    if (map.Save)
+
+                    menu.ShowMenu(map, player.PlayerPos);
+                }
+                if (map.Save)
+                {
+                    if (File.Exists(path))
                     {
-                        if (File.Exists(path))
-                        {
-                            File.Delete(path);
-                        }
-                        string fileName = "player.json";
-                        var jsonString = JsonSerializer.Serialize<Player>(player);
-                        File.WriteAllText(fileName, jsonString);
-                        if (File.Exists(path1))
-                        {
-                            File.Delete(path1);
-                        }
-                        fileName = "inventory.json";
-                        jsonString = JsonConvert.SerializeObject(inventory.inventory, setting);
-                        File.WriteAllText(fileName, jsonString);
+                        File.Delete(path);
+                    }
+                    string fileName = "player.json";
+                    var jsonString = JsonSerializer.Serialize<Player>(player);
+                    File.WriteAllText(fileName, jsonString);
+                    if (File.Exists(path1))
+                    {
+                        File.Delete(path1);
+                    }
+                    fileName = "inventory.json";
+                    jsonString = JsonConvert.SerializeObject(inventory.inventory, setting);
+                    File.WriteAllText(fileName, jsonString);
+                    Console.Clear();
+                    Console.WriteLine("Votre partie à bien été sauvegardé");
+                    ConsoleKey input = Console.ReadKey().Key;
+                    if (input == ConsoleKey.Enter)
+                    {
                         Console.Clear();
-                        Console.WriteLine("Votre partie à bien été sauvegardé");
+                        map.Save = false;
+                        map.Menu = true;
+                        goto Menu;
                     }
                 }
                 while (map.Inventory)
@@ -87,6 +97,7 @@ namespace Projet7
                     Console.Clear();
                     map.ShowMap(player.PlayerPos);
                 }
+
                 player.Inputs(map);
             }
         }
