@@ -40,6 +40,7 @@ namespace Projet7
         [JsonInclude] public int id;
         [JsonInclude] public Dictionary<string, string> name;
         [JsonInclude] public string[] type;
+        [JsonInclude] public int evolution;
 
 
         public Attack[] attack;
@@ -59,7 +60,8 @@ namespace Projet7
                 id = neuf.id,
                 name = new Dictionary<string, string>(neuf.name),
                 type = neuf.type.ToArray(),
-                Base = new Dictionary<string, int>(neuf.Base)
+                Base = new Dictionary<string, int>(neuf.Base),
+                evolution = neuf.evolution,
             };
 
             newp.level = lvl;
@@ -323,7 +325,7 @@ namespace Projet7
             Console.WriteLine("Choose the attack you want to use");
         askAttack:
             ConsoleKey Key = Console.ReadKey().Key;
-            if (Key != ConsoleKey.NumPad1 && Key != ConsoleKey.NumPad2 && Key != ConsoleKey.NumPad3 && Key != ConsoleKey.NumPad4)
+            if (Key != ConsoleKey.NumPad1 || Key != ConsoleKey.NumPad2 || Key != ConsoleKey.NumPad3 || Key != ConsoleKey.NumPad4)
             {
                 Console.WriteLine("Choose the attack you want to use");
                 goto askAttack;
@@ -344,28 +346,55 @@ namespace Projet7
 
         public Pokemon WinXp(Pokemon P1, Pokemon P2)
         {
-            int Xpwin = (((100*P2.level)/5)*(int)Math.Pow(((2*(P2.level+10))/(P2.level+P1.level+10)),2.5));
-            if((P1.currentXp + Xpwin) < P1.XpMax)
+            if(P1.level < 100)
             {
-                P1.currentXp += Xpwin;
-            }
-            else
-            {
-                int XpSupp = (P1.currentXp + Xpwin) - XpMax;
-                P1.currentXp = 0;
-                P1.level += 1;
-                P1.Base["HP"] = (P1.Base["HP"] * (P1.level / 100) + P1.level + 10);
-                P1.Base["Attack"] = (P1.Base["Attack"] * (P1.level / 100) + 5);
-                P1.Base["Defense"] = (P1.Base["Defense"] * (P1.level / 100) + 5);
-                P1.Base["Sp. Attack"] = (P1.Base["Sp. Attack"] * (P1.level / 100) + 5);
-                P1.Base["Sp. Defense"] = (P1.Base["Sp. Defense"] * (P1.level / 100) + 5);
-                P1.Base["Speed"] = (P1.Base["Speed"] * (P1.level / 100) + 5);
-                P1.XpMax = 1000 * P1.level;
-                P1.currentXp += XpSupp;
-            }
-            if (P1.level % 5 == 0)
-            {
-                P1.LearnAttack(P1);
+                int Xpwin = (((100 * P2.level) / 5) * (int)Math.Pow(((2 * (P2.level + 10)) / (P2.level + P1.level + 10)), 2.5));
+                if ((P1.currentXp + Xpwin) < P1.XpMax)
+                {
+                    P1.currentXp += Xpwin;
+                }
+                else
+                {
+                    int XpSupp = (P1.currentXp + Xpwin) - XpMax;
+                    P1.currentXp = 0;
+                    P1.level += 1;
+                    P1.Base["HP"] = (P1.Base["HP"] * (P1.level / 100) + P1.level + 10);
+                    P1.Base["Attack"] = (P1.Base["Attack"] * (P1.level / 100) + 5);
+                    P1.Base["Defense"] = (P1.Base["Defense"] * (P1.level / 100) + 5);
+                    P1.Base["Sp. Attack"] = (P1.Base["Sp. Attack"] * (P1.level / 100) + 5);
+                    P1.Base["Sp. Defense"] = (P1.Base["Sp. Defense"] * (P1.level / 100) + 5);
+                    P1.Base["Speed"] = (P1.Base["Speed"] * (P1.level / 100) + 5);
+                    P1.XpMax = 1000 * P1.level;
+                    P1.currentXp += XpSupp;
+                }
+                if (P1.level % 5 == 0)
+                {
+                    P1 = P1.LearnAttack(P1);
+                }
+                if (P1.level == P1.evolution)
+                {
+                    Console.WriteLine($"{P1.name} want to evolve !");
+                    Console.WriteLine($"Press 1 for evolve or 0 for cancel :");
+                askEvolve:
+                    ConsoleKey Key = Console.ReadKey().Key;
+                    if (Key != ConsoleKey.NumPad0 || Key != ConsoleKey.NumPad1)
+                    {
+                        Console.WriteLine($"Press 1 for evolve or 0 for cancel :");
+                        goto askEvolve;
+                    }
+                    int select = (int)Key;
+                    if(select == 1 )
+                    {
+                        P1 = P1.Evolve(P1);
+                        return P1;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{P1.name} don't evolve");
+                        return P1;
+                    }
+                }
+                return P1;
             }
             return P1;
         }
@@ -383,7 +412,7 @@ namespace Projet7
             }
         askAttack:
             ConsoleKey Key = Console.ReadKey().Key;
-            if (Key != ConsoleKey.NumPad1 && Key != ConsoleKey.NumPad2 && Key != ConsoleKey.NumPad3 && Key != ConsoleKey.NumPad4)
+            if (Key != ConsoleKey.NumPad0 || Key != ConsoleKey.NumPad1 || Key != ConsoleKey.NumPad2 || Key != ConsoleKey.NumPad3 || Key != ConsoleKey.NumPad4)
             {
                 Console.WriteLine("Choose the attack you want to use");
                 goto askAttack;
@@ -418,6 +447,14 @@ namespace Projet7
                 P1.attack[attackSelect - 1] = A;
                 return P1;
             }
+            return P1;
+        }
+
+        public Pokemon Evolve(Pokemon P1)
+        {
+            int id = P1.id + 1;
+            int lvl = P1.level;
+            P1 = Pokemon.GetPokemon(id, lvl);
             return P1;
         }
     }
