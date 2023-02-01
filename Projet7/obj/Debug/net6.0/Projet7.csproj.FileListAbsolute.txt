@@ -1,0 +1,17 @@
+C:\Users\gsimoes\source\repos\projet7Pokemon\Projet7\bin\Debug\net6.0\Projet7.exe
+C:\Users\gsimoes\source\repos\projet7Pokemon\Projet7\bin\Debug\net6.0\Projet7.deps.json
+C:\Users\gsimoes\source\repos\projet7Pokemon\Projet7\bin\Debug\net6.0\Projet7.runtimeconfig.json
+C:\Users\gsimoes\source\repos\projet7Pokemon\Projet7\bin\Debug\net6.0\Projet7.dll
+C:\Users\gsimoes\source\repos\projet7Pokemon\Projet7\bin\Debug\net6.0\Projet7.pdb
+C:\Users\gsimoes\source\repos\projet7Pokemon\Projet7\obj\Debug\net6.0\Projet7.csproj.AssemblyReference.cache
+C:\Users\gsimoes\source\repos\projet7Pokemon\Projet7\obj\Debug\net6.0\Projet7.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gsimoes\source\repos\projet7Pokemon\Projet7\obj\Debug\net6.0\Projet7.AssemblyInfoInputs.cache
+C:\Users\gsimoes\source\repos\projet7Pokemon\Projet7\obj\Debug\net6.0\Projet7.AssemblyInfo.cs
+C:\Users\gsimoes\source\repos\projet7Pokemon\Projet7\obj\Debug\net6.0\Projet7.csproj.CoreCompileInputs.cache
+C:\Users\gsimoes\source\repos\projet7Pokemon\Projet7\obj\Debug\net6.0\Projet7.dll
+C:\Users\gsimoes\source\repos\projet7Pokemon\Projet7\obj\Debug\net6.0\refint\Projet7.dll
+C:\Users\gsimoes\source\repos\projet7Pokemon\Projet7\obj\Debug\net6.0\Projet7.pdb
+C:\Users\gsimoes\source\repos\projet7Pokemon\Projet7\obj\Debug\net6.0\Projet7.genruntimeconfig.cache
+C:\Users\gsimoes\source\repos\projet7Pokemon\Projet7\obj\Debug\net6.0\ref\Projet7.dll
+C:\Users\gsimoes\source\repos\projet7Pokemon\Projet7\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\gsimoes\source\repos\projet7Pokemon\Projet7\obj\Debug\net6.0\Projet7.csproj.CopyComplete

@@ -10,13 +10,15 @@ namespace Projet7
     {
 
         public int[] PlayerPos { get; set; }
-        int _money;
+        public int Money { get; set; }
         //public PokemonTeam _pokemonTeam;
-        public Player(int x, int y)
+
+        public void InitWIthoutJSon(int x, int y)
         {
             PlayerPos = new int[2];
             PlayerPos[0] = x;
             PlayerPos[1] = y;
+            Money = 0;
         }
 
         public void Inputs(Map _map)
@@ -223,8 +225,8 @@ namespace Projet7
                         }
                     }
                     break;
-                case ConsoleKey.I:
-                    _map.Inventory = true;
+                case ConsoleKey.Escape:
+                    _map.Menu = true;
                     break;
 
                 default:
