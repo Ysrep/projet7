@@ -17,17 +17,22 @@ namespace Projet7
             Player player = new Player(63,218);
             AllBag allinventory = new AllBag();
             ListConstruct inventory = new ListConstruct();
+            Arena arena = new Arena();
             inventory.List();
             map.Init();
-            map.ShowMap(player.PlayerPos);
+            //map.ShowMap(player.PlayerPos);
             
             while (true)
             {
+                StatDisplay stat = new StatDisplay();
+                //stat.StatTab();
+                //stat.StatTabOpponent();
                 map.ShowMap(player.PlayerPos);
-                player.Move(map.GetMap());
+                //player.Move(map.GetMap());
                 //player.checkPlayerPos();
 
-               allinventory.ItemListDisp(inventory);
+                allinventory.ItemListDisp(inventory);
+               //arena.ArenaFight();
 
             } while (true);
         }

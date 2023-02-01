@@ -240,7 +240,7 @@ namespace Projet7
 
                     foreach (Item item in inventory.inventory)
                     {
-                        Console.WriteLine("Name :" + item.itemName + "         Amount in inventory : " + item.AmountInStorage);
+                        Console.WriteLine("Name :" + item.itemName + "     Amount in inventory :             " + item.AmountInStorage);
                     }
                     Console.WriteLine();
                     Console.WriteLine("Open bag for Potion : P | Revive : R | Pokeball : O. Or exit with X");
