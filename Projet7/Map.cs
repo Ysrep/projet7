@@ -9,7 +9,8 @@ namespace Projet7
     public class Map
     {
 
-        public bool Menu {get; set;}
+        public bool StartMenu {get; set;}
+        public bool Menu { get; set; }
         public bool Inventory { get; set;}
         char[,] _map = new char[240, 240];
 
@@ -19,7 +20,8 @@ namespace Projet7
 
         public void Init()
         {
-            Menu = true;
+            StartMenu = false;
+            Menu = false;
             Inventory = false;
             int l = 0;
             int col = 0;

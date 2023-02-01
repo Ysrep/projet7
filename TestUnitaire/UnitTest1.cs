@@ -43,10 +43,11 @@ namespace TestUnitaire
             Console.WriteLine("accuracy : " + A.accuracy);
         }
 
-        //[Test]
-        //public void CheckGetTeam()
-        //{
-        //    PokemonTeam.GetTeam(1);
-        //}
+        [Test]
+        public void CheckGetTeam()
+        {
+            NPC.CreateNPC();
+            PokemonTeam.CreateTeam();
+        }
     }
 }
