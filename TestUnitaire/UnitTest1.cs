@@ -18,11 +18,17 @@ namespace TestUnitaire
         [Test]
         public void CreatePokemon()
         {
-            Pokemon P = Pokemon.GetPokemon(25,5);
+            Pokemon P = Pokemon.GetPokemon(165, 5);
 
             Console.WriteLine(P.name["english"]);
             Console.WriteLine("lvl " + P.level);
-            for(int i = 0; i < 4; i++)
+            Console.WriteLine(P.Base["HP"]);
+            Console.WriteLine(P.Base["Attack"]);
+            Console.WriteLine(P.Base["Defense"]);
+            Console.WriteLine(P.Base["Sp. Attack"]);
+            Console.WriteLine(P.Base["Sp. Defense"]);
+            Console.WriteLine(P.Base["Speed"]);
+            for (int i = 0; i < 4; i++)
             {
                 Console.WriteLine(P.attack[i].ename +" " + P.attack[i].category);
             }
@@ -40,7 +46,8 @@ namespace TestUnitaire
         [Test]
         public void CheckGetTeam()
         {
-            PokemonTeam.GetTeam(1);
+            NPC.CreateNPC();
+            PokemonTeam.CreateTeam();
         }
     }
 }

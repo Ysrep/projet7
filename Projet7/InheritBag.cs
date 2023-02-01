@@ -210,15 +210,15 @@ namespace Projet7
 
 
             inventory = new List<Item>{
-        new Potion() { itemName = "Potion", AmountInStorage = PotStore},
-        new SuperPotion() { itemName = "Super Potion", AmountInStorage = SupStore},
-        new HyperPotion() { itemName = "Hyper Potion", AmountInStorage = HypStore},
-        new PokeBall() { itemName = "Pokeball", AmountInStorage = PokeStore},
-        new SuperBall() { itemName = "Superball", AmountInStorage = SupPokeStore},
-        new HyperBall() { itemName = "Hyperball", AmountInStorage = HypPokeStore},
-        new MasterBall() { itemName = "Masterball", AmountInStorage = MastPokeStore},
-        new Revive() { itemName = "Revive", AmountInStorage = RevStore},
-        new MaxRevive() { itemName = "Max Revive", AmountInStorage = MaxRevStore}
+                new Potion() { itemName = "Potion", AmountInStorage = PotStore},
+                new SuperPotion() { itemName = "Super Potion", AmountInStorage = SupStore},
+                new HyperPotion() { itemName = "Hyper Potion", AmountInStorage = HypStore},
+                new PokeBall() { itemName = "Pokeball", AmountInStorage = PokeStore},
+                new SuperBall() { itemName = "Superball", AmountInStorage = SupPokeStore},
+                new HyperBall() { itemName = "Hyperball", AmountInStorage = HypPokeStore},
+                new MasterBall() { itemName = "Masterball", AmountInStorage = MastPokeStore},
+                new Revive() { itemName = "Revive", AmountInStorage = RevStore},
+                new MaxRevive() { itemName = "Max Revive", AmountInStorage = MaxRevStore}
             };
         }
     }
