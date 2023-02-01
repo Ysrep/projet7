@@ -3,24 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
+using System.Xml.Linq;
 
 namespace Projet7
 {
     public class Menu
     {
         public static List<Option>? options { get; set; }
-        public void ShowStartMenu()
+
+        public void StartGame(Map _map)
+        {
+            _map.StartMenu = false;
+        }
+        public void ShowStartMenu(Map _map)
         {
 
             int index = 0;
-            
+
             options = new List<Option>
             {
-               new Option("Play", () => ),
-                new Option("Options", () =>  WriteTemporaryMessage("")),
+               new Option("Play", () => StartGame(_map)),
+                new Option("Options", () =>  WriteTemporaryMessage("",_map)),
                 new Option("Exit", () =>  Environment.Exit(0)),
             };
-            WriteMenu(options, options[index]);
+            WriteStartMenu(options, options[index], _map);
             ConsoleKeyInfo menuNavigate;
             do
             {
@@ -32,7 +38,7 @@ namespace Projet7
                     if (index + 1 < options.Count)
                     {
                         index++;
-                        WriteMenu(options, options[index]);
+                        WriteStartMenu(options, options[index], _map);
                     }
                 }
                 if (menuNavigate.Key == ConsoleKey.UpArrow)
@@ -40,7 +46,7 @@ namespace Projet7
                     if (index - 1 >= 0)
                     {
                         index--;
-                        WriteMenu(options, options[index]);
+                        WriteStartMenu(options, options[index], _map);
                     }
                 }
                 // Handle different action for the option
@@ -51,19 +57,19 @@ namespace Projet7
                 }
 
             }
-            while (menuNavigate.Key != ConsoleKey.X);
+            while (_map.StartMenu);
         }
 
-        static void WriteTemporaryMessage(string message)
+        static void WriteTemporaryMessage(string message, Map _map)
         {
             Console.Clear();
             Console.WriteLine(message);
             Thread.Sleep(3);
-            WriteMenu(options, options.First());
+            WriteStartMenu(options, options.First(), _map);
         }
 
 
-        static void WriteMenu(List<Option> options, Option selectedOption)
+        static void WriteStartMenu(List<Option> options, Option selectedOption, Map _map)
         {
 
             Console.Clear();
@@ -96,61 +102,86 @@ namespace Projet7
             }
         }
 
-        public bool StartMenuSelection()
+        public void ShowInventory(Map _map)
         {
-            int index = 0;
-            ConsoleKey input = Console.ReadKey(true).Key;
-            switch (input)
-            {
-                case ConsoleKey.UpArrow:
-                    index--;
-                    if (index < 1)
-                        index = 3;
-                    break;
-                case ConsoleKey.DownArrow:
-                    index--;
-                    if (index > 3)
-                        index = 1;
-                    break;
-
-                case ConsoleKey.Enter:
-                    switch (index)
-                    {
-                        case 1:
-                            return false;
-                        case 2:
-                            break;
-                        case 3:
-                            Console.Clear();
-                            Environment.Exit(0);
-                            break;
-                        default:
-                            break;
-                    }
-                    break;
-                case ConsoleKey.NumPad1:
-                    return false;
-                case ConsoleKey.NumPad2:
-
-                    break;
-                case ConsoleKey.NumPad3:
-                    Console.Clear();
-                    Environment.Exit(0);
-                    break;
-                default:
-                    break;
-            }
-            return true;
+            _map.Menu = false;
+            _map.Inventory = true;
         }
-        public void ShowMenu()
+
+        public void ShowMenu(Map _map)
         {
+
+            int index = 0;
+
+            options = new List<Option>
+            {
+               new Option("Pokemon", () => Console.Write("")),
+                new Option("Inventory", () =>  ShowInventory(_map)),
+                new Option("Save", () =>  Console.Write("")),
+            };
+            WriteMenu(options, options[index], _map);
+            ConsoleKeyInfo menuNavigate;
+            do
+            {
+                menuNavigate = Console.ReadKey();
+
+                // Handle each key input (down arrow will write the menu again with a different selected item)
+                if (menuNavigate.Key == ConsoleKey.DownArrow)
+                {
+                    if (index + 1 < options.Count)
+                    {
+                        index++;
+                        WriteMenu(options, options[index], _map);
+                    }
+                }
+                if (menuNavigate.Key == ConsoleKey.UpArrow)
+                {
+                    if (index - 1 >= 0)
+                    {
+                        index--;
+                        WriteMenu(options, options[index], _map);
+                    }
+                }
+                // Handle different action for the option
+                if (menuNavigate.Key == ConsoleKey.Enter)
+                {
+                    options[index].Selected.Invoke();
+                    index = 0;
+                }
+
+            }
+            while (_map.Menu);
+        }
+
+        static void WriteMenu(List<Option> options, Option selectedOption, Map _map)
+        {
+
             Console.Clear();
-            Console.SetCursorPosition(52, 5);
-            Console.Write("Pokemon");
-            Console.SetCursorPosition(56, 10);
-            Console.Write("Inventory");
-            Console.SetCursorPosition(55, 15);
-            Console.Write("Save");
+            int i = 0;
+            Console.SetCursorPosition(54, 5);
+            foreach (Option option in options)
+            {
+                if (i == 5)
+                {
+                    Console.SetCursorPosition(56, 5 + i);
+                }
+                else
+                {
+                    Console.SetCursorPosition(55, 5 + i);
+                }
+
+                if (option == selectedOption)
+                {
+                    Console.Write(">  ");
+                }
+                else
+                {
+                    Console.Write(" ");
+                }
+
+                Console.WriteLine(option.Name);
+                i = i + 5;
+            }
         }
         public int MenuSelection()
         {
