@@ -13,3 +13,5 @@ C:\Users\gsimoes\source\repos\projet7Pokemon\Projet7\obj\Debug\net6.0\refint\Pro
 C:\Users\gsimoes\source\repos\projet7Pokemon\Projet7\obj\Debug\net6.0\Projet7.pdb
 C:\Users\gsimoes\source\repos\projet7Pokemon\Projet7\obj\Debug\net6.0\Projet7.genruntimeconfig.cache
 C:\Users\gsimoes\source\repos\projet7Pokemon\Projet7\obj\Debug\net6.0\ref\Projet7.dll
+C:\Users\gsimoes\source\repos\projet7Pokemon\Projet7\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\gsimoes\source\repos\projet7Pokemon\Projet7\obj\Debug\net6.0\Projet7.csproj.CopyComplete

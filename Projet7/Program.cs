@@ -1,7 +1,9 @@
-﻿using System.Drawing;
+﻿using Newtonsoft.Json;
+using System.Drawing;
 using System.Numerics;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace Projet7
 {
@@ -14,6 +16,10 @@ namespace Projet7
         //Math.Min(_maxHealth,_health+amount);
         static void Main(string[] args)
         {
+            JsonSerializerSettings setting = new JsonSerializerSettings()
+            {
+                TypeNameHandling = TypeNameHandling.All,
+            };
 
             string path = @"player.json";
 
@@ -36,7 +42,7 @@ namespace Projet7
             {
                 string fileName = "inventory.json";
                 var jsonString = File.ReadAllText(fileName);
-                inventory.inventory = JsonSerializer.Deserialize<List<Item>>(jsonString)!;
+                inventory.inventory = JsonConvert.DeserializeObject<List<Item>>(jsonString, setting)!;
             }
             else
             {
@@ -83,7 +89,7 @@ namespace Projet7
                                 File.Delete(path1);
                             }
                             fileName = "inventory.json";
-                            jsonString = JsonSerializer.Serialize<List<Item>>(inventory.inventory);
+                            jsonString = JsonConvert.SerializeObject(inventory.inventory, setting);
                             File.WriteAllText(fileName, jsonString);
                             break;
                         default:
