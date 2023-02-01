@@ -251,11 +251,10 @@ namespace Projet7
 
                     ConsoleKey PlayerMoveInPotion;
                     PlayerMoveInPotion = Console.ReadKey(intercept: true).Key;
-                    switch (PlayerMoveInPotion)
-                    {
-                        Console.WriteLine("Name :" + item.itemName + "     Amount in inventory :             " + item.AmountInStorage);
+                    switch (PlayerMoveInPotion) {
 
                         case ConsoleKey.P:
+
                             foreach (Item item in inventory.inventory)
                             {
                                 if (item.itemName == "Potion" && item.AmountInStorage == 0)
@@ -341,6 +340,8 @@ namespace Projet7
                     }
                     break;
 
+          
+        
                 case ConsoleKey.R:
                 retryRevive:
                     Console.WriteLine("Select the wanted potion");
