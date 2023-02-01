@@ -255,6 +255,7 @@ namespace Projet7
                     {
 
                         case ConsoleKey.P:
+
                             foreach (Item item in inventory.inventory)
                             {
                                 if (item.itemName == "Potion" && item.AmountInStorage == 0)
@@ -340,6 +341,8 @@ namespace Projet7
                     }
                     break;
 
+          
+        
                 case ConsoleKey.R:
                 retryRevive:
                     Console.WriteLine("Select the wanted potion");

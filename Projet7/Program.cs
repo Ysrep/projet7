@@ -16,6 +16,19 @@ namespace Projet7
         //Math.Min(_maxHealth,_health+amount);
         static void Main(string[] args)
         {
+
+            NPC.CreateNPC();
+            PokemonTeam.CreateTeam();
+
+            Map map = new Map();
+            Player player = new Player(63,218);
+            AllBag allinventory = new AllBag();
+            ListConstruct inventory = new ListConstruct();
+            Menu menu = new Menu();
+            inventory.List();
+            map.Init();
+            menu.ShowMenu();
+            while (map.Menu)
             JsonSerializerSettings setting = new JsonSerializerSettings()
             {
                 TypeNameHandling = TypeNameHandling.All,
