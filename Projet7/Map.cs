@@ -8,7 +8,7 @@ namespace Projet7
 {
     public class Map
     {
-        char[,] _map;
+        char[,] _map = new char[240, 240];
 
         public bool Paused { get; set; }
 
@@ -18,7 +18,6 @@ namespace Projet7
         {
             int l = 0;
             int col = 0;
-            _map = new char[240, 240];
 
             string[] lines = System.IO.File.ReadAllLines(@"../../../map.txt");
 
@@ -41,15 +40,31 @@ namespace Projet7
             int minPosX = Math.Max(0, _playerPos[0] - 60);
             int maxPosX = Math.Min(_map.GetLength(1) - 1, _playerPos[0] + 60);
 
+            int addToMaxY = 0;
+            int addToMinX = 0;
+            int addToMaxX = 0;
 
             Console.SetCursorPosition(0, 0);
-            for (int i = minPosY ; i < maxPosY; i++)
+            //if (_playerPos[1] <= 15)
+            //{
+            //    addToMaxY = 15 - _playerPos[1];
+            //}
+            if (_playerPos[0] <= 60)
+            {
+                addToMaxX = 60 - _playerPos[0];
+            }
+            //else if (_playerPos[0] >= 179)
+            //{
+            //    addToMinX = 60 - minPosX;
+            //}
+
+            for (int i = minPosY ; i < maxPosY + addToMaxY; i++)
             {
                 if(i != minPosY)
                 {
                     Console.WriteLine();
                 }
-                for (int j = minPosX; j < maxPosX; j++)
+                for (int j = minPosX+ addToMinX; j < maxPosX + addToMaxX; j++)
                 {
                     switch (_map[i, j])
                     {
@@ -78,6 +93,7 @@ namespace Projet7
                             Console.BackgroundColor = ConsoleColor.Gray;
                             break;
                     }
+
                     if (i == _playerPos[1] && j == _playerPos[0])
                     {
                         Console.ForegroundColor = ConsoleColor.Black;

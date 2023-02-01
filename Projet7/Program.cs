@@ -13,12 +13,12 @@ namespace Projet7
         static void Main(string[] args)
         {
             Map map = new Map();
+
+            Player player = new Player(63,218);
             AllBag allinventory = new AllBag();
-            Player player = new Player();
             ListConstruct inventory = new ListConstruct();
             inventory.List();
             map.Init();
-            player.Init();
             map.ShowMap(player.PlayerPos);
             
             while (true)
