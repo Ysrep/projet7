@@ -253,6 +253,7 @@ namespace Projet7
                     PlayerMoveInPotion = Console.ReadKey(intercept: true).Key;
                     switch (PlayerMoveInPotion)
                     {
+                        Console.WriteLine("Name :" + item.itemName + "     Amount in inventory :             " + item.AmountInStorage);
 
                         case ConsoleKey.P:
                             foreach (Item item in inventory.inventory)
