@@ -1,22 +1,99 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 
 namespace Projet7
 {
     public class Menu
     {
+        public static List<Option>? options { get; set; }
         public void ShowStartMenu()
         {
+
+            int index = 0;
+            
+            options = new List<Option>
+            {
+               new Option("Play", () => ),
+                new Option("Options", () =>  WriteTemporaryMessage("")),
+                new Option("Exit", () =>  Environment.Exit(0)),
+            };
+            WriteMenu(options, options[index]);
+            ConsoleKeyInfo menuNavigate;
+            do
+            {
+                menuNavigate = Console.ReadKey();
+
+                // Handle each key input (down arrow will write the menu again with a different selected item)
+                if (menuNavigate.Key == ConsoleKey.DownArrow)
+                {
+                    if (index + 1 < options.Count)
+                    {
+                        index++;
+                        WriteMenu(options, options[index]);
+                    }
+                }
+                if (menuNavigate.Key == ConsoleKey.UpArrow)
+                {
+                    if (index - 1 >= 0)
+                    {
+                        index--;
+                        WriteMenu(options, options[index]);
+                    }
+                }
+                // Handle different action for the option
+                if (menuNavigate.Key == ConsoleKey.Enter)
+                {
+                    options[index].Selected.Invoke();
+                    index = 0;
+                }
+
+            }
+            while (menuNavigate.Key != ConsoleKey.X);
+        }
+
+        static void WriteTemporaryMessage(string message)
+        {
+            Console.Clear();
+            Console.WriteLine(message);
+            Thread.Sleep(3);
+            WriteMenu(options, options.First());
+        }
+
+
+        static void WriteMenu(List<Option> options, Option selectedOption)
+        {
+
+            Console.Clear();
             Console.SetCursorPosition(52, 5);
             Console.Write("Pokemon Salty");
+            int i = 0;
             Console.SetCursorPosition(56, 10);
-            Console.Write("Play");
-            Console.SetCursorPosition(55, 15);
-            Console.Write("Options");
-            Console.SetCursorPosition(56, 20);
-            Console.Write("Exit");
+            foreach (Option option in options)
+            {
+                if(i == 5)
+                {
+                    Console.SetCursorPosition(55, 10 + i);
+                }
+                else
+                {
+                    Console.SetCursorPosition(56, 10 + i);
+                }
+               
+                if (option == selectedOption)
+                {
+                    Console.Write(">  ");
+                }
+                else
+                {
+                    Console.Write(" ");
+                }
+
+                Console.WriteLine(option.Name);
+                i= i+5;
+            }
         }
 
         public bool StartMenuSelection()

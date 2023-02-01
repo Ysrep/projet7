@@ -20,7 +20,7 @@ namespace Projet7
 
         public void Init()
         {
-            StartMenu = false;
+            StartMenu = true;
             Menu = false;
             Inventory = false;
             int l = 0;
