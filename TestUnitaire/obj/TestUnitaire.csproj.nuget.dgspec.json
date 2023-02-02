@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tbourion\\Documents\\GitHub\\projet7\\TestUnitaire\\TestUnitaire.csproj": {}
+    "C:\\Users\\gsimoes\\source\\repos\\projet7Pokemon\\TestUnitaire\\TestUnitaire.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tbourion\\Documents\\GitHub\\projet7\\Projet7\\Projet7.csproj": {
+    "C:\\Users\\gsimoes\\source\\repos\\projet7Pokemon\\Projet7\\Projet7.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tbourion\\Documents\\GitHub\\projet7\\Projet7\\Projet7.csproj",
+        "projectUniqueName": "C:\\Users\\gsimoes\\source\\repos\\projet7Pokemon\\Projet7\\Projet7.csproj",
         "projectName": "Projet7",
-        "projectPath": "C:\\Users\\tbourion\\Documents\\GitHub\\projet7\\Projet7\\Projet7.csproj",
-        "packagesPath": "C:\\Users\\tbourion\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tbourion\\Documents\\GitHub\\projet7\\Projet7\\obj\\",
+        "projectPath": "C:\\Users\\gsimoes\\source\\repos\\projet7Pokemon\\Projet7\\Projet7.csproj",
+        "packagesPath": "C:\\Users\\gsimoes\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\gsimoes\\source\\repos\\projet7Pokemon\\Projet7\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\tbourion\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\gsimoes\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -69,21 +65,17 @@
         }
       }
     },
-    "C:\\Users\\tbourion\\Documents\\GitHub\\projet7\\TestUnitaire\\TestUnitaire.csproj": {
+    "C:\\Users\\gsimoes\\source\\repos\\projet7Pokemon\\TestUnitaire\\TestUnitaire.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tbourion\\Documents\\GitHub\\projet7\\TestUnitaire\\TestUnitaire.csproj",
+        "projectUniqueName": "C:\\Users\\gsimoes\\source\\repos\\projet7Pokemon\\TestUnitaire\\TestUnitaire.csproj",
         "projectName": "TestUnitaire",
-        "projectPath": "C:\\Users\\tbourion\\Documents\\GitHub\\projet7\\TestUnitaire\\TestUnitaire.csproj",
-        "packagesPath": "C:\\Users\\tbourion\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tbourion\\Documents\\GitHub\\projet7\\TestUnitaire\\obj\\",
+        "projectPath": "C:\\Users\\gsimoes\\source\\repos\\projet7Pokemon\\TestUnitaire\\TestUnitaire.csproj",
+        "packagesPath": "C:\\Users\\gsimoes\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\gsimoes\\source\\repos\\projet7Pokemon\\TestUnitaire\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\tbourion\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\gsimoes\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -97,8 +89,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\tbourion\\Documents\\GitHub\\projet7\\Projet7\\Projet7.csproj": {
-                "projectPath": "C:\\Users\\tbourion\\Documents\\GitHub\\projet7\\Projet7\\Projet7.csproj"
+              "C:\\Users\\gsimoes\\source\\repos\\projet7Pokemon\\Projet7\\Projet7.csproj": {
+                "projectPath": "C:\\Users\\gsimoes\\source\\repos\\projet7Pokemon\\Projet7\\Projet7.csproj"
               }
             }
           }
