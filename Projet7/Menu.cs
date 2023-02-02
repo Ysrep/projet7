@@ -109,6 +109,12 @@ namespace Projet7
             _map.Inventory = true;
         }
 
+        public void ShowPokemon(Map _map)
+        {
+            _map.Menu = false;
+            _map.Pokemon = true;
+        }
+
         public void Save(Map _map)
         {
             _map.Menu = false;
@@ -130,7 +136,7 @@ namespace Projet7
 
             options = new List<Option>
             {
-               new Option("Pokemon", () => Console.Write("")),
+               new Option("Pokemon", () => ShowPokemon(_map)),
                 new Option("Inventory", () =>  ShowInventory(_map)),
                 new Option("Save", () =>  Save(_map)),
                 new Option("ExitMenu", () =>  ExitMenu(_map,playerPos)),

@@ -38,3 +38,6 @@ C:\Users\tbourion\Documents\GitHub\projet7\Projet7\obj\Debug\net6.0\Projet7.cspr
 C:\Users\tbourion\Documents\GitHub\projet7\Projet7\obj\Debug\net6.0\Projet7.dll
 C:\Users\tbourion\Documents\GitHub\projet7\Projet7\obj\Debug\net6.0\refint\Projet7.dll
 C:\Users\tbourion\Documents\GitHub\projet7\Projet7\obj\Debug\net6.0\Projet7.pdb
+C:\Users\valtmann\source\repos\Projet-Csharp\projet7\Projet7\obj\Debug\net6.0\Projet7.dll
+C:\Users\valtmann\source\repos\Projet-Csharp\projet7\Projet7\obj\Debug\net6.0\refint\Projet7.dll
+C:\Users\valtmann\source\repos\Projet-Csharp\projet7\Projet7\obj\Debug\net6.0\Projet7.pdb

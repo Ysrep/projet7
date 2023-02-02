@@ -294,5 +294,13 @@ namespace Projet7
                 _map.ShowMap(PlayerPos);
             }
         }
+        
+        public void printPokemonTeam()
+        {
+            foreach(Pokemon p in ListPokemonTeam)
+            {
+                Console.WriteLine(p.name);
+            }
+        }
     }
 }

@@ -117,6 +117,10 @@ namespace Projet7
                     Console.Clear();
                     map.ShowMap(player.PlayerPos);
                 }
+                while (map.Pokemon)
+                {
+                    player.printPokemonTeam(); 
+                }
 
                 while (map.WildBattle)
                 {

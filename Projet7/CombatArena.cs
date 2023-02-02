@@ -13,9 +13,6 @@ namespace Projet7
     public class Arena
     {
         public static List<Option>? options { get; set; }
-        public void ArenaFight(ListConstruct inventory) 
-         {
-            StatDisplay stat = new StatDisplay();
 
         public Pokemon WildPokemon { get; set; }
 
@@ -27,7 +24,7 @@ namespace Projet7
             int PokemonLvl = rlvl.Next(2, 5);
             WildPokemon = Pokemon.GetPokemon(PokemonId, PokemonLvl);
         }
-        public void ArenaFight()
+        public void ArenaFight(ListConstruct inventory)
         {
             StatDisplay stat = new StatDisplay(WildPokemon);
             ConsoleKey GotoArena;

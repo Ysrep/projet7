@@ -13,6 +13,7 @@ namespace Projet7
         public bool WildBattle { get; set;}
         public bool Menu { get; set; }
         public bool Inventory { get; set;}
+        public bool Pokemon { get; set;}
         char[,] _map = new char[240, 240];
 
         public bool Paused { get; set; }
