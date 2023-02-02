@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,8 +14,11 @@ namespace Projet7
     public class Arena
     {
         public static List<Option>? options { get; set; }
-
+        public static List<Option>? options1 { get; set; }
+        public bool InventoryOpen { get; set; }
         public Pokemon WildPokemon { get; set; }
+
+        public bool SelectedAttack { get; set; }
 
         public Arena()
         {
@@ -24,7 +28,41 @@ namespace Projet7
             int PokemonLvl = rlvl.Next(2, 5);
             WildPokemon = Pokemon.GetPokemon(PokemonId, PokemonLvl);
         }
-        public void ArenaFight(ListConstruct inventory, List<Pokemon> allyPokemon)
+
+        public void OpenInventory(ListConstruct inventory, List<Pokemon> allyPokemon, Map _map)
+        {
+            AllBag allinventory = new AllBag();
+            InventoryOpen = true;
+            while (InventoryOpen)
+            {
+                InventoryOpen = allinventory.ItemListDisp(inventory);
+                Console.Clear();
+                ArenaFight(inventory, allyPokemon, _map);
+            }
+        }
+        public void UseAttack(ListConstruct inventory,List<Pokemon> allyPokemon, Map _map, int index)
+        {
+            WildPokemon = allyPokemon.First().useAttack(allyPokemon.First(), WildPokemon, index);
+            Console.Clear();
+            SelectedAttack = false;
+            if(WildPokemon.currentHp <= 0)
+            {
+                _map.WildBattle = false;
+                Console.Clear();
+            }
+            else
+            {
+                ArenaFight(inventory, allyPokemon, _map);
+            }
+            
+        }
+        public void SelectAttack(ListConstruct inventory, List<Pokemon> allyPokemon, Map _map)
+        {
+            SelectedAttack = true;
+            Console.Clear();
+            ArenaFight(inventory, allyPokemon, _map);
+        }
+        public void ArenaFight(ListConstruct inventory, List<Pokemon> allyPokemon, Map _map)
         {
 
             StatDisplay stat = new StatDisplay(WildPokemon, allyPokemon);
@@ -32,15 +70,30 @@ namespace Projet7
             stat.StatTabOpponent();
 
             int index = 0;
-            bool inventoryOpen = false;
-            AllBag allinventory = new AllBag();
+
+            options1 = new List<Option>
+            {
+                new Option(allyPokemon.First().attack[0].ename + " " + allyPokemon.First().attack[0].currentPp + " pp", () => UseAttack( inventory,allyPokemon,_map, 0)),
+                new Option(allyPokemon.First().attack[1].ename + " " + allyPokemon.First().attack[1].currentPp + " pp", () =>  UseAttack(inventory,allyPokemon,_map, 1)),
+                new Option(allyPokemon.First().attack[2].ename + " " + allyPokemon.First().attack[2].currentPp + " pp", () =>  UseAttack(inventory,allyPokemon,_map, 2)),
+                new Option(allyPokemon.First().attack[3].ename + " " + allyPokemon.First().attack[3].currentPp + " pp", () => UseAttack(inventory,allyPokemon,_map, 3)),
+            };
+
             options = new List<Option>
             {
-                new Option("Attack", () => WriteTemporaryMessage("", stat)),
-                new Option("Bag", () =>  inventoryOpen = true),
+                new Option("Attack", () => SelectAttack(inventory,allyPokemon,_map)),
+                new Option("Bag", () =>  OpenInventory(inventory,allyPokemon,_map)),
                 new Option("Pokemon", () =>  WriteTemporaryMessage("", stat)),
-                new Option("Flee", () => Environment.Exit(0)),
+                new Option("Flee", () => _map.WildBattle = false),
             };
+            if (SelectedAttack)
+            {
+                WriteMenu(options1, options1[index], stat);
+            }
+            else
+            {
+                WriteMenu(options, options[index], stat);
+            }
 
             ConsoleKeyInfo menuNavigate;
             do
@@ -53,7 +106,15 @@ namespace Projet7
                     if (index + 1 < options.Count)
                     {
                         index++;
-                        WriteMenu(options, options[index], stat);
+
+                        if (SelectedAttack)
+                        {
+                            WriteMenu(options1, options1[index], stat);
+                        }
+                        else
+                        {
+                            WriteMenu(options, options[index], stat);
+                        }
                     }
                 }
                 if (menuNavigate.Key == ConsoleKey.UpArrow)
@@ -61,26 +122,33 @@ namespace Projet7
                     if (index - 1 >= 0)
                     {
                         index--;
-                        WriteMenu(options, options[index], stat);
+                        if (SelectedAttack)
+                        {
+                            WriteMenu(options1, options1[index], stat);
+                        }
+                        else
+                        {
+                            WriteMenu(options, options[index], stat);
+                        }
                     }
                 }
                 // Handle different action for the option
                 if (menuNavigate.Key == ConsoleKey.Enter)
                 {
-                    options[index].Selected.Invoke();
+                    if (SelectedAttack)
+                    {
+                        options1[index].Selected.Invoke();
+                    }
+                    else
+                    {
+                        options[index].Selected.Invoke();
+                    }
+
                     index = 0;
                 }
 
-                break;
-
             }
-            while (menuNavigate.Key != ConsoleKey.X);
-            while (inventoryOpen)
-            {
-                inventoryOpen = allinventory.ItemListDisp(inventory);
-                Console.Clear();
-            }
-            Console.ReadKey();
+            while (_map.WildBattle);
         }
 
 
@@ -104,10 +172,10 @@ namespace Projet7
             stat.StatTab();
             stat.StatTabOpponent();
             int i = 0;
-            Console.SetCursorPosition(0, 9);
+            Console.SetCursorPosition(0,10);
             foreach (Option option in options)
             {
-                Console.SetCursorPosition(0, 9 + i);
+                Console.SetCursorPosition(0, 10 + i);
                 if (option == selectedOption)
                 {
                     Console.Write(">  ");
@@ -150,10 +218,11 @@ namespace Projet7
             Console.WriteLine("---------------------------");
             Console.WriteLine("HP : " + _allyPokemon.currentHp + "  / " + _allyPokemon.Base["HP"]);
             Console.WriteLine("---------------------------");
-            Console.WriteLine("NAME : " + _allyPokemon.name["french"]);
+            Console.WriteLine("NAME : " + _allyPokemon.name["english"]);
             Console.WriteLine("---------------------------");
             Console.WriteLine("Level : " + _allyPokemon.level);
             Console.WriteLine("---------------------------");
+            Console.WriteLine("Exp : " + _allyPokemon.currentXp);
         }
 
         public void StatTabOpponent()
@@ -168,7 +237,7 @@ namespace Projet7
             Console.SetCursorPosition(90, 4);
             Console.WriteLine("---------------------------");
             Console.SetCursorPosition(90, 5);
-            Console.WriteLine("NAME : " + _wildPokemon.name["french"]);
+            Console.WriteLine("NAME : " + _wildPokemon.name["english"]);
             Console.SetCursorPosition(90, 6);
             Console.WriteLine("---------------------------");
             Console.SetCursorPosition(90, 7);

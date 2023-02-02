@@ -87,205 +87,209 @@ namespace Projet7
 
         public double typeTable(Pokemon P1, Attack A)
         {
-            double efficiency1 = 0;
+            double efficiency1 = 1;
             switch (P1.type[0])
             {
                 case "Fire":
-                    if(A.type == "Water" || A.type == "ground" || A.type == "Rock") { efficiency1 += 2; }
-                    if(A.type == "Fire" || A.type == "Grass" || A.type == "Ice" || A.type == "Bug" || A.type == "Steel") { efficiency1 += 0.5; }
-                    else { efficiency1 += 1; }
+                    if (A.type == "Water" || A.type == "ground" || A.type == "Rock") { efficiency1 = 2; }
+                    if (A.type == "Fire" || A.type == "Grass" || A.type == "Ice" || A.type == "Bug" || A.type == "Steel") { efficiency1 = 0.5; }
+                    else { efficiency1 = 1; }
                     break;
                 case "Normal":
-                    if(A.type == "Fighting") { efficiency1 += 2; }
+                    if (A.type == "Fighting") { efficiency1 = 2; }
                     if (A.type == "Ghost") { efficiency1 = 0; }
-                    else { efficiency1 += 1; }
+                    else { efficiency1 = 1; }
                     break;
                 case "Grass":
-                    if(A.type == "Fire" || A.type == "Ice" || A.type == "Poison" || A.type == "Bug" || A.type == "Flying") { efficiency1 += 2; }
-                    if(A.type == "Grass" || A.type == "Water" || A.type == "Electric" || A.type == "Ground" || A.type == "Steel" || A.type == "Fairy") { efficiency1 += 0.5; }
-                    else { efficiency1 += 1; }
+                    if (A.type == "Fire" || A.type == "Ice" || A.type == "Poison" || A.type == "Bug" || A.type == "Flying") { efficiency1 = 2; }
+                    if (A.type == "Grass" || A.type == "Water" || A.type == "Electric" || A.type == "Ground" || A.type == "Steel" || A.type == "Fairy") { efficiency1 = 0.5; }
+                    else { efficiency1 = 1; }
                     break;
                 case "Water":
-                    if(A.type == "Grass" || A.type == "Electric") { efficiency1 += 2; }
-                    if(A.type == "Fire" || A.type == "Water" || A.type == "Ice") { efficiency1 += 0.5; }
-                    else { efficiency1 += 1; }
+                    if (A.type == "Grass" || A.type == "Electric") { efficiency1 = 2; }
+                    if (A.type == "Fire" || A.type == "Water" || A.type == "Ice") { efficiency1 = 0.5; }
+                    else { efficiency1 = 1; }
                     break;
                 case "Electric":
-                    if(A.type == "Ground") { efficiency1 += 2; }
-                    if(A.type == "Electric" || A.type == "Flying" || A.type == "Steel") { efficiency1 += 0.5; }
-                    else { efficiency1 += 1; }
+                    if (A.type == "Ground") { efficiency1 = 2; }
+                    if (A.type == "Electric" || A.type == "Flying" || A.type == "Steel") { efficiency1 = 0.5; }
+                    else { efficiency1 = 1; }
                     break;
                 case "Ice":
-                    if(A.type == "Fire" || A.type == "Fighting" || A.type == "Rock" || A.type == "Steel") { efficiency1 += 2; }
-                    if(A.type == "Ice") { efficiency1 += 0.5; }
-                    else { efficiency1 += 1; }
+                    if (A.type == "Fire" || A.type == "Fighting" || A.type == "Rock" || A.type == "Steel") { efficiency1 = 2; }
+                    if (A.type == "Ice") { efficiency1 = 0.5; }
+                    else { efficiency1 = 1; }
                     break;
                 case "Fighting":
-                    if(A.type == "Psychic" || A.type == "Flying" || A.type == "Fairy") { efficiency1 += 2; }
-                    if(A.type == "Dark" || A.type == "Rock" || A.type == "Bug") { efficiency1 += 0.5; }
-                    else { efficiency1 += 1; }
+                    if (A.type == "Psychic" || A.type == "Flying" || A.type == "Fairy") { efficiency1 = 2; }
+                    if (A.type == "Dark" || A.type == "Rock" || A.type == "Bug") { efficiency1 = 0.5; }
+                    else { efficiency1 = 1; }
                     break;
                 case "Poison":
-                    if(A.type == "Ground" || A.type == "Psychic") { efficiency1 += 2; }
-                    if(A.type == "Grass" || A.type == "Fighting" || A.type == "Poison" || A.type == "Bug" || A.type == "Fairy") { efficiency1 += 0.5; }
-                    else { efficiency1 += 1; }
+                    if (A.type == "Ground" || A.type == "Psychic") { efficiency1 = 2; }
+                    if (A.type == "Grass" || A.type == "Fighting" || A.type == "Poison" || A.type == "Bug" || A.type == "Fairy") { efficiency1 = 0.5; }
+                    else { efficiency1 = 1; }
                     break;
                 case "Ground":
-                    if(A.type == "Grass" || A.type == "Water" || A.type == "Ice") { efficiency1 += 2; }
-                    if(A.type == "Poison" || A.type == "Rock") { efficiency1 += 0.5; }
-                    if(A.type == "Electric") { efficiency1 = 0; }
-                    else { efficiency1 += 1; }
+                    if (A.type == "Grass" || A.type == "Water" || A.type == "Ice") { efficiency1 = 2; }
+                    if (A.type == "Poison" || A.type == "Rock") { efficiency1 = 0.5; }
+                    if (A.type == "Electric") { efficiency1 = 0; }
+                    else { efficiency1 = 1; }
                     break;
                 case "Flying":
-                    if(A.type == "Electric" || A.type == "Ice" || A.type == "Rock") { efficiency1 += 2; }
-                    if(A.type == "Grass" || A.type == "Fighting" || A.type == "Bug") { efficiency1 += 0.5; }
-                    if(A.type == "Ground") { efficiency1 = 0; }
-                    else { efficiency1 += 1; }
+                    if (A.type == "Electric" || A.type == "Ice" || A.type == "Rock") { efficiency1 = 2; }
+                    if (A.type == "Grass" || A.type == "Fighting" || A.type == "Bug") { efficiency1 = 0.5; }
+                    if (A.type == "Ground") { efficiency1 = 0; }
+                    else { efficiency1 = 1; }
                     break;
                 case "Psychic":
-                    if(A.type == "Bug" || A.type == "Ghost" || A.type == "Dark") { efficiency1 += 2; }
-                    if(A.type == "Fighting" || A.type == "Psychic") { efficiency1 += 0.5; }
-                    else { efficiency1 += 1; }
+                    if (A.type == "Bug" || A.type == "Ghost" || A.type == "Dark") { efficiency1 = 2; }
+                    if (A.type == "Fighting" || A.type == "Psychic") { efficiency1 = 0.5; }
+                    else { efficiency1 = 1; }
                     break;
                 case "Bug":
-                    if(A.type == "Fire" || A.type == "Flying" || A.type == "Rock") { efficiency1 += 2; }
-                    if(A.type == "Grass" || A.type == "Fighting" || A.type == "Ground") { efficiency1 += 0.5; }
-                    else { efficiency1 += 1; }
+                    if (A.type == "Fire" || A.type == "Flying" || A.type == "Rock") { efficiency1 = 2; }
+                    if (A.type == "Grass" || A.type == "Fighting" || A.type == "Ground") { efficiency1 = 0.5; }
+                    else { efficiency1 = 1; }
                     break;
                 case "Rock":
-                    if(A.type == "Grass" || A.type == "Water" || A.type == "Fighting" || A.type == "Ground" || A.type == "Steel") { efficiency1 += 2; }
-                    if(A.type == "Flying" || A.type == "Poison" || A.type == "Fire" || A.type == "Normal") { efficiency1 += 0.5; }
-                    else { efficiency1 += 1; }
+                    if (A.type == "Grass" || A.type == "Water" || A.type == "Fighting" || A.type == "Ground" || A.type == "Steel") { efficiency1 = 2; }
+                    if (A.type == "Flying" || A.type == "Poison" || A.type == "Fire" || A.type == "Normal") { efficiency1 = 0.5; }
+                    else { efficiency1 = 1; }
                     break;
                 case "Ghost":
-                    if(A.type == "Ghost" || A.type == "Dark") { efficiency1 += 2; }
-                    if(A.type == "Poison" || A.type == "Bug") { efficiency1 += 0.5; }
-                    if(A.type == "Normal" || A.type == "Fighting") { efficiency1 = 0; }
-                    else { efficiency1 += 1; }
+                    if (A.type == "Ghost" || A.type == "Dark") { efficiency1 = 2; }
+                    if (A.type == "Poison" || A.type == "Bug") { efficiency1 = 0.5; }
+                    if (A.type == "Normal" || A.type == "Fighting") { efficiency1 = 0; }
+                    else { efficiency1 = 1; }
                     break;
                 case "Dragon":
-                    if(A.type == "Ice" || A.type == "Dragon" || A.type == "Fairy") { efficiency1 += 2; }
-                    if(A.type == "Grass" || A.type == "Water" || A.type == "Fire" || A.type == "Electric") { efficiency1 += 0.5; }
-                    else { efficiency1 += 1; }
+                    if (A.type == "Ice" || A.type == "Dragon" || A.type == "Fairy") { efficiency1 = 2; }
+                    if (A.type == "Grass" || A.type == "Water" || A.type == "Fire" || A.type == "Electric") { efficiency1 = 0.5; }
+                    else { efficiency1 = 1; }
                     break;
                 case "Dark":
-                    if(A.type == "Fighting" || A.type == "Bug" || A.type == "Fairy") { efficiency1 += 2; }
-                    if(A.type == "Ghost" || A.type == "Dark") { efficiency1 += 0.5; }
-                    if(A.type == "Psychic") { efficiency1 = 0; }
-                    else { efficiency1 += 1; }
+                    if (A.type == "Fighting" || A.type == "Bug" || A.type == "Fairy") { efficiency1 = 2; }
+                    if (A.type == "Ghost" || A.type == "Dark") { efficiency1 = 0.5; }
+                    if (A.type == "Psychic") { efficiency1 = 0; }
+                    else { efficiency1 = 1; }
                     break;
                 case "Steel":
-                    if(A.type == "Fire" || A.type == "Fighting" || A.type == "Ground") { efficiency1 += 2; }
-                    if(A.type == "Normal" || A.type == "Grass" || A.type == "Ice" || A.type == "Flying" || A.type == "Psychic" || A.type == "Bug" || A.type == "Rock" || A.type == "Dragon" || A.type == "Steel" || A.type == "Fairy") { efficiency1 += 0.5; }
+                    if (A.type == "Fire" || A.type == "Fighting" || A.type == "Ground") { efficiency1 = 2; }
+                    if (A.type == "Normal" || A.type == "Grass" || A.type == "Ice" || A.type == "Flying" || A.type == "Psychic" || A.type == "Bug" || A.type == "Rock" || A.type == "Dragon" || A.type == "Steel" || A.type == "Fairy") { efficiency1 = 0.5; }
                     if (A.type == "Poison") { efficiency1 = 0; }
-                    else { efficiency1 += 1; }
+                    else { efficiency1 = 1; }
                     break;
                 case "Fairy":
-                    if(A.type == "Poison" || A.type == "Steel") { efficiency1 += 2; }
-                    if(A.type == "Fighting" || A.type == "Bug" || A.type == "Dark") { efficiency1 += 0.5; }
-                    if(A.type == "Dragon") { efficiency1 = 0; }
-                    else { efficiency1 += 1; }
+                    if (A.type == "Poison" || A.type == "Steel") { efficiency1 = 2; }
+                    if (A.type == "Fighting" || A.type == "Bug" || A.type == "Dark") { efficiency1 = 0.5; }
+                    if (A.type == "Dragon") { efficiency1 = 0; }
+                    else { efficiency1 = 1; }
                     break;
             }
-            double efficiency2 = 0;
-            switch (P1.type[1])
+            double efficiency2 = 1;
+            if (P1.type.Length != 1)
             {
-                case "Fire":
-                    if (A.type == "Water" || A.type == "ground" || A.type == "Rock") { efficiency2 += 2; }
-                    if (A.type == "Fire" || A.type == "Grass" || A.type == "Ice" || A.type == "Bug" || A.type == "Steel") { efficiency2 += 0.5; }
-                    else { efficiency2 += 1; }
-                    break;
-                case "Normal":
-                    if (A.type == "Fighting") { efficiency2 += 2; }
-                    if (A.type == "Ghost") { efficiency2 = 0; }
-                    else { efficiency2 += 1; }
-                    break;
-                case "Grass":
-                    if (A.type == "Fire" || A.type == "Ice" || A.type == "Poison" || A.type == "Bug" || A.type == "Flying") { efficiency2 += 2; }
-                    if (A.type == "Grass" || A.type == "Water" || A.type == "Electric" || A.type == "Ground" || A.type == "Steel" || A.type == "Fairy") { efficiency2 += 0.5; }
-                    else { efficiency2 += 1; }
-                    break;
-                case "Water":
-                    if (A.type == "Grass" || A.type == "Electric") { efficiency2 += 2; }
-                    if (A.type == "Fire" || A.type == "Water" || A.type == "Ice") { efficiency2 += 0.5; }
-                    else { efficiency2 += 1; }
-                    break;
-                case "Electric":
-                    if (A.type == "Ground") { efficiency2 += 2; }
-                    if (A.type == "Electric" || A.type == "Flying" || A.type == "Steel") { efficiency2 += 0.5; }
-                    else { efficiency2 += 1; }
-                    break;
-                case "Ice":
-                    if (A.type == "Fire" || A.type == "Fighting" || A.type == "Rock" || A.type == "Steel") { efficiency2 += 2; }
-                    if (A.type == "Ice") { efficiency2 += 0.5; }
-                    else { efficiency2 += 1; }
-                    break;
-                case "Fighting":
-                    if (A.type == "Psychic" || A.type == "Flying" || A.type == "Fairy") { efficiency2 += 2; }
-                    if (A.type == "Dark" || A.type == "Rock" || A.type == "Bug") { efficiency2 += 0.5; }
-                    else { efficiency2 += 1; }
-                    break;
-                case "Poison":
-                    if (A.type == "Ground" || A.type == "Psychic") { efficiency2 += 2; }
-                    if (A.type == "Grass" || A.type == "Fighting" || A.type == "Poison" || A.type == "Bug" || A.type == "Fairy") { efficiency2 += 0.5; }
-                    else { efficiency2 += 1; }
-                    break;
-                case "Ground":
-                    if (A.type == "Grass" || A.type == "Water" || A.type == "Ice") { efficiency2 += 2; }
-                    if (A.type == "Poison" || A.type == "Rock") { efficiency2 += 0.5; }
-                    if (A.type == "Electric") { efficiency2 = 0; }
-                    else { efficiency2 += 1; }
-                    break;
-                case "Flying":
-                    if (A.type == "Electric" || A.type == "Ice" || A.type == "Rock") { efficiency2 += 2; }
-                    if (A.type == "Grass" || A.type == "Fighting" || A.type == "Bug") { efficiency2 += 0.5; }
-                    if (A.type == "Ground") { efficiency2 = 0; }
-                    else { efficiency2 += 1; }
-                    break;
-                case "Psychic":
-                    if (A.type == "Bug" || A.type == "Ghost" || A.type == "Dark") { efficiency2 += 2; }
-                    if (A.type == "Fighting" || A.type == "Psychic") { efficiency2 += 0.5; }
-                    else { efficiency2 += 1; }
-                    break;
-                case "Bug":
-                    if (A.type == "Fire" || A.type == "Flying" || A.type == "Rock") { efficiency2 += 2; }
-                    if (A.type == "Grass" || A.type == "Fighting" || A.type == "Ground") { efficiency2 += 0.5; }
-                    else { efficiency2 += 1; }
-                    break;
-                case "Rock":
-                    if (A.type == "Grass" || A.type == "Water" || A.type == "Fighting" || A.type == "Ground" || A.type == "Steel") { efficiency2 += 2; }
-                    if (A.type == "Flying" || A.type == "Poison" || A.type == "Fire" || A.type == "Normal") { efficiency2 += 0.5; }
-                    else { efficiency2 += 1; }
-                    break;
-                case "Ghost":
-                    if (A.type == "Ghost" || A.type == "Dark") { efficiency2 += 2; }
-                    if (A.type == "Poison" || A.type == "Bug") { efficiency2 += 0.5; }
-                    if (A.type == "Normal" || A.type == "Fighting") { efficiency2 = 0; }
-                    else { efficiency2 += 1; }
-                    break;
-                case "Dragon":
-                    if (A.type == "Ice" || A.type == "Dragon" || A.type == "Fairy") { efficiency2 += 2; }
-                    if (A.type == "Grass" || A.type == "Water" || A.type == "Fire" || A.type == "Electric") { efficiency2 += 0.5; }
-                    else { efficiency2 += 1; }
-                    break;
-                case "Dark":
-                    if (A.type == "Fighting" || A.type == "Bug" || A.type == "Fairy") { efficiency2 += 2; }
-                    if (A.type == "Ghost" || A.type == "Dark") { efficiency2 += 0.5; }
-                    if (A.type == "Psychic") { efficiency2 = 0; }
-                    else { efficiency2 += 1; }
-                    break;
-                case "Steel":
-                    if (A.type == "Fire" || A.type == "Fighting" || A.type == "Ground") { efficiency2 += 2; }
-                    if (A.type == "Normal" || A.type == "Grass" || A.type == "Ice" || A.type == "Flying" || A.type == "Psychic" || A.type == "Bug" || A.type == "Rock" || A.type == "Dragon" || A.type == "Steel" || A.type == "Fairy") { efficiency2 += 0.5; }
-                    if (A.type == "Poison") { efficiency2 = 0; }
-                    else { efficiency2 += 1; }
-                    break;
-                case "Fairy":
-                    if (A.type == "Poison" || A.type == "Steel") { efficiency2 += 2; }
-                    if (A.type == "Fighting" || A.type == "Bug" || A.type == "Dark") { efficiency2 += 0.5; }
-                    if (A.type == "Dragon") { efficiency2 = 0; }
-                    else { efficiency2 += 1; }
-                    break;
+                
+                switch (P1.type[1])
+                {
+                    case "Fire":
+                        if (A.type == "Water" || A.type == "ground" || A.type == "Rock") { efficiency2 = 2; }
+                        if (A.type == "Fire" || A.type == "Grass" || A.type == "Ice" || A.type == "Bug" || A.type == "Steel") { efficiency2 = 0.5; }
+                        else { efficiency2 = 1; }
+                        break;
+                    case "Normal":
+                        if (A.type == "Fighting") { efficiency2 = 2; }
+                        if (A.type == "Ghost") { efficiency2 = 0; }
+                        else { efficiency2 = 1; }
+                        break;
+                    case "Grass":
+                        if (A.type == "Fire" || A.type == "Ice" || A.type == "Poison" || A.type == "Bug" || A.type == "Flying") { efficiency2 = 2; }
+                        if (A.type == "Grass" || A.type == "Water" || A.type == "Electric" || A.type == "Ground" || A.type == "Steel" || A.type == "Fairy") { efficiency2 = 0.5; }
+                        else { efficiency2 = 1; }
+                        break;
+                    case "Water":
+                        if (A.type == "Grass" || A.type == "Electric") { efficiency2 = 2; }
+                        if (A.type == "Fire" || A.type == "Water" || A.type == "Ice") { efficiency2 = 0.5; }
+                        else { efficiency2 = 1; }
+                        break;
+                    case "Electric":
+                        if (A.type == "Ground") { efficiency2 = 2; }
+                        if (A.type == "Electric" || A.type == "Flying" || A.type == "Steel") { efficiency2 = 0.5; }
+                        else { efficiency2 = 1; }
+                        break;
+                    case "Ice":
+                        if (A.type == "Fire" || A.type == "Fighting" || A.type == "Rock" || A.type == "Steel") { efficiency2 = 2; }
+                        if (A.type == "Ice") { efficiency2 = 0.5; }
+                        else { efficiency2 = 1; }
+                        break;
+                    case "Fighting":
+                        if (A.type == "Psychic" || A.type == "Flying" || A.type == "Fairy") { efficiency2 = 2; }
+                        if (A.type == "Dark" || A.type == "Rock" || A.type == "Bug") { efficiency2 = 0.5; }
+                        else { efficiency2 = 1; }
+                        break;
+                    case "Poison":
+                        if (A.type == "Ground" || A.type == "Psychic") { efficiency2 = 2; }
+                        if (A.type == "Grass" || A.type == "Fighting" || A.type == "Poison" || A.type == "Bug" || A.type == "Fairy") { efficiency2 = 0.5; }
+                        else { efficiency2 = 1; }
+                        break;
+                    case "Ground":
+                        if (A.type == "Grass" || A.type == "Water" || A.type == "Ice") { efficiency2 = 2; }
+                        if (A.type == "Poison" || A.type == "Rock") { efficiency2 = 0.5; }
+                        if (A.type == "Electric") { efficiency2 = 0; }
+                        else { efficiency2 = 1; }
+                        break;
+                    case "Flying":
+                        if (A.type == "Electric" || A.type == "Ice" || A.type == "Rock") { efficiency2 = 2; }
+                        if (A.type == "Grass" || A.type == "Fighting" || A.type == "Bug") { efficiency2 = 0.5; }
+                        if (A.type == "Ground") { efficiency2 = 0; }
+                        else { efficiency2 = 1; }
+                        break;
+                    case "Psychic":
+                        if (A.type == "Bug" || A.type == "Ghost" || A.type == "Dark") { efficiency2 = 2; }
+                        if (A.type == "Fighting" || A.type == "Psychic") { efficiency2 = 0.5; }
+                        else { efficiency2 = 1; }
+                        break;
+                    case "Bug":
+                        if (A.type == "Fire" || A.type == "Flying" || A.type == "Rock") { efficiency2 = 2; }
+                        if (A.type == "Grass" || A.type == "Fighting" || A.type == "Ground") { efficiency2 = 0.5; }
+                        else { efficiency2 = 1; }
+                        break;
+                    case "Rock":
+                        if (A.type == "Grass" || A.type == "Water" || A.type == "Fighting" || A.type == "Ground" || A.type == "Steel") { efficiency2 = 2; }
+                        if (A.type == "Flying" || A.type == "Poison" || A.type == "Fire" || A.type == "Normal") { efficiency2 = 0.5; }
+                        else { efficiency2 = 1; }
+                        break;
+                    case "Ghost":
+                        if (A.type == "Ghost" || A.type == "Dark") { efficiency2 = 2; }
+                        if (A.type == "Poison" || A.type == "Bug") { efficiency2 = 0.5; }
+                        if (A.type == "Normal" || A.type == "Fighting") { efficiency2 = 0; }
+                        else { efficiency2 = 1; }
+                        break;
+                    case "Dragon":
+                        if (A.type == "Ice" || A.type == "Dragon" || A.type == "Fairy") { efficiency2 = 2; }
+                        if (A.type == "Grass" || A.type == "Water" || A.type == "Fire" || A.type == "Electric") { efficiency2 = 0.5; }
+                        else { efficiency2 = 1; }
+                        break;
+                    case "Dark":
+                        if (A.type == "Fighting" || A.type == "Bug" || A.type == "Fairy") { efficiency2 = 2; }
+                        if (A.type == "Ghost" || A.type == "Dark") { efficiency2 = 0.5; }
+                        if (A.type == "Psychic") { efficiency2 = 0; }
+                        else { efficiency2 = 1; }
+                        break;
+                    case "Steel":
+                        if (A.type == "Fire" || A.type == "Fighting" || A.type == "Ground") { efficiency2 = 2; }
+                        if (A.type == "Normal" || A.type == "Grass" || A.type == "Ice" || A.type == "Flying" || A.type == "Psychic" || A.type == "Bug" || A.type == "Rock" || A.type == "Dragon" || A.type == "Steel" || A.type == "Fairy") { efficiency2 = 0.5; }
+                        if (A.type == "Poison") { efficiency2 = 0; }
+                        else { efficiency2 = 1; }
+                        break;
+                    case "Fairy":
+                        if (A.type == "Poison" || A.type == "Steel") { efficiency2 = 2; }
+                        if (A.type == "Fighting" || A.type == "Bug" || A.type == "Dark") { efficiency2 = 0.5; }
+                        if (A.type == "Dragon") { efficiency2 = 0; }
+                        else { efficiency2 = 1; }
+                        break;
+                }
             }
             return (efficiency1 * efficiency2);
         }
@@ -305,7 +309,7 @@ namespace Projet7
                 Def = P2.Base["Sp. Defense"];
             }
             float STAB;
-            if ((P1.type[0] == A.type) || (P1.type[1] == A.type)) { STAB = 1.5f; }
+            if ((P1.type[0] == A.type) || P1.type.Length != 1 && (P1.type[1] == A.type)) { STAB = 1.5f; }
             else { STAB = 1; }
             double efficiency = typeTable(P2, A);
             int Type1 = Convert.ToInt32(efficiency);
@@ -316,28 +320,17 @@ namespace Projet7
             return damage;
         }
 
-        public Pokemon useAttack(Pokemon P1, Pokemon P2)
+        public Pokemon useAttack(Pokemon P1, Pokemon P2, int attack)
         {
-            for (int i = 0; i < 4; i++)
-            {
-                Console.WriteLine($"{P1.attack[i].ename} : {P1.attack[i].type} : power{P1.attack[i].power} : pp{P1.attack[i].currentPp}/{P1.attack[i].pp}");
-            }
-            Console.WriteLine("Choose the attack you want to use");
         askAttack:
-            ConsoleKey Key = Console.ReadKey().Key;
-            if (Key != ConsoleKey.NumPad1 || Key != ConsoleKey.NumPad2 || Key != ConsoleKey.NumPad3 || Key != ConsoleKey.NumPad4)
-            {
-                Console.WriteLine("Choose the attack you want to use");
-                goto askAttack;
-            }
-            int attackSelect = (int)Key;
-            if (P1.attack[attackSelect].pp == 0)
+            int attackSelect = (int)attack;
+            if (P1.attack[attackSelect].currentPp == 0)
             {
                 Console.WriteLine("This attack don't have pp !");
                 Console.WriteLine("Choose the attack you want tu use");
                 goto askAttack;
             }
-            Console.WriteLine($"{P1.name["english"]} use {P1.attack[attackSelect-1].ename} !");
+            Console.WriteLine($"{P1.name["english"]} use {P1.attack[attackSelect].ename} !");
             int damage = damageStep(P1.attack[attackSelect], P1, P2);
             P2.currentHp = Math.Max(0, P2.currentHp - damage);
             P1.attack[attackSelect].currentPp -= 1;
@@ -346,7 +339,7 @@ namespace Projet7
 
         public Pokemon WinXp(Pokemon P1, Pokemon P2)
         {
-            if(P1.level < 100)
+            if (P1.level < 100)
             {
                 int Xpwin = (int)((((100 * P2.level) / 5) * (int)Math.Pow(((2 * (P2.level + 10)) / (P2.level + P1.level + 10)), 2.5)));
                 if ((P1.currentXp + Xpwin) < P1.XpMax)
@@ -383,7 +376,7 @@ namespace Projet7
                         goto askEvolve;
                     }
                     int select = (int)Key;
-                    if(select == 1 )
+                    if (select == 1)
                     {
                         P1 = P1.Evolve(P1);
                         return P1;
@@ -434,7 +427,7 @@ namespace Projet7
                 Console.WriteLine($"{P1.name} forget {P1.attack[attackSelect - 1]} and he learn {A.ename}");
                 P1.attack[attackSelect - 1] = A;
                 return P1;
-            } 
+            }
             if (attackSelect == 3)
             {
                 Console.WriteLine($"{P1.name} forget {P1.attack[attackSelect - 1]} and he learn {A.ename}");

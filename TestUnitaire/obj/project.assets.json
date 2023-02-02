@@ -1304,19 +1304,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\valtmann\\.nuget\\packages\\": {}
+    "C:\\Users\\gsimoes\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\valtmann\\source\\repos\\Projet-Csharp\\projet7\\TestUnitaire\\TestUnitaire.csproj",
+      "projectUniqueName": "C:\\Users\\gsimoes\\Documents\\GitHub\\projet7\\TestUnitaire\\TestUnitaire.csproj",
       "projectName": "TestUnitaire",
-      "projectPath": "C:\\Users\\valtmann\\source\\repos\\Projet-Csharp\\projet7\\TestUnitaire\\TestUnitaire.csproj",
-      "packagesPath": "C:\\Users\\valtmann\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\valtmann\\source\\repos\\Projet-Csharp\\projet7\\TestUnitaire\\obj\\",
+      "projectPath": "C:\\Users\\gsimoes\\Documents\\GitHub\\projet7\\TestUnitaire\\TestUnitaire.csproj",
+      "packagesPath": "C:\\Users\\gsimoes\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\gsimoes\\Documents\\GitHub\\projet7\\TestUnitaire\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\valtmann\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\gsimoes\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1330,8 +1330,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\valtmann\\source\\repos\\Projet-Csharp\\projet7\\Projet7\\Projet7.csproj": {
-              "projectPath": "C:\\Users\\valtmann\\source\\repos\\Projet-Csharp\\projet7\\Projet7\\Projet7.csproj"
+            "C:\\Users\\gsimoes\\Documents\\GitHub\\projet7\\Projet7\\Projet7.csproj": {
+              "projectPath": "C:\\Users\\gsimoes\\Documents\\GitHub\\projet7\\Projet7\\Projet7.csproj"
             }
           }
         }
@@ -1383,7 +1383,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\utrachet\\source\\repos\\projet7\\Projet7\\Projet7.csproj": {}
+    "C:\\Users\\gsimoes\\Documents\\GitHub\\projet7\\Projet7\\Projet7.csproj": {}
   },
   "projects": {
-    "C:\\Users\\utrachet\\source\\repos\\projet7\\Projet7\\Projet7.csproj": {
+    "C:\\Users\\gsimoes\\Documents\\GitHub\\projet7\\Projet7\\Projet7.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\utrachet\\source\\repos\\projet7\\Projet7\\Projet7.csproj",
+        "projectUniqueName": "C:\\Users\\gsimoes\\Documents\\GitHub\\projet7\\Projet7\\Projet7.csproj",
         "projectName": "Projet7",
-        "projectPath": "C:\\Users\\utrachet\\source\\repos\\projet7\\Projet7\\Projet7.csproj",
-        "packagesPath": "C:\\Users\\utrachet\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\utrachet\\source\\repos\\projet7\\Projet7\\obj\\",
+        "projectPath": "C:\\Users\\gsimoes\\Documents\\GitHub\\projet7\\Projet7\\Projet7.csproj",
+        "packagesPath": "C:\\Users\\gsimoes\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\gsimoes\\Documents\\GitHub\\projet7\\Projet7\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\utrachet\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\gsimoes\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -61,7 +61,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

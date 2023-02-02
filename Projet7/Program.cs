@@ -69,7 +69,6 @@ namespace Projet7
             Menu:
                 while (map.Menu)
                 {
-
                     menu.ShowMenu(map, player.PlayerPos);
                 }
                 if (map.Save)
@@ -126,7 +125,13 @@ namespace Projet7
                 {
                     Console.Clear();
                     Arena battle = new Arena();
-                    battle.ArenaFight(player.ListPokemonTeam);
+                    while (map.WildBattle)
+                    {
+                        battle.ArenaFight(inventory, player.ListPokemonTeam,map);
+                        
+                    }
+                    map.ShowMap(player.PlayerPos);
+
                 }
 
                 player.Inputs(map);

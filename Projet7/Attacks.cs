@@ -61,7 +61,7 @@ namespace Projet7
                 pp = neuf.pp,
                 category = neuf.category
             };
-            int currentPp = newa.pp;
+            newa.currentPp = newa.pp;
             return newa;
         }
     }
