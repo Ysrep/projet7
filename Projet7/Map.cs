@@ -8,7 +8,7 @@ namespace Projet7
 {
     public class Map
     {
-
+        public bool Save { get; set; }
         public bool StartMenu {get; set;}
         public bool Menu { get; set; }
         public bool Inventory { get; set;}
@@ -20,7 +20,7 @@ namespace Projet7
 
         public void Init()
         {
-            StartMenu = false;
+            StartMenu = true;
             Menu = false;
             Inventory = false;
             int l = 0;

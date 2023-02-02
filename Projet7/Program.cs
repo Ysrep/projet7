@@ -19,16 +19,6 @@ namespace Projet7
 
             NPC.CreateNPC();
             PokemonTeam.CreateTeam();
-
-            Map map = new Map();
-            Player player = new Player(63,218);
-            AllBag allinventory = new AllBag();
-            ListConstruct inventory = new ListConstruct();
-            Menu menu = new Menu();
-            inventory.List();
-            map.Init();
-            menu.ShowMenu();
-            while (map.Menu)
             JsonSerializerSettings setting = new JsonSerializerSettings()
             {
                 TypeNameHandling = TypeNameHandling.All,
@@ -64,49 +54,41 @@ namespace Projet7
             AllBag allinventory = new AllBag();
             Menu menu = new Menu();
             map.Init();
-            menu.ShowStartMenu();
-            while (map.StartMenu)
-            {
-                map.Menu = menu.StartMenuSelection();
-            }
+            menu.ShowStartMenu(map);
             map.ShowMap(player.PlayerPos);
             while (!map.StartMenu)
             {
+            Menu:
                 while (map.Menu)
                 {
-                    menu.ShowMenu();
-                    int index = menu.MenuSelection();
-                    switch (index)
-                    {
-                        case 0:
-                            map.Menu = false;
-                            map.ShowMap(player.PlayerPos);
-                            break;
-                        case 1:
 
-                            break;
-                        case 2:
-                            map.Menu = false;
-                            map.Inventory = true;
-                            break;
-                        case 3:
-                            if (File.Exists(path))
-                            {
-                                File.Delete(path);  
-                            }
-                            string fileName = "player.json";
-                            var jsonString = JsonSerializer.Serialize<Player>(player);
-                            File.WriteAllText(fileName, jsonString);
-                            if (File.Exists(path1))
-                            {
-                                File.Delete(path1);
-                            }
-                            fileName = "inventory.json";
-                            jsonString = JsonConvert.SerializeObject(inventory.inventory, setting);
-                            File.WriteAllText(fileName, jsonString);
-                            break;
-                        default:
-                            break;
+                    menu.ShowMenu(map, player.PlayerPos);
+                }
+                if (map.Save)
+                {
+                    if (File.Exists(path))
+                    {
+                        File.Delete(path);
+                    }
+                    string fileName = "player.json";
+                    var jsonString = JsonSerializer.Serialize<Player>(player);
+                    File.WriteAllText(fileName, jsonString);
+                    if (File.Exists(path1))
+                    {
+                        File.Delete(path1);
+                    }
+                    fileName = "inventory.json";
+                    jsonString = JsonConvert.SerializeObject(inventory.inventory, setting);
+                    File.WriteAllText(fileName, jsonString);
+                    Console.Clear();
+                    Console.WriteLine("Votre partie à bien été sauvegardé");
+                    ConsoleKey input = Console.ReadKey().Key;
+                    if (input == ConsoleKey.Enter)
+                    {
+                        Console.Clear();
+                        map.Save = false;
+                        map.Menu = true;
+                        goto Menu;
                     }
                 }
                 while (map.Inventory)
@@ -115,6 +97,7 @@ namespace Projet7
                     Console.Clear();
                     map.ShowMap(player.PlayerPos);
                 }
+
                 player.Inputs(map);
             }
         }

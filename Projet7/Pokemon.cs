@@ -304,15 +304,15 @@ namespace Projet7
                 Att = P1.Base["Sp. Attack"];
                 Def = P2.Base["Sp. Defense"];
             }
-            int STAB;
-            if ((P1.type[0] == A.type) || (P1.type[1] == A.type)) { STAB = 2; }
+            float STAB;
+            if ((P1.type[0] == A.type) || (P1.type[1] == A.type)) { STAB = 1.5f; }
             else { STAB = 1; }
             double efficiency = typeTable(P2, A);
             int Type1 = Convert.ToInt32(efficiency);
             Random r = new Random();
             int a = r.Next(217, 256);
-            int rand = (a * 100) / 255;
-            int damage = ((((P1.level * 2 / 5) + 2) * A.power * Att / 50 / Def) + 2) * rand / 100 * STAB * Type1; //Manque CC, mod1, mod2, mod3
+            float rand = (a * 100) / 255;
+            int damage = ((int)(((((P1.level * 2 / 5) + 2) * A.power * Att / 50 / Def) + 2) * rand / 100 * STAB * Type1)); //Manque CC, mod1, mod2, mod3
             return damage;
         }
 
@@ -348,7 +348,7 @@ namespace Projet7
         {
             if(P1.level < 100)
             {
-                int Xpwin = (((100 * P2.level) / 5) * (int)Math.Pow(((2 * (P2.level + 10)) / (P2.level + P1.level + 10)), 2.5));
+                int Xpwin = (int)((((100 * P2.level) / 5) * (int)Math.Pow(((2 * (P2.level + 10)) / (P2.level + P1.level + 10)), 2.5)));
                 if ((P1.currentXp + Xpwin) < P1.XpMax)
                 {
                     P1.currentXp += Xpwin;
@@ -358,12 +358,12 @@ namespace Projet7
                     int XpSupp = (P1.currentXp + Xpwin) - XpMax;
                     P1.currentXp = 0;
                     P1.level += 1;
-                    P1.Base["HP"] = (P1.Base["HP"] * (P1.level / 100) + P1.level + 10);
-                    P1.Base["Attack"] = (P1.Base["Attack"] * (P1.level / 100) + 5);
-                    P1.Base["Defense"] = (P1.Base["Defense"] * (P1.level / 100) + 5);
-                    P1.Base["Sp. Attack"] = (P1.Base["Sp. Attack"] * (P1.level / 100) + 5);
-                    P1.Base["Sp. Defense"] = (P1.Base["Sp. Defense"] * (P1.level / 100) + 5);
-                    P1.Base["Speed"] = (P1.Base["Speed"] * (P1.level / 100) + 5);
+                    P1.Base["HP"] = ((int)(P1.Base["HP"] * (((float)P1.level) / 100))) + P1.level + 10;
+                    P1.Base["Attack"] = ((int)(P1.Base["HP"] * (((float)P1.level) / 100))) + 5;
+                    P1.Base["Defense"] = ((int)(P1.Base["HP"] * (((float)P1.level) / 100))) + 5;
+                    P1.Base["Sp. Attack"] = ((int)(P1.Base["HP"] * (((float)P1.level) / 100))) + 5;
+                    P1.Base["Sp. Defense"] = ((int)(P1.Base["HP"] * (((float)P1.level) / 100))) + 5;
+                    P1.Base["Speed"] = ((int)(P1.Base["HP"] * (((float)P1.level) / 100))) + 5;
                     P1.XpMax = 1000 * P1.level;
                     P1.currentXp += XpSupp;
                 }
