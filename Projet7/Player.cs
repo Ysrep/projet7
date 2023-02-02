@@ -47,8 +47,9 @@ namespace Projet7
                                     int wildEncounter = rand.Next(5);
                                     if (wildEncounter == 1)
                                     {
-                                        Console.WriteLine();
+                                        Console.Clear();
                                         Console.WriteLine("A wild pokemon appeared");
+                                        _map.WildBattle = true;
                                         break;
                                     }
                                 }

@@ -10,6 +10,7 @@ namespace Projet7
     {
         public bool Save { get; set; }
         public bool StartMenu {get; set;}
+        public bool WildBattle { get; set;}
         public bool Menu { get; set; }
         public bool Inventory { get; set;}
         char[,] _map = new char[240, 240];

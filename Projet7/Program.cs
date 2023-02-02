@@ -118,6 +118,11 @@ namespace Projet7
                     map.ShowMap(player.PlayerPos);
                 }
 
+                while (map.WildBattle)
+                {
+                    Arena battle = new Arena();
+                }
+
                 player.Inputs(map);
             }
         }
