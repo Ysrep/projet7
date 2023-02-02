@@ -47,7 +47,8 @@ namespace TestUnitaire
         public void CheckGetTeam()
         {
             NPC.CreateNPC();
-            PokemonTeam.CreateTeam();
+            PokemonTeam A = PokemonTeam.CreateTeam();
+            Console.WriteLine(A.PT[0].Base["Attack"]);
         }
     }
 }
