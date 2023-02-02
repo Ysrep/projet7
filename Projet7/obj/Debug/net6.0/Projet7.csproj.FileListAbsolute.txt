@@ -47,3 +47,5 @@ C:\Users\Renov\source\repos\projet7\Projet7\obj\Debug\net6.0\Projet7.csproj.Copy
 C:\Users\Renov\source\repos\projet7\Projet7\obj\Debug\net6.0\Projet7.pdb
 C:\Users\Renov\source\repos\projet7\Projet7\obj\Debug\net6.0\Projet7.genruntimeconfig.cache
 C:\Users\Renov\source\repos\projet7\Projet7\obj\Debug\net6.0\ref\Projet7.dll
+C:\Users\utrachet\source\repos\projet7\Projet7\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\utrachet\source\repos\projet7\Projet7\obj\Debug\net6.0\Projet7.csproj.CopyComplete
