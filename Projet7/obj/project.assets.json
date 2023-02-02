@@ -55,19 +55,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\valtmann\\.nuget\\packages\\": {}
+    "C:\\Users\\utrachet\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\valtmann\\source\\repos\\Projet-Csharp\\projet7\\Projet7\\Projet7.csproj",
+      "projectUniqueName": "C:\\Users\\utrachet\\source\\repos\\projet7\\Projet7\\Projet7.csproj",
       "projectName": "Projet7",
-      "projectPath": "C:\\Users\\valtmann\\source\\repos\\Projet-Csharp\\projet7\\Projet7\\Projet7.csproj",
-      "packagesPath": "C:\\Users\\valtmann\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\valtmann\\source\\repos\\Projet-Csharp\\projet7\\Projet7\\obj\\",
+      "projectPath": "C:\\Users\\utrachet\\source\\repos\\projet7\\Projet7\\Projet7.csproj",
+      "packagesPath": "C:\\Users\\utrachet\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\utrachet\\source\\repos\\projet7\\Projet7\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\valtmann\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\utrachet\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
