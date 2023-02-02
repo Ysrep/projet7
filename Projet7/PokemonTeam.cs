@@ -8,8 +8,11 @@ namespace Projet7
 {
     public class PokemonTeam
     {
-        public static PokemonTeam? CreateTeam()
+        public Pokemon[] PT;
+        public static PokemonTeam CreateTeam()
         {
+            PokemonTeam Pt = new PokemonTeam();
+            Pt.PT = new Pokemon[1];
             Random rId = new Random();
             Random rLvl = new Random();
             int opponentPokemonId = rId.Next(1, 613);
@@ -30,7 +33,8 @@ namespace Projet7
             {
                 Console.WriteLine(opponentP.attack[i].ename + " " + opponentP.attack[i].category);
             }
-            return null;
+            Pt.PT[0] = opponentP;
+            return Pt;
         }
     }
 }

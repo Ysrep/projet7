@@ -8,6 +8,7 @@ namespace Projet7
 {
     public class NPC
     {
+        public int PNJ;
         public static NPC CreateNPC()
         {
             Random rMoney = new Random();
@@ -15,7 +16,9 @@ namespace Projet7
 
             Console.WriteLine("Trainer");
             Console.WriteLine("Pokédollar : " + moneyWin);
-            return null;
+            NPC n = new NPC();
+            n.PNJ = moneyWin;
+            return n;
         }
     }
 }
