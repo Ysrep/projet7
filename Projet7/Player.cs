@@ -103,6 +103,7 @@ namespace Projet7
                                     {
                                         Console.WriteLine();
                                         Console.WriteLine("A wild pokemon appeared");
+                                        _map.WildBattle = true;
                                         break;
                                     }
                                 }
@@ -158,6 +159,7 @@ namespace Projet7
                                     {
                                         Console.WriteLine();
                                         Console.WriteLine("A wild pokemon appeared");
+                                        _map.WildBattle = true;
                                         break;
                                     }
                                 }
@@ -218,6 +220,7 @@ namespace Projet7
                                     {
                                         Console.WriteLine();
                                         Console.WriteLine("A wild pokemon appeared");
+                                        _map.WildBattle = true;
                                         break;
                                     }
                                 }
@@ -279,6 +282,7 @@ namespace Projet7
                 {
                     Console.WriteLine();
                     Console.WriteLine("A wild pokemon appeared");
+                    _map.WildBattle = true;
                 }
             }
             for (int j = 0; j < 6; j++)

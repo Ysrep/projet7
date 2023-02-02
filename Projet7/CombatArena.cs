@@ -23,20 +23,16 @@ namespace Projet7
             int PokemonLvl = rlvl.Next(2, 5);
             WildPokemon = Pokemon.GetPokemon(PokemonId, PokemonLvl);
         }
-        public void ArenaFight()
+        public void ArenaFight(List<Pokemon> allyPokemon)
         {
-            StatDisplay stat = new StatDisplay(WildPokemon);
-            ConsoleKey GotoArena;
-            GotoArena = Console.ReadKey(intercept: true).Key;
+            
+            StatDisplay stat = new StatDisplay(WildPokemon,allyPokemon);
             stat.StatTab();
             stat.StatTabOpponent();
-            switch (GotoArena)
-            {
-                case ConsoleKey.Enter:
 
-                    int index = 0;
+            int index = 0;
 
-                    options = new List<Option>
+            options = new List<Option>
             {
                new Option("Attack", () => WriteTemporaryMessage("", stat)),
                 new Option("Bag", () =>  WriteTemporaryMessage("", stat)),
@@ -44,43 +40,39 @@ namespace Projet7
                 new Option("Flee", () => Environment.Exit(0)),
             };
 
-                    ConsoleKeyInfo menuNavigate;
-                    do
+            ConsoleKeyInfo menuNavigate;
+            do
+            {
+                menuNavigate = Console.ReadKey();
+
+                // Handle each key input (down arrow will write the menu again with a different selected item)
+                if (menuNavigate.Key == ConsoleKey.DownArrow)
+                {
+                    if (index + 1 < options.Count)
                     {
-                        menuNavigate = Console.ReadKey();
-
-                        // Handle each key input (down arrow will write the menu again with a different selected item)
-                        if (menuNavigate.Key == ConsoleKey.DownArrow)
-                        {
-                            if (index + 1 < options.Count)
-                            {
-                                index++;
-                                WriteMenu(options, options[index], stat);
-                            }
-                        }
-                        if (menuNavigate.Key == ConsoleKey.UpArrow)
-                        {
-                            if (index - 1 >= 0)
-                            {
-                                index--;
-                                WriteMenu(options, options[index], stat);
-                            }
-                        }
-                        // Handle different action for the option
-                        if (menuNavigate.Key == ConsoleKey.Enter)
-                        {
-                            options[index].Selected.Invoke();
-                            index = 0;
-                        }
-
+                        index++;
+                        WriteMenu(options, options[index], stat);
                     }
-                    while (menuNavigate.Key != ConsoleKey.X);
-
-                    Console.ReadKey();
-
-                    break;
+                }
+                if (menuNavigate.Key == ConsoleKey.UpArrow)
+                {
+                    if (index - 1 >= 0)
+                    {
+                        index--;
+                        WriteMenu(options, options[index], stat);
+                    }
+                }
+                // Handle different action for the option
+                if (menuNavigate.Key == ConsoleKey.Enter)
+                {
+                    options[index].Selected.Invoke();
+                    index = 0;
+                }
 
             }
+            while (menuNavigate.Key != ConsoleKey.X);
+
+            Console.ReadKey();
         }
 
 
@@ -137,36 +129,38 @@ namespace Projet7
     public class StatDisplay
     {
         Pokemon _wildPokemon;
-
-        public StatDisplay(Pokemon WildPokemon)
+        Pokemon _allyPokemon;
+        public StatDisplay(Pokemon WildPokemon, List<Pokemon> allyPokemon)
         {
             _wildPokemon = WildPokemon;
+            _allyPokemon = allyPokemon.First();
         }
         public void StatTab()
         {
             Console.WriteLine();
             Console.WriteLine("--------- MY TEAM ---------");
             Console.WriteLine("---------------------------");
-            Console.WriteLine("Current HP :  /  Total HP");
+            Console.WriteLine("HP : " + _allyPokemon.currentHp+ "  / " + _allyPokemon.Base["HP"]);
             Console.WriteLine("---------------------------");
-            Console.WriteLine("NAME : ");
+            Console.WriteLine("NAME : " + _allyPokemon.name["french"]);
             Console.WriteLine("---------------------------");
-            Console.WriteLine("Level : ");
+            Console.WriteLine("Level : " + _allyPokemon.level);
             Console.WriteLine("---------------------------");
         }
 
         public void StatTabOpponent()
         {
+            
             Console.SetCursorPosition(90, 1);
             Console.WriteLine("----- OPPONENT'S TEAM -----");
             Console.SetCursorPosition(90, 2);
             Console.WriteLine("---------------------------");
             Console.SetCursorPosition(90, 3);
-            Console.WriteLine("Current HP : " + _wildPokemon.currentHp + " / ");
+            Console.WriteLine("HP : " + _wildPokemon.currentHp + " / " + _wildPokemon.Base["HP"]);
             Console.SetCursorPosition(90, 4);
             Console.WriteLine("---------------------------");
             Console.SetCursorPosition(90, 5);
-            Console.WriteLine("NAME : " + _wildPokemon.name);
+            Console.WriteLine("NAME : " + _wildPokemon.name["french"]);
             Console.SetCursorPosition(90, 6);
             Console.WriteLine("---------------------------");
             Console.SetCursorPosition(90, 7);

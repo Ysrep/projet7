@@ -118,9 +118,11 @@ namespace Projet7
                     map.ShowMap(player.PlayerPos);
                 }
 
-                while (map.WildBattle)
+                if (map.WildBattle)
                 {
+                    Console.Clear();
                     Arena battle = new Arena();
+                    battle.ArenaFight(player.ListPokemonTeam);
                 }
 
                 player.Inputs(map);
