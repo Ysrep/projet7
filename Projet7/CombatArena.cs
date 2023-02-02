@@ -13,9 +13,6 @@ namespace Projet7
     public class Arena
     {
         public static List<Option>? options { get; set; }
-        public void ArenaFight(ListConstruct inventory) 
-         {
-            StatDisplay stat = new StatDisplay();
 
         public Pokemon WildPokemon { get; set; }
 
@@ -27,10 +24,10 @@ namespace Projet7
             int PokemonLvl = rlvl.Next(2, 5);
             WildPokemon = Pokemon.GetPokemon(PokemonId, PokemonLvl);
         }
-        public void ArenaFight(List<Pokemon> allyPokemon)
+        public void ArenaFight(ListConstruct inventory, List<Pokemon> allyPokemon)
         {
-            
-            StatDisplay stat = new StatDisplay(WildPokemon,allyPokemon);
+
+            StatDisplay stat = new StatDisplay(WildPokemon, allyPokemon);
             stat.StatTab();
             stat.StatTabOpponent();
 
@@ -73,20 +70,16 @@ namespace Projet7
                     options[index].Selected.Invoke();
                     index = 0;
                 }
-                    while (menuNavigate.Key != ConsoleKey.X);
-                    while (inventoryOpen)
-                    {
-                        inventoryOpen = allinventory.ItemListDisp(inventory);
-                        Console.Clear();
-                    }
 
-                    Console.ReadKey();
-
-                    break;
+                break;
 
             }
             while (menuNavigate.Key != ConsoleKey.X);
-
+            while (inventoryOpen)
+            {
+                inventoryOpen = allinventory.ItemListDisp(inventory);
+                Console.Clear();
+            }
             Console.ReadKey();
         }
 
@@ -155,7 +148,7 @@ namespace Projet7
             Console.WriteLine();
             Console.WriteLine("--------- MY TEAM ---------");
             Console.WriteLine("---------------------------");
-            Console.WriteLine("HP : " + _allyPokemon.currentHp+ "  / " + _allyPokemon.Base["HP"]);
+            Console.WriteLine("HP : " + _allyPokemon.currentHp + "  / " + _allyPokemon.Base["HP"]);
             Console.WriteLine("---------------------------");
             Console.WriteLine("NAME : " + _allyPokemon.name["french"]);
             Console.WriteLine("---------------------------");
@@ -165,7 +158,7 @@ namespace Projet7
 
         public void StatTabOpponent()
         {
-            
+
             Console.SetCursorPosition(90, 1);
             Console.WriteLine("----- OPPONENT'S TEAM -----");
             Console.SetCursorPosition(90, 2);
