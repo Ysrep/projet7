@@ -29,7 +29,7 @@ namespace Projet7
         {
             return itemName = "Potion";
         }
-        public virtual int AmountOfHP { get => 200; }
+        public virtual int AmountOfHP { get => 20; }
         public override int AmountInStorage
         {
             get; set;
@@ -47,7 +47,7 @@ namespace Projet7
         {
             return itemName = "Super Potion";
         }
-        public override int AmountOfHP { get => 400; }
+        public override int AmountOfHP { get => 60; }
         public override int AmountInStorage
         {
             get; set;
@@ -65,7 +65,7 @@ namespace Projet7
         {
             return itemName = "Hyper Potion";
         }
-        public override int AmountOfHP { get => 800; }
+        public override int AmountOfHP { get => 120; }
         public override int AmountInStorage
         {
             get; set;

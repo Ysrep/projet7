@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ namespace Projet7
     public class Arena
     {
         public static List<Option>? options { get; set; }
-        public void ArenaFight() 
+        public void ArenaFight(ListConstruct inventory) 
          {
             StatDisplay stat = new StatDisplay();
             ConsoleKey GotoArena;
@@ -24,11 +25,12 @@ namespace Projet7
                 case ConsoleKey.Enter:
 
                     int index = 0;
-
+                    bool inventoryOpen = false;
+                    AllBag allinventory = new AllBag();
                     options = new List<Option>
             {
-               new Option("Attack", () => WriteTemporaryMessage("", stat)),
-                new Option("Bag", () =>  WriteTemporaryMessage("", stat)),
+                new Option("Attack", () => WriteTemporaryMessage("", stat)),
+                new Option("Bag", () =>  inventoryOpen = true),
                 new Option("Pokemon", () =>  WriteTemporaryMessage("", stat)),
                 new Option("Flee", () => Environment.Exit(0)),
             };
@@ -64,6 +66,11 @@ namespace Projet7
 
                     }
                     while (menuNavigate.Key != ConsoleKey.X);
+                    while (inventoryOpen)
+                    {
+                        inventoryOpen = allinventory.ItemListDisp(inventory);
+                        Console.Clear();
+                    }
 
                     Console.ReadKey();
 
