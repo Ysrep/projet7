@@ -92,7 +92,7 @@ namespace Projet7
                                 if (_map.GetMap()[PlayerPos[1] - i, PlayerPos[0]] == 'c')
                                 {
                                     Console.WriteLine();
-                                    Console.WriteLine("Vos pokemons ont été soigné");
+                                    Console.WriteLine("Your pokemons has been healed");
                                     break;
                                 }
                                 else if (i != 0 && _map.GetMap()[PlayerPos[1] - i, PlayerPos[0]] == 'w')
@@ -131,7 +131,7 @@ namespace Projet7
                             if (_map.GetMap()[PlayerPos[1] - 1, PlayerPos[0]] == 'c')
                             {
                                 Console.WriteLine();
-                                Console.WriteLine("Vos pokemons ont été soigné");
+                                Console.WriteLine("Your pokemons has been healed");
                             }
                             else
                             {
@@ -209,7 +209,7 @@ namespace Projet7
                                 else if (_map.GetMap()[PlayerPos[1] + i, PlayerPos[0]] == 'c')
                                 {
                                     Console.WriteLine();
-                                    Console.WriteLine("Vos pokemons ont été soigné");
+                                    Console.WriteLine("Your pokemons has been healed");
                                     break;
                                 }
                                 else if (i != 0 && _map.GetMap()[PlayerPos[1] + i, PlayerPos[0]] == 'w')
@@ -257,7 +257,7 @@ namespace Projet7
                             else if (_map.GetMap()[PlayerPos[1] + 1, PlayerPos[0]] == 'c')
                             {
                                 Console.WriteLine();
-                                Console.WriteLine("Vos pokemons ont été soigné");
+                                Console.WriteLine("Your pokemons has been healed");
                             }
                             else
                             {
