@@ -18,7 +18,7 @@ namespace Projet7
         {
 
             NPC.CreateNPC();
-            PokemonTeam.CreateTeam();
+            //PokemonTeam.CreateTeam();
             JsonSerializerSettings setting = new JsonSerializerSettings()
             {
                 TypeNameHandling = TypeNameHandling.All,
@@ -29,12 +29,20 @@ namespace Projet7
             Player player = new Player();
             ListConstruct inventory = new ListConstruct();
             string path1 = @"inventory.json";
+            string path2 = @"playerPokemonTeam.json";
             Map map = new Map();
             if (File.Exists(path))
             {
                 string fileName = "player.json";
                 var jsonString = File.ReadAllText(fileName);
                 player = JsonSerializer.Deserialize<Player>(jsonString)!;
+
+                if (File.Exists(path2))
+                {
+                    string fileName1 = "playerPokemonTeam.json";
+                    var jsonString1 = File.ReadAllText(fileName1);
+                    player.ListPokemonTeam = JsonConvert.DeserializeObject<List<Pokemon>>(jsonString1, setting)!;
+                }
             }
             else
             {
@@ -73,10 +81,22 @@ namespace Projet7
                     string fileName = "player.json";
                     var jsonString = JsonSerializer.Serialize<Player>(player);
                     File.WriteAllText(fileName, jsonString);
+
+
+                    if (File.Exists(path2))
+                    {
+                        File.Delete(path2);
+                    }
+                    fileName = "playerPokemonTeam.json";
+                    jsonString = JsonConvert.SerializeObject(player.ListPokemonTeam, setting);
+                    File.WriteAllText(fileName, jsonString);
+
+
                     if (File.Exists(path1))
                     {
                         File.Delete(path1);
                     }
+
                     fileName = "inventory.json";
                     jsonString = JsonConvert.SerializeObject(inventory.inventory, setting);
                     File.WriteAllText(fileName, jsonString);

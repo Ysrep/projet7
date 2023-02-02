@@ -11,10 +11,16 @@ namespace Projet7
 
         public int[] PlayerPos { get; set; }
         public int Money { get; set; }
-        //public PokemonTeam _pokemonTeam;
+        public List<Pokemon> ListPokemonTeam { get; set; }
 
         public void InitWIthoutJSon(int x, int y)
         {
+            Random rId = new Random();
+            int PokemonId = rId.Next(1, 613);
+            Pokemon pokemon = Pokemon.GetPokemon(PokemonId, 5);
+            ListPokemonTeam = new List<Pokemon>{};
+            ListPokemonTeam.Add(pokemon);
+            //_pokemonTeam.CreateTeam();
             PlayerPos = new int[2];
             PlayerPos[0] = x;
             PlayerPos[1] = y;
@@ -46,6 +52,13 @@ namespace Projet7
                                         break;
                                     }
                                 }
+                                for (int j = 0; j < 6; j++)
+                                {
+                                    if (_map.GetMap()[PlayerPos[1], PlayerPos[0] - i] == '!')
+                                    {
+                                        Console.WriteLine("Trainer");
+                                    }
+                                }
                             }
                             else
                             {
@@ -73,7 +86,7 @@ namespace Projet7
                         for (i = 0; i <= 3; i++)
                         {
 
-                            if (_map.GetMap()[PlayerPos[1] - i, PlayerPos[0]] != '#' && _map.GetMap()[PlayerPos[1] - i, PlayerPos[0]] != '/' && _map.GetMap()[PlayerPos[1] - i, PlayerPos[0]] != 'C' && _map.GetMap()[PlayerPos[1] - i, PlayerPos[0]] != '-' && _map.GetMap()[PlayerPos[1] - i, PlayerPos[0]] != '~')
+                            if (_map.GetMap()[PlayerPos[1] - i, PlayerPos[0]] != '#' && _map.GetMap()[PlayerPos[1] - i, PlayerPos[0]] != '_' && _map.GetMap()[PlayerPos[1] - i, PlayerPos[0]] != '/' && _map.GetMap()[PlayerPos[1] - i, PlayerPos[0]] != 'C' && _map.GetMap()[PlayerPos[1] - i, PlayerPos[0]] != '-' && _map.GetMap()[PlayerPos[1] - i, PlayerPos[0]] != '~')
                             {
                                 if (_map.GetMap()[PlayerPos[1] - i, PlayerPos[0]] == 'c')
                                 {
@@ -92,6 +105,14 @@ namespace Projet7
                                         break;
                                     }
                                 }
+                                for (int j = 0; j < 6; j++)
+                                {
+                                    if (_map.GetMap()[PlayerPos[1] - i, PlayerPos[0] - j] == '!' || _map.GetMap()[PlayerPos[1] - i, PlayerPos[0] + j] == '!' || _map.GetMap()[PlayerPos[1] - i - j, PlayerPos[0]] == '!' || _map.GetMap()[PlayerPos[1] - i + j, PlayerPos[0]] == '!')
+                                    {
+                                        Console.WriteLine("Trainer");
+                                        break;
+                                    }
+                                }
                             }
                             else
                             {
@@ -103,7 +124,7 @@ namespace Projet7
                     }
                     else
                     {
-                        if (_map.GetMap()[PlayerPos[1] - 1, PlayerPos[0]] != '#' && _map.GetMap()[PlayerPos[1] - 1, PlayerPos[0]] != '/' && _map.GetMap()[PlayerPos[1] - 1, PlayerPos[0]] != 'C' && _map.GetMap()[PlayerPos[1] - 1, PlayerPos[0]] != '-' && _map.GetMap()[PlayerPos[1] - 1, PlayerPos[0]] != '~')
+                        if (_map.GetMap()[PlayerPos[1] - 1, PlayerPos[0]] != '#' && _map.GetMap()[PlayerPos[1] - 1, PlayerPos[0]] != '_' && _map.GetMap()[PlayerPos[1] - 1, PlayerPos[0]] != '/' && _map.GetMap()[PlayerPos[1] - 1, PlayerPos[0]] != 'C' && _map.GetMap()[PlayerPos[1] - 1, PlayerPos[0]] != '-' && _map.GetMap()[PlayerPos[1] - 1, PlayerPos[0]] != '~')
                         {
                             if (_map.GetMap()[PlayerPos[1] - 1, PlayerPos[0]] == 'c')
                             {
@@ -139,6 +160,15 @@ namespace Projet7
                                         break;
                                     }
                                 }
+                                for (int j = 0; j < 6; j++)
+                                {
+                                    if (_map.GetMap()[PlayerPos[1], PlayerPos[0] + i - j] == '!' || _map.GetMap()[PlayerPos[1], PlayerPos[0] + i + j] == '!' || _map.GetMap()[PlayerPos[1] - j, PlayerPos[0] + i] == '!' || _map.GetMap()[PlayerPos[1] + j, PlayerPos[0] + i] == '!')
+                                    {
+                                        Console.WriteLine("Trainer");
+                                        break;
+                                    }
+                                }
+
                             }
 
                             else
@@ -167,7 +197,7 @@ namespace Projet7
                         bool jump = false;
                         for (i = 0; i <= 3; i++)
                         {
-                            if (_map.GetMap()[PlayerPos[1] + i, PlayerPos[0]] != '#' && _map.GetMap()[PlayerPos[1] + i, PlayerPos[0]] != '/' && _map.GetMap()[PlayerPos[1] + i, PlayerPos[0]] != 'C' && _map.GetMap()[PlayerPos[1] + i, PlayerPos[0]] != '~')
+                            if (_map.GetMap()[PlayerPos[1] + i, PlayerPos[0]] != '#' && _map.GetMap()[PlayerPos[1] + i, PlayerPos[0]] != '_' && _map.GetMap()[PlayerPos[1] + i, PlayerPos[0]] != '/' && _map.GetMap()[PlayerPos[1] + i, PlayerPos[0]] != 'C' && _map.GetMap()[PlayerPos[1] + i, PlayerPos[0]] != '~')
                             {
                                 if (_map.GetMap()[PlayerPos[1] + i, PlayerPos[0]] == '-')
                                 {
@@ -190,6 +220,14 @@ namespace Projet7
                                         break;
                                     }
                                 }
+                                for (int j = 0; j < 6; j++)
+                                {
+                                    if (_map.GetMap()[PlayerPos[1] + i, PlayerPos[0] - j] == '!' || _map.GetMap()[PlayerPos[1] + i, PlayerPos[0] + j] == '!' || _map.GetMap()[PlayerPos[1] + i - j, PlayerPos[0]] == '!' || _map.GetMap()[PlayerPos[1] + i + j, PlayerPos[0] + i] == '!')
+                                    {
+                                        Console.WriteLine("Trainer");
+                                        break;
+                                    }
+                                }
                             }
                             else
                             {
@@ -206,7 +244,7 @@ namespace Projet7
                     }
                     else
                     {
-                        if (_map.GetMap()[PlayerPos[1] + 1, PlayerPos[0]] != '#' && _map.GetMap()[PlayerPos[1] + 1, PlayerPos[0]] != '/' && _map.GetMap()[PlayerPos[1] + 1, PlayerPos[0]] != 'C' && _map.GetMap()[PlayerPos[1] + 1, PlayerPos[0]] != '~')
+                        if (_map.GetMap()[PlayerPos[1] + 1, PlayerPos[0]] != '#' && _map.GetMap()[PlayerPos[1] + 1, PlayerPos[0]] != '_' && _map.GetMap()[PlayerPos[1] + 1, PlayerPos[0]] != '/' && _map.GetMap()[PlayerPos[1] + 1, PlayerPos[0]] != 'C' && _map.GetMap()[PlayerPos[1] + 1, PlayerPos[0]] != '~')
                         {
                             if (_map.GetMap()[PlayerPos[1] + 1, PlayerPos[0]] == '-')
                             {
@@ -240,6 +278,14 @@ namespace Projet7
                 {
                     Console.WriteLine();
                     Console.WriteLine("A wild pokemon appeared");
+                }
+            }
+            for (int j = 0; j < 6; j++)
+            {
+                if (_map.GetMap()[PlayerPos[1], PlayerPos[0] - j] == '!' || _map.GetMap()[PlayerPos[1], PlayerPos[0] + j] == '!' || _map.GetMap()[PlayerPos[1] - j, PlayerPos[0]] == '!' || _map.GetMap()[PlayerPos[1] + j, PlayerPos[0]] == '!')
+                {
+                    Console.WriteLine("Trainer");
+                    break;
                 }
             }
             if (!_map.Paused)

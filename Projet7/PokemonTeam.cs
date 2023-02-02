@@ -8,7 +8,7 @@ namespace Projet7
 {
     public class PokemonTeam
     {
-        public static PokemonTeam CreateTeam()
+        public static PokemonTeam? CreateTeam()
         {
             Random rId = new Random();
             Random rLvl = new Random();

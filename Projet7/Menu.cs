@@ -198,51 +198,5 @@ namespace Projet7
                 i = i + 5;
             }
         }
-        public int MenuSelection()
-        {
-            int index = 0;
-            ConsoleKey input = Console.ReadKey(true).Key;
-            switch (input)
-            {
-                //case ConsoleKey.UpArrow:
-                //    index--;
-                //    if (index < 1)
-                //        index = 3;
-                //    break;
-                //case ConsoleKey.DownArrow:
-                //    index--;
-                //    if (index > 3)
-                //        index = 1;
-                //    break;
-
-                //case ConsoleKey.Enter:
-                //    switch (index)
-                //    {
-                //        case 1:
-                //            return 1;
-                //        case 2:
-                //            break;
-                //        case 3:
-                //            Console.Clear();
-                //            Environment.Exit(0);
-                //            break;
-                //        default:
-                //            break;
-                //    }
-                //    break;
-                case ConsoleKey.Escape:
-                    return 0;
-                case ConsoleKey.NumPad1:
-                    return 1;
-                case ConsoleKey.NumPad2:
-                    return 2;
-                case ConsoleKey.NumPad3:
-                    return 3;
-                default:
-                    break;
-            }
-            return -1;
-        }
-
     }
 }
