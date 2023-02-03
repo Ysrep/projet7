@@ -17,6 +17,9 @@ namespace Projet7
         {
             get; set;
         }
+        public virtual int PercentHPRevive { get; }
+        public virtual int CatchRate { get; }
+        public virtual int AmountOfHP { get; }
         public virtual int ID
         {
             get => 0;
@@ -29,7 +32,7 @@ namespace Projet7
         {
             return itemName = "Potion";
         }
-        public virtual int AmountOfHP { get => 20; }
+        public override int AmountOfHP { get => 20; }
         public override int AmountInStorage
         {
             get; set;
@@ -83,7 +86,7 @@ namespace Projet7
         {
             return itemName = "Pokeball";
         }
-        public virtual int CatchRate { get => 40; }
+        public override int CatchRate { get => 40; }
         public override int AmountInStorage
         {
             get; set;
@@ -152,7 +155,7 @@ namespace Projet7
         {
             return itemName = "Revive";
         }
-        public virtual int PercentHPRevive { get => 50; }
+        public override int PercentHPRevive { get => 50; }
         public override int AmountInStorage
         {
             get; set;
@@ -225,7 +228,7 @@ namespace Projet7
 
     public class AllBag
     {
-        public bool ItemListDisp(ListConstruct inventory)
+        public bool ItemListDisp(ListConstruct inventory, List<Pokemon> pokemonTeam, Pokemon? wildPokemon, Map _map)
         {
             Console.Clear();
         retryInventory:
@@ -270,11 +273,148 @@ namespace Projet7
                                 if (item.itemName == "Potion" && item.AmountInStorage >= 1)
                                 {
                                     Console.Clear();
-                                    item.AmountInStorage--;
-                                    Console.WriteLine("You used a " + item.itemName);
-                                    Console.WriteLine();
-                                    Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
-                                    Console.WriteLine();
+                                    foreach (var pokemon in pokemonTeam)
+                                    {
+                                        Console.WriteLine();
+                                        Console.WriteLine(pokemon.name["english"]);
+                                        Console.WriteLine("Hp : " + pokemon.currentHp + " / " + pokemon.Base["HP"]);
+                                    }
+                                ChoosePokemon:
+                                    ConsoleKey ChoosePokemon;
+                                    ChoosePokemon = Console.ReadKey(intercept: true).Key;
+                                    switch (ChoosePokemon)
+                                    {
+                                        case ConsoleKey.NumPad1:
+                                            if (pokemonTeam[0].currentHp == 0 || pokemonTeam[0].currentHp == pokemonTeam[0].Base["HP"])
+                                            {
+                                                Console.WriteLine();
+
+                                                goto ChoosePokemon;
+
+                                            }
+                                            else
+                                            {
+                                                item.AmountInStorage--;
+                                                Console.WriteLine("You used a " + item.itemName);
+                                                Console.WriteLine();
+                                                Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                                Console.WriteLine();
+                                                pokemonTeam[0].currentHp += item.AmountOfHP;
+                                            }
+                                            break;
+                                        case ConsoleKey.NumPad2:
+                                            if (pokemonTeam.Count > 1)
+                                            {
+                                                if (pokemonTeam[1].currentHp == 0 || pokemonTeam[1].currentHp == pokemonTeam[1].Base["HP"])
+                                                {
+                                                    Console.WriteLine();
+                                                }
+                                                else
+                                                {
+                                                    item.AmountInStorage--;
+                                                    Console.WriteLine("You used a " + item.itemName);
+                                                    Console.WriteLine();
+                                                    Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                                    Console.WriteLine();
+                                                    pokemonTeam[1].currentHp += item.AmountOfHP;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                goto ChoosePokemon;
+                                            }
+                                            break;
+                                        case ConsoleKey.NumPad3:
+                                            if (pokemonTeam.Count >= 3)
+                                            {
+                                                if (pokemonTeam[2].currentHp == 0 || pokemonTeam[2].currentHp == pokemonTeam[2].Base["HP"])
+                                                {
+                                                    Console.WriteLine();
+                                                }
+                                                else
+                                                {
+                                                    item.AmountInStorage--;
+                                                    Console.WriteLine("You used a " + item.itemName);
+                                                    Console.WriteLine();
+                                                    Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                                    Console.WriteLine();
+                                                    pokemonTeam[2].currentHp += item.AmountOfHP;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                goto ChoosePokemon;
+                                            }
+                                            break;
+                                        case ConsoleKey.NumPad4:
+                                            if (pokemonTeam.Count >= 4)
+                                            {
+                                                if (pokemonTeam[3].currentHp == 0 || pokemonTeam[3].currentHp == pokemonTeam[3].Base["HP"])
+                                                {
+                                                    Console.WriteLine();
+                                                }
+                                                else
+                                                {
+                                                    item.AmountInStorage--;
+                                                    Console.WriteLine("You used a " + item.itemName);
+                                                    Console.WriteLine();
+                                                    Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                                    Console.WriteLine();
+                                                    pokemonTeam[3].currentHp += item.AmountOfHP;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                goto ChoosePokemon;
+                                            }
+                                            break;
+                                        case ConsoleKey.NumPad5:
+                                            if (pokemonTeam.Count >= 5)
+                                            {
+                                                if (pokemonTeam[4].currentHp == 0 || pokemonTeam[4].currentHp == pokemonTeam[4].Base["HP"])
+                                                {
+                                                    Console.WriteLine();
+                                                }
+                                                else
+                                                {
+                                                    item.AmountInStorage--;
+                                                    Console.WriteLine("You used a " + item.itemName);
+                                                    Console.WriteLine();
+                                                    Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                                    Console.WriteLine();
+                                                    pokemonTeam[4].currentHp += item.AmountOfHP;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                goto ChoosePokemon;
+                                            }
+                                            break;
+                                        case ConsoleKey.NumPad6:
+                                            if (pokemonTeam.Count == 1)
+                                            {
+                                                if (pokemonTeam[5].currentHp == 0 || pokemonTeam[5].currentHp == pokemonTeam[5].Base["HP"])
+                                                {
+                                                    Console.WriteLine();
+                                                }
+                                                else
+                                                {
+                                                    item.AmountInStorage--;
+                                                    Console.WriteLine("You used a " + item.itemName);
+                                                    Console.WriteLine();
+                                                    Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                                    Console.WriteLine();
+                                                    pokemonTeam[5].currentHp += item.AmountOfHP;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                goto ChoosePokemon;
+                                            }
+                                            break;
+                                        default:
+                                            break;
+                                    }
                                     goto retryPot;
                                 }
                             }
@@ -295,11 +435,148 @@ namespace Projet7
                                 if (item.itemName == "Super Potion" && item.AmountInStorage >= 1)
                                 {
                                     Console.Clear();
-                                    item.AmountInStorage--;
-                                    Console.WriteLine("You used a " + item.itemName);
-                                    Console.WriteLine();
-                                    Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
-                                    Console.WriteLine();
+                                    foreach (var pokemon in pokemonTeam)
+                                    {
+                                        Console.WriteLine();
+                                        Console.WriteLine(pokemon.name["english"]);
+                                        Console.WriteLine("Hp : " + pokemon.currentHp + " / " + pokemon.Base["HP"]);
+                                    }
+                                ChoosePokemon:
+                                    ConsoleKey ChoosePokemon;
+                                    ChoosePokemon = Console.ReadKey(intercept: true).Key;
+                                    switch (ChoosePokemon)
+                                    {
+                                        case ConsoleKey.NumPad1:
+                                            if (pokemonTeam[0].currentHp == 0 || pokemonTeam[0].currentHp == pokemonTeam[0].Base["HP"])
+                                            {
+                                                Console.WriteLine();
+
+                                                goto ChoosePokemon;
+
+                                            }
+                                            else
+                                            {
+                                                item.AmountInStorage--;
+                                                Console.WriteLine("You used a " + item.itemName);
+                                                Console.WriteLine();
+                                                Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                                Console.WriteLine();
+                                                pokemonTeam[0].currentHp += item.AmountOfHP;
+                                            }
+                                            break;
+                                        case ConsoleKey.NumPad2:
+                                            if (pokemonTeam.Count > 1)
+                                            {
+                                                if (pokemonTeam[1].currentHp == 0 || pokemonTeam[1].currentHp == pokemonTeam[1].Base["HP"])
+                                                {
+                                                    Console.WriteLine();
+                                                }
+                                                else
+                                                {
+                                                    item.AmountInStorage--;
+                                                    Console.WriteLine("You used a " + item.itemName);
+                                                    Console.WriteLine();
+                                                    Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                                    Console.WriteLine();
+                                                    pokemonTeam[1].currentHp += item.AmountOfHP;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                goto ChoosePokemon;
+                                            }
+                                            break;
+                                        case ConsoleKey.NumPad3:
+                                            if (pokemonTeam.Count >= 3)
+                                            {
+                                                if (pokemonTeam[2].currentHp == 0 || pokemonTeam[2].currentHp == pokemonTeam[2].Base["HP"])
+                                                {
+                                                    Console.WriteLine();
+                                                }
+                                                else
+                                                {
+                                                    item.AmountInStorage--;
+                                                    Console.WriteLine("You used a " + item.itemName);
+                                                    Console.WriteLine();
+                                                    Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                                    Console.WriteLine();
+                                                    pokemonTeam[2].currentHp += item.AmountOfHP;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                goto ChoosePokemon;
+                                            }
+                                            break;
+                                        case ConsoleKey.NumPad4:
+                                            if (pokemonTeam.Count >= 4)
+                                            {
+                                                if (pokemonTeam[3].currentHp == 0 || pokemonTeam[3].currentHp == pokemonTeam[3].Base["HP"])
+                                                {
+                                                    Console.WriteLine();
+                                                }
+                                                else
+                                                {
+                                                    item.AmountInStorage--;
+                                                    Console.WriteLine("You used a " + item.itemName);
+                                                    Console.WriteLine();
+                                                    Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                                    Console.WriteLine();
+                                                    pokemonTeam[3].currentHp += item.AmountOfHP;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                goto ChoosePokemon;
+                                            }
+                                            break;
+                                        case ConsoleKey.NumPad5:
+                                            if (pokemonTeam.Count >= 5)
+                                            {
+                                                if (pokemonTeam[4].currentHp == 0 || pokemonTeam[4].currentHp == pokemonTeam[4].Base["HP"])
+                                                {
+                                                    Console.WriteLine();
+                                                }
+                                                else
+                                                {
+                                                    item.AmountInStorage--;
+                                                    Console.WriteLine("You used a " + item.itemName);
+                                                    Console.WriteLine();
+                                                    Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                                    Console.WriteLine();
+                                                    pokemonTeam[4].currentHp += item.AmountOfHP;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                goto ChoosePokemon;
+                                            }
+                                            break;
+                                        case ConsoleKey.NumPad6:
+                                            if (pokemonTeam.Count == 1)
+                                            {
+                                                if (pokemonTeam[5].currentHp == 0 || pokemonTeam[5].currentHp == pokemonTeam[5].Base["HP"])
+                                                {
+                                                    Console.WriteLine();
+                                                }
+                                                else
+                                                {
+                                                    item.AmountInStorage--;
+                                                    Console.WriteLine("You used a " + item.itemName);
+                                                    Console.WriteLine();
+                                                    Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                                    Console.WriteLine();
+                                                    pokemonTeam[5].currentHp += item.AmountOfHP;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                goto ChoosePokemon;
+                                            }
+                                            break;
+                                        default:
+                                            break;
+                                    }
                                     goto retryPot;
                                 }
                             }
@@ -320,11 +597,148 @@ namespace Projet7
                                 if (item.itemName == "Hyper Potion" && item.AmountInStorage >= 1)
                                 {
                                     Console.Clear();
-                                    item.AmountInStorage--;
-                                    Console.WriteLine("You used a " + item.itemName);
-                                    Console.WriteLine();
-                                    Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
-                                    Console.WriteLine();
+                                    foreach (var pokemon in pokemonTeam)
+                                    {
+                                        Console.WriteLine();
+                                        Console.WriteLine(pokemon.name["english"]);
+                                        Console.WriteLine("Hp : " + pokemon.currentHp + " / " + pokemon.Base["HP"]);
+                                    }
+                                ChoosePokemon:
+                                    ConsoleKey ChoosePokemon;
+                                    ChoosePokemon = Console.ReadKey(intercept: true).Key;
+                                    switch (ChoosePokemon)
+                                    {
+                                        case ConsoleKey.NumPad1:
+                                            if (pokemonTeam[0].currentHp == 0 || pokemonTeam[0].currentHp == pokemonTeam[0].Base["HP"])
+                                            {
+                                                Console.WriteLine();
+
+                                                goto ChoosePokemon;
+
+                                            }
+                                            else
+                                            {
+                                                item.AmountInStorage--;
+                                                Console.WriteLine("You used a " + item.itemName);
+                                                Console.WriteLine();
+                                                Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                                Console.WriteLine();
+                                                pokemonTeam[0].currentHp += item.AmountOfHP;
+                                            }
+                                            break;
+                                        case ConsoleKey.NumPad2:
+                                            if (pokemonTeam.Count > 1)
+                                            {
+                                                if (pokemonTeam[1].currentHp == 0 || pokemonTeam[1].currentHp == pokemonTeam[1].Base["HP"])
+                                                {
+                                                    Console.WriteLine();
+                                                }
+                                                else
+                                                {
+                                                    item.AmountInStorage--;
+                                                    Console.WriteLine("You used a " + item.itemName);
+                                                    Console.WriteLine();
+                                                    Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                                    Console.WriteLine();
+                                                    pokemonTeam[1].currentHp += item.AmountOfHP;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                goto ChoosePokemon;
+                                            }
+                                            break;
+                                        case ConsoleKey.NumPad3:
+                                            if (pokemonTeam.Count >= 3)
+                                            {
+                                                if (pokemonTeam[2].currentHp == 0 || pokemonTeam[2].currentHp == pokemonTeam[2].Base["HP"])
+                                                {
+                                                    Console.WriteLine();
+                                                }
+                                                else
+                                                {
+                                                    item.AmountInStorage--;
+                                                    Console.WriteLine("You used a " + item.itemName);
+                                                    Console.WriteLine();
+                                                    Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                                    Console.WriteLine();
+                                                    pokemonTeam[2].currentHp += item.AmountOfHP;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                goto ChoosePokemon;
+                                            }
+                                            break;
+                                        case ConsoleKey.NumPad4:
+                                            if (pokemonTeam.Count >= 4)
+                                            {
+                                                if (pokemonTeam[3].currentHp == 0 || pokemonTeam[3].currentHp == pokemonTeam[3].Base["HP"])
+                                                {
+                                                    Console.WriteLine();
+                                                }
+                                                else
+                                                {
+                                                    item.AmountInStorage--;
+                                                    Console.WriteLine("You used a " + item.itemName);
+                                                    Console.WriteLine();
+                                                    Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                                    Console.WriteLine();
+                                                    pokemonTeam[3].currentHp += item.AmountOfHP;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                goto ChoosePokemon;
+                                            }
+                                            break;
+                                        case ConsoleKey.NumPad5:
+                                            if (pokemonTeam.Count >= 5)
+                                            {
+                                                if (pokemonTeam[4].currentHp == 0 || pokemonTeam[4].currentHp == pokemonTeam[4].Base["HP"])
+                                                {
+                                                    Console.WriteLine();
+                                                }
+                                                else
+                                                {
+                                                    item.AmountInStorage--;
+                                                    Console.WriteLine("You used a " + item.itemName);
+                                                    Console.WriteLine();
+                                                    Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                                    Console.WriteLine();
+                                                    pokemonTeam[4].currentHp += item.AmountOfHP;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                goto ChoosePokemon;
+                                            }
+                                            break;
+                                        case ConsoleKey.NumPad6:
+                                            if (pokemonTeam.Count == 1)
+                                            {
+                                                if (pokemonTeam[5].currentHp == 0 || pokemonTeam[5].currentHp == pokemonTeam[5].Base["HP"])
+                                                {
+                                                    Console.WriteLine();
+                                                }
+                                                else
+                                                {
+                                                    item.AmountInStorage--;
+                                                    Console.WriteLine("You used a " + item.itemName);
+                                                    Console.WriteLine();
+                                                    Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                                    Console.WriteLine();
+                                                    pokemonTeam[5].currentHp += item.AmountOfHP;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                goto ChoosePokemon;
+                                            }
+                                            break;
+                                        default:
+                                            break;
+                                    }
                                     goto retryPot;
                                 }
                             }
@@ -341,8 +755,8 @@ namespace Projet7
                     }
                     break;
 
-          
-        
+
+
                 case ConsoleKey.R:
                 retryRevive:
                     Console.WriteLine("Select the wanted potion");
@@ -367,11 +781,147 @@ namespace Projet7
                                 if (item.itemName == "Revive" && item.AmountInStorage >= 1)
                                 {
                                     Console.Clear();
-                                    item.AmountInStorage--;
-                                    Console.WriteLine("You used a " + item.itemName);
-                                    Console.WriteLine();
-                                    Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
-                                    Console.WriteLine();
+                                    foreach (var pokemon in pokemonTeam)
+                                    {
+                                        Console.WriteLine();
+                                        Console.WriteLine(pokemon.name["english"]);
+                                        Console.WriteLine("Hp : " +pokemon.currentHp + " / " + pokemon.Base["HP"]);
+                                    }
+                                ChoosePokemon:
+                                    ConsoleKey ChoosePokemon;
+                                    ChoosePokemon = Console.ReadKey(intercept: true).Key;
+                                    switch (ChoosePokemon)
+                                    {
+                                        case ConsoleKey.NumPad1:
+                                            if (pokemonTeam[0].currentHp != 0)
+                                            {
+                                                Console.WriteLine();
+                                                goto ChoosePokemon;
+
+                                            }
+                                            else
+                                            {
+                                                item.AmountInStorage--;
+                                                Console.WriteLine("You used a " + item.itemName);
+                                                Console.WriteLine();
+                                                Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                                Console.WriteLine();
+                                                pokemonTeam[0].currentHp += pokemonTeam[0].Base["HP"] / 2;
+                                            }
+                                            break;
+                                        case ConsoleKey.NumPad2:
+                                            if (pokemonTeam.Count > 1)
+                                            {
+                                                if (pokemonTeam[1].currentHp == 0 || pokemonTeam[1].currentHp == pokemonTeam[1].Base["HP"])
+                                                {
+                                                    Console.WriteLine();
+                                                }
+                                                else
+                                                {
+                                                    item.AmountInStorage--;
+                                                    Console.WriteLine("You used a " + item.itemName);
+                                                    Console.WriteLine();
+                                                    Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                                    Console.WriteLine();
+                                                    pokemonTeam[1].currentHp += pokemonTeam[0].Base["HP"] / 2;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                goto ChoosePokemon;
+                                            }
+                                            break;
+                                        case ConsoleKey.NumPad3:
+                                            if (pokemonTeam.Count >= 3)
+                                            {
+                                                if (pokemonTeam[2].currentHp == 0 || pokemonTeam[2].currentHp == pokemonTeam[2].Base["HP"])
+                                                {
+                                                    Console.WriteLine();
+                                                }
+                                                else
+                                                {
+                                                    item.AmountInStorage--;
+                                                    Console.WriteLine("You used a " + item.itemName);
+                                                    Console.WriteLine();
+                                                    Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                                    Console.WriteLine();
+                                                    pokemonTeam[2].currentHp += pokemonTeam[0].Base["HP"] / 2;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                goto ChoosePokemon;
+                                            }
+                                            break;
+                                        case ConsoleKey.NumPad4:
+                                            if (pokemonTeam.Count >= 4)
+                                            {
+                                                if (pokemonTeam[3].currentHp == 0 || pokemonTeam[3].currentHp == pokemonTeam[3].Base["HP"])
+                                                {
+                                                    Console.WriteLine();
+                                                }
+                                                else
+                                                {
+                                                    item.AmountInStorage--;
+                                                    Console.WriteLine("You used a " + item.itemName);
+                                                    Console.WriteLine();
+                                                    Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                                    Console.WriteLine();
+                                                    pokemonTeam[3].currentHp += pokemonTeam[0].Base["HP"] / 2;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                goto ChoosePokemon;
+                                            }
+                                            break;
+                                        case ConsoleKey.NumPad5:
+                                            if (pokemonTeam.Count >= 5)
+                                            {
+                                                if (pokemonTeam[4].currentHp == 0 || pokemonTeam[4].currentHp == pokemonTeam[4].Base["HP"])
+                                                {
+                                                    Console.WriteLine();
+                                                }
+                                                else
+                                                {
+                                                    item.AmountInStorage--;
+                                                    Console.WriteLine("You used a " + item.itemName);
+                                                    Console.WriteLine();
+                                                    Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                                    Console.WriteLine();
+                                                    pokemonTeam[4].currentHp += pokemonTeam[0].Base["HP"] / 2;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                goto ChoosePokemon;
+                                            }
+                                            break;
+                                        case ConsoleKey.NumPad6:
+                                            if (pokemonTeam.Count == 1)
+                                            {
+                                                if (pokemonTeam[5].currentHp == 0 || pokemonTeam[5].currentHp == pokemonTeam[5].Base["HP"])
+                                                {
+                                                    Console.WriteLine();
+                                                }
+                                                else
+                                                {
+                                                    item.AmountInStorage--;
+                                                    Console.WriteLine("You used a " + item.itemName);
+                                                    Console.WriteLine();
+                                                    Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                                    Console.WriteLine();
+                                                    pokemonTeam[5].currentHp += pokemonTeam[0].Base["HP"] / 2;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                goto ChoosePokemon;
+                                            }
+                                            break;
+                                        default:
+                                            break;
+                                    }
                                     goto retryRevive;
                                 }
 
@@ -395,11 +945,147 @@ namespace Projet7
                                 if (item.itemName == "Max Revive" && item.AmountInStorage >= 1)
                                 {
                                     Console.Clear();
-                                    item.AmountInStorage--;
-                                    Console.WriteLine("You used a " + item.itemName);
-                                    Console.WriteLine();
-                                    Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
-                                    Console.WriteLine();
+                                    foreach (var pokemon in pokemonTeam)
+                                    {
+                                        Console.WriteLine();
+                                        Console.WriteLine(pokemon.name["english"]);
+                                        Console.WriteLine("Hp : " + pokemon.currentHp + " / " + pokemon.Base["HP"]);
+                                    }
+                                ChoosePokemon:
+                                    ConsoleKey ChoosePokemon;
+                                    ChoosePokemon = Console.ReadKey(intercept: true).Key;
+                                    switch (ChoosePokemon)
+                                    {
+                                        case ConsoleKey.NumPad1:
+                                            if (pokemonTeam[0].currentHp != 0)
+                                            {
+                                                Console.WriteLine();
+                                                goto ChoosePokemon;
+
+                                            }
+                                            else
+                                            {
+                                                item.AmountInStorage--;
+                                                Console.WriteLine("You used a " + item.itemName);
+                                                Console.WriteLine();
+                                                Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                                Console.WriteLine();
+                                                pokemonTeam[0].currentHp += pokemonTeam[0].Base["HP"];
+                                            }
+                                            break;
+                                        case ConsoleKey.NumPad2:
+                                            if (pokemonTeam.Count > 1)
+                                            {
+                                                if (pokemonTeam[1].currentHp == 0 || pokemonTeam[1].currentHp == pokemonTeam[1].Base["HP"])
+                                                {
+                                                    Console.WriteLine();
+                                                }
+                                                else
+                                                {
+                                                    item.AmountInStorage--;
+                                                    Console.WriteLine("You used a " + item.itemName);
+                                                    Console.WriteLine();
+                                                    Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                                    Console.WriteLine();
+                                                    pokemonTeam[1].currentHp += pokemonTeam[0].Base["HP"];
+                                                }
+                                            }
+                                            else
+                                            {
+                                                goto ChoosePokemon;
+                                            }
+                                            break;
+                                        case ConsoleKey.NumPad3:
+                                            if (pokemonTeam.Count >= 3)
+                                            {
+                                                if (pokemonTeam[2].currentHp == 0 || pokemonTeam[2].currentHp == pokemonTeam[2].Base["HP"])
+                                                {
+                                                    Console.WriteLine();
+                                                }
+                                                else
+                                                {
+                                                    item.AmountInStorage--;
+                                                    Console.WriteLine("You used a " + item.itemName);
+                                                    Console.WriteLine();
+                                                    Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                                    Console.WriteLine();
+                                                    pokemonTeam[2].currentHp += pokemonTeam[0].Base["HP"];
+                                                }
+                                            }
+                                            else
+                                            {
+                                                goto ChoosePokemon;
+                                            }
+                                            break;
+                                        case ConsoleKey.NumPad4:
+                                            if (pokemonTeam.Count >= 4)
+                                            {
+                                                if (pokemonTeam[3].currentHp == 0 || pokemonTeam[3].currentHp == pokemonTeam[3].Base["HP"])
+                                                {
+                                                    Console.WriteLine();
+                                                }
+                                                else
+                                                {
+                                                    item.AmountInStorage--;
+                                                    Console.WriteLine("You used a " + item.itemName);
+                                                    Console.WriteLine();
+                                                    Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                                    Console.WriteLine();
+                                                    pokemonTeam[3].currentHp += pokemonTeam[0].Base["HP"];
+                                                }
+                                            }
+                                            else
+                                            {
+                                                goto ChoosePokemon;
+                                            }
+                                            break;
+                                        case ConsoleKey.NumPad5:
+                                            if (pokemonTeam.Count >= 5)
+                                            {
+                                                if (pokemonTeam[4].currentHp == 0 || pokemonTeam[4].currentHp == pokemonTeam[4].Base["HP"])
+                                                {
+                                                    Console.WriteLine();
+                                                }
+                                                else
+                                                {
+                                                    item.AmountInStorage--;
+                                                    Console.WriteLine("You used a " + item.itemName);
+                                                    Console.WriteLine();
+                                                    Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                                    Console.WriteLine();
+                                                    pokemonTeam[4].currentHp += pokemonTeam[0].Base["HP"];
+                                                }
+                                            }
+                                            else
+                                            {
+                                                goto ChoosePokemon;
+                                            }
+                                            break;
+                                        case ConsoleKey.NumPad6:
+                                            if (pokemonTeam.Count == 1)
+                                            {
+                                                if (pokemonTeam[5].currentHp == 0 || pokemonTeam[5].currentHp == pokemonTeam[5].Base["HP"])
+                                                {
+                                                    Console.WriteLine();
+                                                }
+                                                else
+                                                {
+                                                    item.AmountInStorage--;
+                                                    Console.WriteLine("You used a " + item.itemName);
+                                                    Console.WriteLine();
+                                                    Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                                    Console.WriteLine();
+                                                    pokemonTeam[5].currentHp += pokemonTeam[0].Base["HP"];
+                                                }
+                                            }
+                                            else
+                                            {
+                                                goto ChoosePokemon;
+                                            }
+                                            break;
+                                        default:
+                                            break;
+                                    }
                                     goto retryRevive;
                                 }
                             }
@@ -430,158 +1116,319 @@ namespace Projet7
                     switch (PlayerMoveInPokeball)
                     {
                         case ConsoleKey.P:
-
-                            foreach (Item item in inventory.inventory)
+                            if (wildPokemon != null && _map.WildBattle)
                             {
-                                if (item.itemName == "Pokeball" && item.AmountInStorage == 0)
+                                foreach (Item item in inventory.inventory)
                                 {
-                                    Console.Clear();
-                                    Console.WriteLine("You have 0 " + item.itemName + " left.");
-                                    Console.WriteLine("You can't use : " + item.itemName + " if there is 0 in your inventory.");
-                                    Console.WriteLine();
-                                    goto retryPokeball;
-                                }
-
-                                if (item.itemName == "Pokeball" && item.AmountInStorage >= 1)
-                                {
-                                    Console.Clear();
-                                    item.AmountInStorage--;
-                                    Console.WriteLine("You used a " + item.itemName);
-                                    Console.WriteLine();
-                                    Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
-                                    Console.WriteLine();
-
-                                    if (didICatchIt <= 40)
+                                    if (item.itemName == "Pokeball" && item.AmountInStorage == 0)
                                     {
                                         Console.Clear();
-                                        Console.WriteLine("You catched the pokemon !");
-                                        goto retryInventory;
-                                    }
-                                    else
-                                    {
-                                        Console.Clear();
-                                        Console.WriteLine("You did not catch the pokemon D:");
+                                        Console.WriteLine("You have 0 " + item.itemName + " left.");
+                                        Console.WriteLine("You can't use : " + item.itemName + " if there is 0 in your inventory.");
+                                        Console.WriteLine();
                                         goto retryPokeball;
+                                    }
+
+                                    if (item.itemName == "Pokeball" && item.AmountInStorage >= 1)
+                                    {
+                                        Console.Clear();
+                                        item.AmountInStorage--;
+                                        Console.WriteLine("You used a " + item.itemName);
+                                        Console.WriteLine();
+                                        Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                        Console.WriteLine();
+
+                                        if (didICatchIt <= 40)
+                                        {
+                                            Console.Clear();
+                                            Console.WriteLine("You catched the pokemon !");
+                                            if (pokemonTeam.Count == 6)
+                                            {
+                                                Console.Clear();
+                                                Console.WriteLine();
+                                                ConsoleKey key = Console.ReadKey(true).Key;
+                                                switch(key){
+                                                    case ConsoleKey.NumPad1:
+                                                        break;
+                                                    case ConsoleKey.NumPad2:
+                                                        break;
+                                                    case ConsoleKey.NumPad3:
+                                                        break;
+                                                    case ConsoleKey.NumPad4:
+                                                        break;
+                                                    case ConsoleKey.NumPad5:
+                                                        break;
+                                                    case ConsoleKey.NumPad6:
+                                                        break;
+
+                                                }
+                                            }
+                                            else
+                                            {
+                                                pokemonTeam.Add(wildPokemon);
+                                            }
+                                            _map.WildBattle = false;
+                                            return false;
+                                        }
+                                        else
+                                        {
+                                            Console.Clear();
+                                            Console.WriteLine("You did not catch the pokemon D:");
+                                            goto retryPokeball;
+                                        }
                                     }
                                 }
                             }
                             break;
 
                         case ConsoleKey.S:
-
-                            foreach (Item item in inventory.inventory)
+                            if (wildPokemon != null && _map.WildBattle)
                             {
-                                if (item.itemName == "Superball" && item.AmountInStorage == 0)
+                                foreach (Item item in inventory.inventory)
                                 {
-                                    Console.Clear();
-                                    Console.WriteLine("You have 0 " + item.itemName + " left.");
-                                    Console.WriteLine("You can't use : " + item.itemName + " if there is 0 in your inventory.");
-                                    Console.WriteLine();
-                                    goto retryPokeball;
-                                }
-
-                                if (item.itemName == "Superball" && item.AmountInStorage >= 1)
-                                {
-                                    Console.Clear();
-                                    item.AmountInStorage--;
-                                    Console.WriteLine("You used a " + item.itemName);
-                                    Console.WriteLine();
-                                    Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
-                                    Console.WriteLine();
-
-                                    if (didICatchIt <= 60)
+                                    if (item.itemName == "Superball" && item.AmountInStorage == 0)
                                     {
                                         Console.Clear();
-                                        Console.WriteLine("You catched the pokemon !");
-                                        Console.WriteLine();
-                                        goto retryInventory;
-                                    }
-                                    else
-                                    {
-                                        Console.Clear();
-                                        Console.WriteLine("You did not catch the pokemon D:");
+                                        Console.WriteLine("You have 0 " + item.itemName + " left.");
+                                        Console.WriteLine("You can't use : " + item.itemName + " if there is 0 in your inventory.");
                                         Console.WriteLine();
                                         goto retryPokeball;
+                                    }
+
+                                    if (item.itemName == "Superball" && item.AmountInStorage >= 1)
+                                    {
+                                        Console.Clear();
+                                        item.AmountInStorage--;
+                                        Console.WriteLine("You used a " + item.itemName);
+                                        Console.WriteLine();
+                                        Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                        Console.WriteLine();
+
+                                        if (didICatchIt <= 60)
+                                        {
+                                            Console.Clear();
+                                            Console.WriteLine("You catched the pokemon !");
+                                            if (pokemonTeam.Count == 6)
+                                            {
+                                                Console.Clear();
+                                                Console.WriteLine();
+                                                foreach (var pokemon in pokemonTeam)
+                                                {
+                                                    Console.WriteLine(pokemon.name["english"] + " Level : " + pokemon.level);
+                                                    Console.WriteLine(pokemon.currentHp + " / " + pokemon.Base["HP"]);
+                                                }
+                                                ConsoleKey key = Console.ReadKey(true).Key;
+                                                switch(key){
+                                                    case ConsoleKey.NumPad1:
+                                                        pokemonTeam.RemoveAt(0);
+                                                        pokemonTeam.Insert(0,wildPokemon);
+                                                        break;
+                                                    case ConsoleKey.NumPad2:
+                                                        pokemonTeam.RemoveAt(1);
+                                                        pokemonTeam.Insert(1, wildPokemon);
+                                                        break;
+                                                    case ConsoleKey.NumPad3:
+                                                        pokemonTeam.RemoveAt(2);
+                                                        pokemonTeam.Insert(2, wildPokemon);
+                                                        break;
+                                                    case ConsoleKey.NumPad4:
+                                                        pokemonTeam.RemoveAt(3);
+                                                        pokemonTeam.Insert(3, wildPokemon);
+                                                        break;
+                                                    case ConsoleKey.NumPad5:
+                                                        pokemonTeam.RemoveAt(4);
+                                                        pokemonTeam.Insert(4, wildPokemon);
+                                                        break;
+                                                    case ConsoleKey.NumPad6:
+                                                        pokemonTeam.RemoveAt(5);
+                                                        pokemonTeam.Insert(5, wildPokemon);
+                                                        break;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                pokemonTeam.Add(wildPokemon);
+                                            }
+                                            Console.WriteLine();
+                                            _map.WildBattle = false;
+                                            return false;
+                                        }
+                                        else
+                                        {
+                                            Console.Clear();
+                                            Console.WriteLine("You did not catch the pokemon D:");
+                                            Console.WriteLine();
+                                            goto retryPokeball;
+                                        }
                                     }
                                 }
                             }
                             break;
 
                         case ConsoleKey.H:
-
-                            foreach (Item item in inventory.inventory)
+                            if (wildPokemon != null && _map.WildBattle)
                             {
-                                if (item.itemName == "Hyperball" && item.AmountInStorage == 0)
+                                foreach (Item item in inventory.inventory)
                                 {
-                                    Console.Clear();
-                                    Console.WriteLine("You have 0 " + item.itemName + " left.");
-                                    Console.WriteLine("You can't use : " + item.itemName + " if there is 0 in your inventory.");
-                                    Console.WriteLine();
-                                    goto retryPokeball;
-                                }
-
-                                if (item.itemName == "Hyperball" && item.AmountInStorage >= 1)
-                                {
-                                    Console.Clear();
-                                    item.AmountInStorage--;
-                                    Console.WriteLine("You used a " + item.itemName);
-                                    Console.WriteLine();
-                                    Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
-                                    Console.WriteLine();
-
-                                    if (didICatchIt <= 80)
+                                    if (item.itemName == "Hyperball" && item.AmountInStorage == 0)
                                     {
                                         Console.Clear();
-                                        Console.WriteLine("You catched the pokemon !");
-                                        Console.WriteLine();
-                                        goto retryInventory;
-                                    }
-                                    else
-                                    {
-                                        Console.Clear();
-                                        Console.WriteLine("You did not catch the pokemon D:");
+                                        Console.WriteLine("You have 0 " + item.itemName + " left.");
+                                        Console.WriteLine("You can't use : " + item.itemName + " if there is 0 in your inventory.");
                                         Console.WriteLine();
                                         goto retryPokeball;
+                                    }
+
+                                    if (item.itemName == "Hyperball" && item.AmountInStorage >= 1)
+                                    {
+                                        Console.Clear();
+                                        item.AmountInStorage--;
+                                        Console.WriteLine("You used a " + item.itemName);
+                                        Console.WriteLine();
+                                        Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                        Console.WriteLine();
+
+                                        if (didICatchIt <= 80)
+                                        {
+                                            Console.Clear();
+                                            Console.WriteLine("You catched the pokemon !");
+                                            if (pokemonTeam.Count == 6)
+                                            {
+                                                Console.Clear();
+                                                Console.WriteLine();
+                                                foreach (var pokemon in pokemonTeam)
+                                                {
+                                                    Console.WriteLine(pokemon.name["english"] + " Level : " + pokemon.level);
+                                                    Console.WriteLine(pokemon.currentHp + " / " + pokemon.Base["HP"]);
+                                                }
+                                                ConsoleKey key = Console.ReadKey(true).Key;
+                                                switch (key)
+                                                {
+                                                    case ConsoleKey.NumPad1:
+                                                        pokemonTeam.RemoveAt(0);
+                                                        pokemonTeam.Insert(0, wildPokemon);
+                                                        break;
+                                                    case ConsoleKey.NumPad2:
+                                                        pokemonTeam.RemoveAt(1);
+                                                        pokemonTeam.Insert(1, wildPokemon);
+                                                        break;
+                                                    case ConsoleKey.NumPad3:
+                                                        pokemonTeam.RemoveAt(2);
+                                                        pokemonTeam.Insert(2, wildPokemon);
+                                                        break;
+                                                    case ConsoleKey.NumPad4:
+                                                        pokemonTeam.RemoveAt(3);
+                                                        pokemonTeam.Insert(3, wildPokemon);
+                                                        break;
+                                                    case ConsoleKey.NumPad5:
+                                                        pokemonTeam.RemoveAt(4);
+                                                        pokemonTeam.Insert(4, wildPokemon);
+                                                        break;
+                                                    case ConsoleKey.NumPad6:
+                                                        pokemonTeam.RemoveAt(5);
+                                                        pokemonTeam.Insert(5, wildPokemon);
+                                                        break;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                pokemonTeam.Add(wildPokemon);
+                                            }
+                                            Console.WriteLine();
+                                            _map.WildBattle = false;
+                                            return false;
+                                        }
+                                        else
+                                        {
+                                            Console.Clear();
+                                            Console.WriteLine("You did not catch the pokemon D:");
+                                            Console.WriteLine();
+                                            goto retryPokeball;
+                                        }
                                     }
                                 }
                             }
                             break;
 
                         case ConsoleKey.M:
-
-                            foreach (Item item in inventory.inventory)
+                            if (wildPokemon != null && _map.WildBattle)
                             {
-                                if (item.itemName == "Masterball" && item.AmountInStorage == 0)
+                                foreach (Item item in inventory.inventory)
                                 {
-                                    Console.Clear();
-                                    Console.WriteLine("You have 0 " + item.itemName + " left.");
-                                    Console.WriteLine("You can't use : " + item.itemName + " if there is 0 in your inventory.");
-                                    Console.WriteLine();
-                                    goto retryPokeball;
-                                }
-
-                                if (item.itemName == "Masterball" && item.AmountInStorage >= 1)
-                                {
-                                    Console.Clear();
-                                    item.AmountInStorage--;
-                                    Console.WriteLine("You used a " + item.itemName);
-                                    Console.WriteLine();
-                                    Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
-                                    Console.WriteLine();
-
-                                    if (didICatchIt <= 100)
+                                    if (item.itemName == "Masterball" && item.AmountInStorage == 0)
                                     {
                                         Console.Clear();
-                                        Console.WriteLine("You catched the pokemon !");
-                                        Console.WriteLine();
-                                        goto retryInventory;
-                                    }
-                                    else
-                                    {
-                                        Console.Clear();
-                                        Console.WriteLine("You did not catch the pokemon D:");
+                                        Console.WriteLine("You have 0 " + item.itemName + " left.");
+                                        Console.WriteLine("You can't use : " + item.itemName + " if there is 0 in your inventory.");
                                         Console.WriteLine();
                                         goto retryPokeball;
+                                    }
+
+                                    if (item.itemName == "Masterball" && item.AmountInStorage >= 1)
+                                    {
+                                        Console.Clear();
+                                        item.AmountInStorage--;
+                                        Console.WriteLine("You used a " + item.itemName);
+                                        Console.WriteLine();
+                                        Console.WriteLine("You have : " + item.AmountInStorage + " " + item.itemName + " left.");
+                                        Console.WriteLine();
+
+                                        if (didICatchIt <= 100)
+                                        {
+                                            Console.Clear();
+                                            Console.WriteLine("You catched the pokemon !");
+                                            if (pokemonTeam.Count == 6)
+                                            {
+                                                Console.Clear();
+                                                Console.WriteLine();
+                                                foreach (var pokemon in pokemonTeam)
+                                                {
+                                                    Console.WriteLine(pokemon.name["english"] + " Level : " + pokemon.level);
+                                                    Console.WriteLine(pokemon.currentHp + " / " + pokemon.Base["HP"]);
+                                                }
+                                                ConsoleKey key = Console.ReadKey(true).Key;
+                                                switch (key)
+                                                {
+                                                    case ConsoleKey.NumPad1:
+                                                        pokemonTeam.RemoveAt(0);
+                                                        pokemonTeam.Insert(0, wildPokemon);
+                                                        break;
+                                                    case ConsoleKey.NumPad2:
+                                                        pokemonTeam.RemoveAt(1);
+                                                        pokemonTeam.Insert(1, wildPokemon);
+                                                        break;
+                                                    case ConsoleKey.NumPad3:
+                                                        pokemonTeam.RemoveAt(2);
+                                                        pokemonTeam.Insert(2, wildPokemon);
+                                                        break;
+                                                    case ConsoleKey.NumPad4:
+                                                        pokemonTeam.RemoveAt(3);
+                                                        pokemonTeam.Insert(3, wildPokemon);
+                                                        break;
+                                                    case ConsoleKey.NumPad5:
+                                                        pokemonTeam.RemoveAt(4);
+                                                        pokemonTeam.Insert(4, wildPokemon);
+                                                        break;
+                                                    case ConsoleKey.NumPad6:
+                                                        pokemonTeam.RemoveAt(5);
+                                                        pokemonTeam.Insert(5, wildPokemon);
+                                                        break;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                pokemonTeam.Add(wildPokemon);
+                                            }
+                                            Console.WriteLine();
+                                            return false;
+                                        }
+                                        else
+                                        {
+                                            Console.Clear();
+                                            Console.WriteLine("You did not catch the pokemon D:");
+                                            Console.WriteLine();
+                                            goto retryPokeball;
+                                        }
                                     }
                                 }
                             }

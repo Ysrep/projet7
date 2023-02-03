@@ -9,8 +9,12 @@ namespace Projet7
     public class Map
     {
         public bool Save { get; set; }
+        public bool BattleLost { get; set; }
         public bool StartMenu {get; set;}
         public bool WildBattle { get; set;}
+
+        public bool GymBattle { get; set; }
+        public bool TrainerBattle { get; set; }
         public bool Menu { get; set; }
         public bool Inventory { get; set;}
         public bool Pokemon { get; set;}
@@ -28,7 +32,7 @@ namespace Projet7
             int l = 0;
             int col = 0;
 
-            string[] lines = System.IO.File.ReadAllLines(@"../../../map.txt");
+            string[] lines = System.IO.File.ReadAllLines(@"map.txt");
 
             foreach (string line in lines)
             {
@@ -62,10 +66,6 @@ namespace Projet7
             {
                 addToMaxX = 60 - _playerPos[0];
             }
-            //else if (_playerPos[0] >= 179)
-            //{
-            //    addToMinX = 60 - minPosX;
-            //}
 
             for (int i = minPosY ; i < maxPosY + addToMaxY; i++)
             {
@@ -119,6 +119,12 @@ namespace Projet7
                     {
                         Console.ForegroundColor = ConsoleColor.Black;
                         Console.BackgroundColor = ConsoleColor.Red;
+                        Console.Write(' ');
+                    }
+                    else if (_map[i, j] == 'A')
+                    {
+                        Console.ForegroundColor = ConsoleColor.Black;
+                        Console.BackgroundColor = ConsoleColor.DarkYellow;
                         Console.Write(' ');
                     }
                     else

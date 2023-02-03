@@ -17,7 +17,7 @@ namespace Projet7
         static void Main(string[] args)
         {
 
-            NPC.CreateNPC();
+            //NPC.CreateNPC();
             //PokemonTeam.CreateTeam();
             JsonSerializerSettings setting = new JsonSerializerSettings()
             {
@@ -112,26 +112,104 @@ namespace Projet7
                 }
                 while (map.Inventory)
                 {
-                    map.Inventory = allinventory.ItemListDisp(inventory);
+                    map.Inventory = allinventory.ItemListDisp(inventory,player.ListPokemonTeam, null, map);
                     Console.Clear();
                     map.ShowMap(player.PlayerPos);
                 }
                 while (map.Pokemon)
                 {
-                    player.printPokemonTeam(); 
+                    player.printPokemonTeam(map);
+                    Console.Clear();
+                    map.Menu= true;
+                    goto Menu;
                 }
-
-                if (map.WildBattle)
+                int pokemonDead = 0;
+                foreach (var item in player.ListPokemonTeam)
+                {
+                    if (item.currentHp == 0)
+                    {
+                        pokemonDead++;
+                    };
+                }
+                if(map.TrainerBattle && pokemonDead != player.ListPokemonTeam.Count)
                 {
                     Console.Clear();
-                    Arena battle = new Arena();
+                    Arena battle = new Arena(PokemonTeam.CreateTeam().PT[0]);
+                    while (map.TrainerBattle)
+                    {
+                        battle.ArenaFight(inventory, player, map);
+
+                    }
+                    if (map.BattleLost == true)
+                    {
+                        player.PlayerPos[0] = 63;
+                        player.PlayerPos[1] = 218;
+                    }
+                    else
+                    {
+                        player.Money = NPC.CreateNPC().PNJ;
+                    }
+                    map.ShowMap(player.PlayerPos);
+                }
+                else
+                {
+                    map.TrainerBattle = false;
+                }
+
+                if (map.GymBattle && pokemonDead != player.ListPokemonTeam.Count)
+                {
+                    Console.Clear();
+                    Arena battle = new Arena(PokemonTeam.CreateGymLeader().PT[0]);
+                    Console.WriteLine("Welcome to my gym, My name is DIO! If you want my badge you have to defeat me");
+                    Console.ReadKey(true);
+                    Console.Clear();
+                    while (map.GymBattle)
+                    {
+                        battle.ArenaFight(inventory, player, map);
+
+                    }
+                    if (map.BattleLost == true)
+                    {
+                        player.PlayerPos[0] = 63;
+                        player.PlayerPos[1] = 218;
+                    }
+                    else
+                    {
+                        player.Money = NPC.CreateNPC().PNJ;
+                        Console.WriteLine("Good job,you defeat me. your pokemon are so strong. Here is my Star Badge take and be the strongest pokemon trainer.");
+                    }
+                    map.ShowMap(player.PlayerPos);
+                }
+                else
+                {
+                    map.GymBattle = false;
+                }
+
+                if (map.WildBattle && pokemonDead != player.ListPokemonTeam.Count)
+                {
+                    Console.Clear();
+                    Random rId = new Random();
+                    int PokemonId = rId.Next(1, 613);
+                    Random rlvl = new Random();
+                    int PokemonLvl = rlvl.Next(2, 5);
+                    Pokemon WildPokemon = Pokemon.GetPokemon(PokemonId, PokemonLvl);
+                    Arena battle = new Arena(WildPokemon);
                     while (map.WildBattle)
                     {
-                        battle.ArenaFight(inventory, player.ListPokemonTeam,map);
+                        battle.ArenaFight(inventory, player,map);
                         
+                    }
+                    if(map.BattleLost == true)
+                    {
+                        player.PlayerPos[0] = 63;
+                        player.PlayerPos[1] = 218;
                     }
                     map.ShowMap(player.PlayerPos);
 
+                }
+                else
+                {
+                    map.WildBattle = false;
                 }
 
                 player.Inputs(map);

@@ -25,7 +25,7 @@ namespace Projet7
 
         static Attack()
         {
-            var json = File.ReadAllText("../../../Attacks.json");
+            var json = File.ReadAllText("Attacks.json");
             var attackList = JsonSerializer.Deserialize<AttackList>(json);
             _attackList = new Dictionary<int, Attack>(attackList.Attacks.Select(i => new KeyValuePair<int, Attack>(i.id, i)));
         }

@@ -31,7 +31,7 @@ namespace Projet7
                 PropertyNameCaseInsensitive = true
             };
 
-            var json = File.ReadAllText("../../../Pokemon.json");
+            var json = File.ReadAllText("Pokemon.json");
             var pokedex = JsonSerializer.Deserialize<Pokedex>(json, options);
             _pokedex = new Dictionary<int, Pokemon>(pokedex.pokemons.Select(i => new KeyValuePair<int, Pokemon>(i.id, i)));
         }
@@ -81,7 +81,7 @@ namespace Projet7
                 newp.attack[i] = Attack.GetAttack(a);
             }
             newp.currentXp = 0;
-            newp.XpMax = 1000 * newp.level;
+            newp.XpMax = 100 * newp.level;
             return newp;
         }
 
@@ -359,34 +359,34 @@ namespace Projet7
                     P1.Base["Speed"] = ((int)(P1.Base["HP"] * (((float)P1.level) / 100))) + 5;
                     P1.XpMax = 1000 * P1.level;
                     P1.currentXp += XpSupp;
-                }
-                if (P1.level % 5 == 0)
-                {
-                    P1 = P1.LearnAttack(P1);
-                }
-                if (P1.level == P1.evolution)
-                {
-                    Console.WriteLine($"{P1.name} want to evolve !");
-                    Console.WriteLine($"Press 1 for evolve or 0 for cancel :");
-                askEvolve:
-                    ConsoleKey Key = Console.ReadKey().Key;
-                    if (Key != ConsoleKey.NumPad0 || Key != ConsoleKey.NumPad1)
+                    if (P1.level % 5 == 0)
                     {
+                        P1 = P1.LearnAttack(P1);
+                    }
+                    if (P1.level == P1.evolution)
+                    {
+                        Console.WriteLine($"{P1.name} want to evolve !");
                         Console.WriteLine($"Press 1 for evolve or 0 for cancel :");
-                        goto askEvolve;
-                    }
-                    int select = (int)Key;
-                    if (select == 1)
-                    {
-                        P1 = P1.Evolve(P1);
-                        return P1;
-                    }
-                    else
-                    {
-                        Console.WriteLine($"{P1.name} don't evolve");
-                        return P1;
+                    askEvolve:
+                        ConsoleKey Key = Console.ReadKey().Key;
+                        if (Key != ConsoleKey.NumPad0 && Key != ConsoleKey.NumPad1)
+                        {
+                            Console.WriteLine($"Press 1 for evolve or 0 for cancel :");
+                            goto askEvolve;
+                        }
+                        if (Key == ConsoleKey.NumPad1)
+                        {
+                            P1 = P1.Evolve(P1);
+                            return P1;
+                        }
+                        else
+                        {
+                            Console.WriteLine($"{P1.name["english"]} don't evolve");
+                            return P1;
+                        }
                     }
                 }
+                
                 return P1;
             }
             return P1;
@@ -397,7 +397,7 @@ namespace Projet7
             Random r = new Random();
             int a = r.Next(1, 613);
             Attack A = Attack.GetAttack(a);
-            Console.WriteLine($"{P1.name} want to learn {A.ename} !");
+            Console.WriteLine($"{P1.name["english"]} want to learn {A.ename} !");
             Console.WriteLine("Choose the attack you want to forget");
             for (int i = 0; i < 4; i++)
             {
@@ -405,39 +405,38 @@ namespace Projet7
             }
         askAttack:
             ConsoleKey Key = Console.ReadKey().Key;
-            if (Key != ConsoleKey.NumPad0 || Key != ConsoleKey.NumPad1 || Key != ConsoleKey.NumPad2 || Key != ConsoleKey.NumPad3 || Key != ConsoleKey.NumPad4)
+            if (Key != ConsoleKey.NumPad0 && Key != ConsoleKey.NumPad1 && Key != ConsoleKey.NumPad2 && Key != ConsoleKey.NumPad3 && Key != ConsoleKey.NumPad4)
             {
-                Console.WriteLine("Choose the attack you want to use");
+                Console.WriteLine("Choose the attack you want to forget");
                 goto askAttack;
             }
-            int attackSelect = (int)Key;
-            if (attackSelect == 0)
+            if (Key == ConsoleKey.NumPad0)
             {
-                Console.WriteLine($"{P1.name} don't learn {A.ename}");
+                Console.WriteLine($"{P1.name["english"]} don't learn {A.ename}");
                 return P1;
             }
-            if (attackSelect == 1)
+            if (Key == ConsoleKey.NumPad1)
             {
-                Console.WriteLine($"{P1.name} forget {P1.attack[attackSelect - 1]} and he learn {A.ename}");
-                P1.attack[attackSelect - 1] = A;
+                Console.WriteLine($"{P1.name["english"]} forget {P1.attack[1 - 1]} and he learn {A.ename}");
+                P1.attack[1 - 1] = A;
                 return P1;
             }
-            if (attackSelect == 2)
+            if (Key == ConsoleKey.NumPad2)
             {
-                Console.WriteLine($"{P1.name} forget {P1.attack[attackSelect - 1]} and he learn {A.ename}");
-                P1.attack[attackSelect - 1] = A;
+                Console.WriteLine($"{P1.name["english"]} forget {P1.attack[2 - 1]} and he learn {A.ename}");
+                P1.attack[2 - 1] = A;
                 return P1;
             }
-            if (attackSelect == 3)
+            if (Key == ConsoleKey.NumPad3)
             {
-                Console.WriteLine($"{P1.name} forget {P1.attack[attackSelect - 1]} and he learn {A.ename}");
-                P1.attack[attackSelect - 1] = A;
+                Console.WriteLine($"{P1.name["english"]} forget {P1.attack[3 - 1]} and he learn {A.ename}");
+                P1.attack[3 - 1] = A;
                 return P1;
             }
-            if (attackSelect == 4)
+            if (Key == ConsoleKey.NumPad4)
             {
-                Console.WriteLine($"{P1.name} forget {P1.attack[attackSelect - 1]} and he learn {A.ename}");
-                P1.attack[attackSelect - 1] = A;
+                Console.WriteLine($"{P1.name["english"]} forget {P1.attack[4 - 1]} and he learn {A.ename}");
+                P1.attack[4 - 1] = A;
                 return P1;
             }
             return P1;
